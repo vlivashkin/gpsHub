@@ -1,0 +1,84 @@
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map-canvas {
+    height: 100%;
+}
+
+#menubar {
+    margin-bottom: -42px;
+    margin-right: 44px;
+    padding: 0 2px 2px 2px;
+    background-color: rgba(235, 235, 235, .65);
+    display: none;
+}
+
+#menubar .btn-group {
+    margin: 3px 3px;
+}
+
+#toolbar {
+    margin: 10px;
+    padding: 2px 0;
+    background-color: rgba(235, 235, 235, .65);
+    display: none;
+}
+
+#toolbar p {
+    margin: 0;
+}
+
+#toolbar button {
+    border: 1px solid white;
+    margin: 3px 5px;
+}
+
+#signinbar button{
+    margin: 3px 5px;
+}
+
+#toolbar hr {
+    margin: 5px 0;
+    width: 45px;
+    height: 1px;
+    border: none;
+    border-bottom: 1px solid #d1d1d1 !important;
+}
+
+#sign-in-alert {
+    display: none;
+}
+
+.sign-in-checkbox-block {
+    position: absolute;
+}
+
+.sign-in-checkbox-block label {
+    font-weight: normal;
+}
+
+#signinbar {
+    margin-top: 10px;
+    padding-bottom: 2px;
+    background-color: rgba(235, 235, 235, .65);
+    display: none;
+}
+
+.gmnoprint.gm-style-mtc {
+    background-color: rgba(235, 235, 235, .65);
+    margin: 10px 10px 0 0!important;
+    padding: 9px 4px 8px 4px;
+}
+
+#menubar button {
+    margin: 0;
+}
