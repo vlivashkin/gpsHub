@@ -2,24 +2,24 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/resources/js/bootstrap.min.js" />
-        <item url="file://$PROJECT_DIR$/resources/js/map.min.js" />
-        <item url="file://$PROJECT_DIR$/resources/js/bootstrap.min.min.js" />
-        <item url="file://$PROJECT_DIR$/resources/js/user.min.js" />
+        <item url="file://$PROJECT_DIR$/js/jquery.layout-latest.min.js" />
+        <item url="file://$PROJECT_DIR$/js/user.min.js" />
+        <item url="file://$PROJECT_DIR$/js/map.min.js" />
+        <item url="file://$PROJECT_DIR$/js/bootstrap.min.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/js/jquery-ui-1.10.4.min.min.js" />
       <root url="file://$PROJECT_DIR$/js/jquery-ui-1.10.4.min.min.js" />
       <root url="file://$PROJECT_DIR$/js/jquery.layout-latest.min.min.js" />
-      <root url="file://$PROJECT_DIR$/js/bootstrap.min.js" />
-      <root url="file://$PROJECT_DIR$/js/jquery.layout-latest.min.js" />
-      <root url="file://$PROJECT_DIR$/js/map.min.js" />
       <root url="file://$PROJECT_DIR$/resources/js/jquery-1.11.1.min.min.js" />
       <root url="file://$PROJECT_DIR$/resources/js/bootstrap.min.min.js" />
       <root url="file://$PROJECT_DIR$/js/jquery-1.11.1.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jquery.layout-latest.min.js" />
       <root url="file://$PROJECT_DIR$/js/jquery-ui-1.10.4.min.js" />
       <root url="file://$PROJECT_DIR$/js/user.min.js" />
+      <root url="file://$PROJECT_DIR$/js/map.min.js" />
+      <root url="file://$PROJECT_DIR$/js/bootstrap.min.js" />
     </CLASSES>
     <SOURCES />
   </library>

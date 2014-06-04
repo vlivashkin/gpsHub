@@ -13,6 +13,7 @@
     <script src="js/user.min.js" type="text/javascript"></script>
 
     <link rel="StyleSheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="StyleSheet" type="text/css" href="css/callout.min.css">
 
     <style>
         body {
@@ -31,6 +32,11 @@
         .form-control {
             border-radius: 0;
         }
+
+        #signin-error {
+            display: none;
+            margin-top: 0;
+        }
     </style>
 </head>
 <body onload="signInInit();">
@@ -41,6 +47,10 @@
         <div class="panel panel-default">
             <div class="panel-heading"><h3 class="panel-title"><strong>Войти</strong></h3></div>
             <div class="panel-body">
+                <div id="signin-error" class="bs-callout bs-callout-danger">
+                    <p>Неверное имя пользователя или пароль.</p>
+                </div>
+
                 <div class="form-group">
                     <input type="email" class="form-control" id="signin-email"
                            placeholder="Логин или Email">

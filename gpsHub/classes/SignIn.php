@@ -19,7 +19,9 @@ if ($_GET) {
         $_SESSION['password'] = $password;
         setcookie('name', $name, time() + 86400 * 30 * 12);
         setcookie('pass', $password, time() + 86400 * 30 * 12);
-        return "yes";
+        echo "yes";
+        return;
     }
+
+    echo "no";
 }
-return "no";

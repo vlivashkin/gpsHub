@@ -2,90 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d14e561-a5c7-40ae-a85a-c8bbb8147988" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/SQLConfig.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/SignIn.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/SignOut.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/User.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/bootstrap-theme.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/bootstrap-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/bootstrap.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/less/callout.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/gpsHub.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../gpsHub.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery-1.11.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery-1.11.1.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery-1.11.1.min.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery-ui-1.10.4.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery-ui-1.10.4.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery.layout-latest.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery.layout-latest.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/layout-default-latest.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/layout-default-latest.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/lessc/lessc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/less/main.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/main.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/map.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/less/map.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/map.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/signin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/user.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/user.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\.name" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\dataSources.ids" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\dataSources.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\gpsHub.iml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\php.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\scopes\scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\sqldialects.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\.idea\workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\classes\LoginAction.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\classes\Rest.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\classes\SQLConfig.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\classes\User.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\css\main.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\css\map.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\index.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\js\jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\js\main.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\js\map.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\resources\css\bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\resources\css\bootstrap.css.map" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\resources\css\bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\resources\js\bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\resources\js\bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\sql\gpsHub.sql" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\fonts\glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MOVED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\fonts\glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MOVED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\fonts\glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MOVED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\fonts\glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/SignIn.php" afterPath="$PROJECT_DIR$/classes/SignIn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/lessc/lessc.xml" afterPath="$PROJECT_DIR$/.idea/lessc/lessc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/main.less" afterPath="$PROJECT_DIR$/less/main.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.min.css" afterPath="$PROJECT_DIR$/css/main.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/signin.php" afterPath="$PROJECT_DIR$/signin.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/user.js" afterPath="$PROJECT_DIR$/js/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/user.min.js" afterPath="$PROJECT_DIR$/js/user.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gpsHub.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -108,19 +34,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="96" selection-start="1945" selection-end="1945" vertical-scroll-proportion="0.40663177" vertical-offset="651" max-vertical-offset="1224">
-              <folding />
+            <state line="52" column="96" selection-start="1945" selection-end="1945" vertical-scroll-proportion="-8.961538" vertical-offset="651" max-vertical-offset="1224">
+              <folding>
+                <marker date="1401916820468" expanded="true" signature="146:2357" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="153:1155" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="672:716" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1162:2349" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1203:1797" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1250:1697" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1281:1383" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1407:1686" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1424:1671" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1445:1653" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1525:1631" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1743:1790" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1819:2062" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1847:2055" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="1946:2044" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="2082:2340" placeholder="..." />
+                <marker date="1401916820468" expanded="true" signature="2110:2333" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SignOut.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/SignOut.php">
+      <file leaf-file-name="user.min.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/user.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="35" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="170">
+            <state line="0" column="128" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
               <folding />
             </state>
           </provider>
@@ -129,25 +73,25 @@
       <file leaf-file-name="signin.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/signin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="27" selection-start="975" selection-end="975" vertical-scroll-proportion="-22.884615" vertical-offset="0" max-vertical-offset="1105">
+            <state line="50" column="60" selection-start="1552" selection-end="1589" vertical-scroll-proportion="-5.6923075" vertical-offset="702" max-vertical-offset="1275">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bootstrap.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/bootstrap.js">
+      <file leaf-file-name="SignIn.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/SignIn.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="33269">
+            <state line="25" column="12" selection-start="790" selection-end="790" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="544">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/less/main.less">
+      <file leaf-file-name="map.less" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/less/map.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="23" selection-start="1337" selection-end="1337" vertical-scroll-proportion="-13.730769" vertical-offset="935" max-vertical-offset="1785">
+            <state line="25" column="1" selection-start="316" selection-end="316" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="527">
               <folding />
             </state>
           </provider>
@@ -158,7 +102,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="97461">
               <folding>
-                <element signature="n#!!doc" expanded="true" />
                 <marker date="1401905561650" expanded="false" signature="10761:10858" placeholder="..." />
                 <marker date="1401905561650" expanded="false" signature="22557:22614" placeholder="..." />
                 <marker date="1401905561650" expanded="false" signature="22866:22876" placeholder="..." />
@@ -173,16 +116,16 @@
       <file leaf-file-name="layout-default-latest.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/layout-default-latest.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0" vertical-offset="2444" max-vertical-offset="3808">
+            <state line="20" column="0" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3808">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="callout.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/less/callout.less">
+      <file leaf-file-name="callout.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/callout.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="578">
+            <state line="16" column="1" selection-start="290" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="578">
               <folding />
             </state>
           </provider>
@@ -191,16 +134,16 @@
       <file leaf-file-name="map.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="1" selection-start="2420" selection-end="2420" vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="1598">
+            <state line="88" column="1" selection-start="2420" selection-end="2420" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1598">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="user.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="21" selection-start="10" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+            <state line="33" column="37" selection-start="953" selection-end="953" vertical-scroll-proportion="0.4715026" vertical-offset="379" max-vertical-offset="1054">
               <folding />
             </state>
           </provider>
@@ -229,7 +172,6 @@
         <option value="$PROJECT_DIR$/css/map.css" />
         <option value="$PROJECT_DIR$/less/map.less" />
         <option value="$PROJECT_DIR$/less/list.less" />
-        <option value="$PROJECT_DIR$/less/callout.less" />
         <option value="$PROJECT_DIR$/js/map.js" />
         <option value="$PROJECT_DIR$/action.php" />
         <option value="$PROJECT_DIR$/classes/User.php" />
@@ -240,12 +182,13 @@
         <option value="$PROJECT_DIR$/resources/less/main.less" />
         <option value="$PROJECT_DIR$/resources/js/map.js" />
         <option value="$PROJECT_DIR$/resources/js/user.js" />
-        <option value="$PROJECT_DIR$/classes/SignIn.php" />
         <option value="$PROJECT_DIR$/css/layout-default-latest.css" />
-        <option value="$PROJECT_DIR$/js/user.js" />
-        <option value="$PROJECT_DIR$/less/main.less" />
-        <option value="$PROJECT_DIR$/signin.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/less/main.less" />
+        <option value="$PROJECT_DIR$/less/callout.less" />
+        <option value="$PROJECT_DIR$/classes/SignIn.php" />
+        <option value="$PROJECT_DIR$/signin.php" />
+        <option value="$PROJECT_DIR$/js/user.js" />
       </list>
     </option>
   </component>
@@ -474,7 +417,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -482,20 +425,20 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32972136" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32972136" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -515,20 +458,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/classes/SignIn.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="8" selection-start="741" selection-end="741" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/SignOut.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="35" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="170">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/signin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="0" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1054">
@@ -747,20 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/less/map.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="314" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="527">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/less/callout.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/SignOut.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="35" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="170">
@@ -780,9 +695,83 @@
         <state line="17" column="12" selection-start="626" selection-end="626" vertical-scroll-proportion="0.029259896" vertical-offset="272" max-vertical-offset="1139" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery.layout-latest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="97461">
+          <folding>
+            <marker date="1401905561650" expanded="false" signature="10761:10858" placeholder="..." />
+            <marker date="1401905561650" expanded="false" signature="22557:22614" placeholder="..." />
+            <marker date="1401905561650" expanded="false" signature="22866:22876" placeholder="..." />
+            <marker date="1401905561650" expanded="false" signature="23097:23214" placeholder="..." />
+            <marker date="1401905561650" expanded="false" signature="23258:23307" placeholder="..." />
+            <marker date="1401905561650" expanded="false" signature="23458:23540" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="96" selection-start="1945" selection-end="1945" vertical-scroll-proportion="-8.961538" vertical-offset="651" max-vertical-offset="1224">
+          <folding>
+            <marker date="1401916820468" expanded="true" signature="146:2357" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="153:1155" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="672:716" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1162:2349" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1203:1797" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1250:1697" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1281:1383" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1407:1686" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1424:1671" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1445:1653" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1525:1631" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1743:1790" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1819:2062" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1847:2055" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="1946:2044" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="2082:2340" placeholder="..." />
+            <marker date="1401916820468" expanded="true" signature="2110:2333" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/less/map.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="1" selection-start="316" selection-end="316" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/less/main.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="0" selection-start="1640" selection-end="1654" vertical-scroll-proportion="-17.461538" vertical-offset="1195" max-vertical-offset="1768">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/less/callout.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="1" selection-start="491" selection-end="491" vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/SignIn.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="5" selection-start="762" selection-end="762" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="510">
+        <state line="25" column="12" selection-start="790" selection-end="790" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/layout-default-latest.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0" vertical-offset="2444" max-vertical-offset="3808">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/callout.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="1" selection-start="290" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="578">
           <folding />
         </state>
       </provider>
@@ -794,52 +783,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/jquery.layout-latest.js">
+    <entry file="file://$PROJECT_DIR$/js/user.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="97461">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1401905561650" expanded="false" signature="10761:10858" placeholder="..." />
-            <marker date="1401905561650" expanded="false" signature="22557:22614" placeholder="..." />
-            <marker date="1401905561650" expanded="false" signature="22866:22876" placeholder="..." />
-            <marker date="1401905561650" expanded="false" signature="23097:23214" placeholder="..." />
-            <marker date="1401905561650" expanded="false" signature="23258:23307" placeholder="..." />
-            <marker date="1401905561650" expanded="false" signature="23458:23540" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/layout-default-latest.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0" vertical-offset="2444" max-vertical-offset="3808">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/less/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="23" selection-start="1337" selection-end="1337" vertical-scroll-proportion="-13.730769" vertical-offset="935" max-vertical-offset="1785">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="21" selection-start="10" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+        <state line="0" column="128" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="586">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/signin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="27" selection-start="975" selection-end="975" vertical-scroll-proportion="-22.884615" vertical-offset="0" max-vertical-offset="1105">
+        <state line="50" column="60" selection-start="1552" selection-end="1589" vertical-scroll-proportion="-5.6923075" vertical-offset="702" max-vertical-offset="1275">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/js/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="96" selection-start="1945" selection-end="1945" vertical-scroll-proportion="0.40663177" vertical-offset="651" max-vertical-offset="1224">
+        <state line="33" column="37" selection-start="953" selection-end="953" vertical-scroll-proportion="0.4715026" vertical-offset="379" max-vertical-offset="1054">
           <folding />
         </state>
       </provider>
