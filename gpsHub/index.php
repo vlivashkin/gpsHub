@@ -21,7 +21,6 @@ if (!$user->isLoggedIn())
     <script src="js/map.min.js" type="text/javascript"></script>
     <script src="js/user.min.js" type="text/javascript"></script>
 
-    <link rel="StyleSheet" type="text/css" href="css/layout-default-latest.min.css"/>
     <link rel="StyleSheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="StyleSheet" type="text/css" href="css/main.min.css"/>
 </head>
@@ -62,8 +61,12 @@ if (!$user->isLoggedIn())
 
 <div id="menubar">
     <div class="btn-group">
-        <button id="zoom-out" type="button" class="btn btn-success glyphicon glyphicon-zoom-out"></button>
-        <button id="zoom-in" type="button" class="btn btn-success glyphicon glyphicon-zoom-in"></button>
+        <button id="zoom-out" type="button" class="btn btn-success">
+            <span class="glyphicon glyphicon-zoom-out"></span>
+        </button>
+        <button id="zoom-in" type="button" class="btn btn-success">
+            <span class="glyphicon glyphicon-zoom-in"></span>
+        </button>
     </div>
 </div>
 

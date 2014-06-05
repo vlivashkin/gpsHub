@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d14e561-a5c7-40ae-a85a-c8bbb8147988" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/SignIn.php" afterPath="$PROJECT_DIR$/classes/SignIn.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/User.php" afterPath="$PROJECT_DIR$/classes/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/user.js" afterPath="$PROJECT_DIR$/js/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/user.min.js" afterPath="$PROJECT_DIR$/js/user.min.js" />
+      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\gpsHub\css\layout-default-latest.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\wawilon\Documents\GitHub\gpsHub\gpsHub\css\layout-default-latest.min.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/callout.less" afterPath="$PROJECT_DIR$/less/callout.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/lessc/lessc.xml" afterPath="$PROJECT_DIR$/.idea/lessc/lessc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/main.less" afterPath="$PROJECT_DIR$/less/main.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.min.css" afterPath="$PROJECT_DIR$/css/main.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/map.js" afterPath="$PROJECT_DIR$/js/map.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/map.less" afterPath="$PROJECT_DIR$/less/map.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/map.min.js" afterPath="$PROJECT_DIR$/js/map.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gpsHub.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,6 +36,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="0" selection-start="920" selection-end="920" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="1343">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SignOut.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/SignOut.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -55,19 +72,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SignIn.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/SignIn.php">
+      <file leaf-file-name="main.less" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/less/main.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="33" selection-start="258" selection-end="258" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="544">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SQLConfig.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/SQLConfig.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="1" selection-start="147" selection-end="147" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="238">
+            <state line="101" column="11" selection-start="1698" selection-end="1698" vertical-scroll-proportion="0.7138047" vertical-offset="1293" max-vertical-offset="1887">
               <folding />
             </state>
           </provider>
@@ -76,7 +84,7 @@
       <file leaf-file-name="jquery.layout-latest.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/jquery.layout-latest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="97461">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="97138">
               <folding>
                 <marker date="1401905561650" expanded="false" signature="10761:10858" placeholder="..." />
                 <marker date="1401905561650" expanded="false" signature="22557:22614" placeholder="..." />
@@ -89,10 +97,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout-default-latest.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/layout-default-latest.css">
+      <file leaf-file-name="map.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3808">
+            <state line="81" column="26" selection-start="2211" selection-end="2211" vertical-scroll-proportion="0.0" vertical-offset="1101" max-vertical-offset="1734">
               <folding />
             </state>
           </provider>
@@ -107,22 +115,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/user.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="38" selection-start="885" selection-end="885" vertical-scroll-proportion="0.51085144" vertical-offset="238" max-vertical-offset="1394">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="1" selection-start="815" selection-end="815" vertical-scroll-proportion="0.0" vertical-offset="515" max-vertical-offset="1955">
+            <state line="55" column="1" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2040">
               <folding>
-                <marker date="1401924809317" expanded="true" signature="1374:1433" placeholder="{...}" />
-                <marker date="1401924809317" expanded="true" signature="1482:1504" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="115:175" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="475:549" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="510:549" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="222:282" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="512:549" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="1316:1348" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="1374:1414" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="1479:1499" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="1245:1306" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="1505:1510" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="1575:1622" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="1757:1842" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="1690:1719" placeholder="{...}" />
+                <marker date="1401933964390" expanded="true" signature="1745:1857" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -158,17 +169,19 @@
         <option value="$PROJECT_DIR$/resources/less/main.less" />
         <option value="$PROJECT_DIR$/resources/js/map.js" />
         <option value="$PROJECT_DIR$/resources/js/user.js" />
-        <option value="$PROJECT_DIR$/css/layout-default-latest.css" />
         <option value="$PROJECT_DIR$/less/callout.less" />
         <option value="$PROJECT_DIR$/signin.php" />
-        <option value="$PROJECT_DIR$/less/map.less" />
-        <option value="$PROJECT_DIR$/less/main.less" />
         <option value="$PROJECT_DIR$/p.php" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/js/map.js" />
         <option value="$PROJECT_DIR$/classes/SignIn.php" />
         <option value="$PROJECT_DIR$/classes/User.php" />
         <option value="$PROJECT_DIR$/js/user.js" />
+        <option value="$PROJECT_DIR$/less/map.less" />
+        <option value="$PROJECT_DIR$/css/layout-default-latest.css" />
+        <option value="$PROJECT_DIR$/less/colors.less" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/less/layout.less" />
+        <option value="$PROJECT_DIR$/js/map.js" />
+        <option value="$PROJECT_DIR$/less/main.less" />
       </list>
     </option>
   </component>
@@ -438,20 +451,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="33269">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/less/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="0" selection-start="1532" selection-end="1569" vertical-scroll-proportion="0.0" vertical-offset="1157" max-vertical-offset="1751">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/less/callout.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="0" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="578">
@@ -644,20 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/jquery.layout-latest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="97461">
-          <folding>
-            <marker date="1401905561650" expanded="false" signature="10761:10858" placeholder="..." />
-            <marker date="1401905561650" expanded="false" signature="22557:22614" placeholder="..." />
-            <marker date="1401905561650" expanded="false" signature="22866:22876" placeholder="..." />
-            <marker date="1401905561650" expanded="false" signature="23097:23214" placeholder="..." />
-            <marker date="1401905561650" expanded="false" signature="23258:23307" placeholder="..." />
-            <marker date="1401905561650" expanded="false" signature="23458:23540" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/less/callout.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="1" selection-start="491" selection-end="491" vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="578">
@@ -665,40 +650,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/layout-default-latest.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0" vertical-offset="2444" max-vertical-offset="3808">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/callout.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="1" selection-start="290" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="1" selection-start="815" selection-end="815" vertical-scroll-proportion="0.0" vertical-offset="515" max-vertical-offset="1955">
-          <folding>
-            <marker date="1401924809317" expanded="true" signature="1374:1433" placeholder="{...}" />
-            <marker date="1401924809317" expanded="true" signature="1482:1504" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/less/map.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="5" selection-start="40" selection-end="40" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="527">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/less/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="18" selection-start="1722" selection-end="1722" vertical-scroll-proportion="-21.384615" vertical-offset="1178" max-vertical-offset="1921">
           <folding />
         </state>
       </provider>
@@ -717,37 +671,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/user.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="128" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="586">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="20" selection-start="1854" selection-end="1854" vertical-scroll-proportion="0.0" vertical-offset="583" max-vertical-offset="1700">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/SignIn.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="33" selection-start="258" selection-end="258" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/SQLConfig.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="1" selection-start="147" selection-end="147" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="238">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="65" selection-start="466" selection-end="466" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="1105">
           <folding />
         </state>
       </provider>
@@ -759,16 +685,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/js/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="137" selection-start="1667" selection-end="1667" vertical-scroll-proportion="0.2125" vertical-offset="510" max-vertical-offset="1292">
+        <state line="32" column="38" selection-start="885" selection-end="885" vertical-scroll-proportion="0.51085144" vertical-offset="238" max-vertical-offset="1394">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/user.js">
+    <entry file="file://$PROJECT_DIR$/classes/SignIn.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="38" selection-start="885" selection-end="885" vertical-scroll-proportion="0.51085144" vertical-offset="238" max-vertical-offset="1394">
+        <state line="11" column="33" selection-start="258" selection-end="258" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="65" selection-start="466" selection-end="466" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="1105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/user.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="128" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="586">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/less/map.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="39" selection-start="139" selection-end="139" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="629">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="1" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2040">
+          <folding>
+            <marker date="1401933964390" expanded="true" signature="115:175" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="475:549" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="510:549" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="222:282" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="512:549" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="1316:1348" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="1374:1414" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="1479:1499" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="1245:1306" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="1505:1510" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="1575:1622" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="1757:1842" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="1690:1719" placeholder="{...}" />
+            <marker date="1401933964390" expanded="true" signature="1745:1857" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="920" selection-end="920" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="1343">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery.layout-latest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="97461">
+          <folding>
+            <marker date="1401905561650" expanded="false" signature="10761:10858" placeholder="..." />
+            <marker date="1401905561650" expanded="false" signature="22557:22614" placeholder="..." />
+            <marker date="1401905561650" expanded="false" signature="22866:22876" placeholder="..." />
+            <marker date="1401905561650" expanded="false" signature="23097:23214" placeholder="..." />
+            <marker date="1401905561650" expanded="false" signature="23258:23307" placeholder="..." />
+            <marker date="1401905561650" expanded="false" signature="23458:23540" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="26" selection-start="2211" selection-end="2211" vertical-scroll-proportion="0.0" vertical-offset="1101" max-vertical-offset="1734">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/less/main.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="11" selection-start="1698" selection-end="1698" vertical-scroll-proportion="0.7138047" vertical-offset="1293" max-vertical-offset="1887">
           <folding />
         </state>
       </provider>

@@ -9,6 +9,7 @@ body,
 #list-layout {
   overflow: hidden;
   display: none;
+  border-right: 1px solid #c8c7cc;
 }
 #list-header {
   height: 44px;
@@ -78,11 +79,9 @@ body,
 .form-control {
   border-radius: 0;
 }
-#userinfo {
-  background-color: rgba(235, 235, 235, 0.65);
-  text-align: right;
-  margin-top: 4px;
-  padding: 1px 4px;
+.ui-layout-resizer-west {
+  width: 10px !important;
+  opacity: 0 !important;
 }
 #map-canvas {
   height: 100%;
@@ -91,15 +90,21 @@ body,
   margin: 10px 10px 0 0;
   display: none;
 }
+#userbar #userinfo {
+  background-color: rgba(255, 255, 255, 0.65);
+  text-align: right;
+  margin-right: 3px;
+  padding: 2px 4px;
+}
 #userbar button {
-  margin: 3px 5px;
+  margin: 0;
 }
 #menubar {
   margin: 10px !important;
   display: none;
 }
 #menubar .btn-group {
-  margin: 3px 3px;
+  margin: 0;
 }
 #menubar .btn-group button {
   margin: 0;

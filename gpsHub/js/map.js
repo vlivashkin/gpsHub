@@ -12,7 +12,7 @@ var mapOptions = {
     mapTypeControl: true,
     mapTypeControlOptions: {
         style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-        position: google.maps.ControlPosition.LEFT_TOP
+        position: google.maps.ControlPosition.RIGHT_TOP
     },
     disableDefaultUI: true,
     overviewMapControl: true
@@ -73,12 +73,14 @@ function initMap() {
 
 function initLayout() {
     layout = $('#container').layout({
+        closeable: false,
+        slidable: false,
         center__paneSelector: "#map-layout",
         west__paneSelector: "#list-layout",
-        center__minWidth: 200,
+        center__minWidth: 300,
         west__size: 250,
-        west__minSize: 150,
-        spacing_open: 5,
+        west__minSize: 200,
+        spacing_open: 1,
         spacing_closed: 10,
         livePaneResizing: true,
         stateManagement__enabled: true,
