@@ -41,15 +41,17 @@ html, body, .layout-item {
       border-bottom: 1px solid @borders;
       overflow: hidden;
       text-overflow: ellipsis;
-      div {
-        display: -moz-inline-stack;
-        display: inline-block;
-        vertical-align: top;
-        zoom: 1;
-        *display: inline;
-      }
     }
   }
+}
+
+#list ul li div,
+#userbar div {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
 }
 
 .circle {
@@ -93,6 +95,13 @@ html, body, .layout-item {
 
 .form-control {
   border-radius: 0;
+}
+
+#userinfo {
+  background-color: rgba(235, 235, 235, .65);
+  text-align: right;
+  margin-top: 4px;
+  padding: 1px 4px;
 }
 
 @import "map";

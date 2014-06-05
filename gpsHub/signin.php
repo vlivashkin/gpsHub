@@ -50,14 +50,11 @@
                 <div id="signin-error" class="bs-callout bs-callout-danger">
                     <p>Неверное имя пользователя или пароль.</p>
                 </div>
-
                 <div class="form-group">
-                    <input type="email" class="form-control" id="signin-email"
-                           placeholder="Логин или Email">
+                    <input type="email" class="form-control" id="signin-email" placeholder="Логин или Email">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="signin-password"
-                           placeholder="Пароль">
+                    <input type="password" class="form-control" id="signin-password" placeholder="Пароль">
                 </div>
                 <div style="text-align: right">
                     <button class="btn btn-primary" onclick="signIn()">Войти</button>

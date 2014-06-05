@@ -45,7 +45,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
     var control;
-    control = document.getElementById("signinbar");
+    control = document.getElementById("userbar");
     console.log(control);
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(control);
     control = document.getElementById("menubar");
@@ -66,7 +66,7 @@ function initMap() {
         initLayout();
         $("#list-layout").show();
         google.maps.event.trigger(map, 'resize');
-        $("#signinbar").show();
+        $("#userbar").show();
         $("#menubar").show();
     });
 }

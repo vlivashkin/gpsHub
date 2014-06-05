@@ -33,13 +33,11 @@ if (!$user->isLoggedIn())
         </div>
         <div id="list">
             <ul>
-                <li>
-                    <div class="circle online"></div>
-                    <div>
-                        Sergey Ivanov<br>
-                        +79104223454
-                    </div>
-                </li>
+                <?php
+                    while($row = $user->getDrivers()->fetch_array(MYSQLI_ASSOC)){
+                        echo "<li><div class='circle online'></div><div>" . $row['name'] . "<br>" . $row['phone_number'] . "</div></li>";
+                    }
+                ?>
             </ul>
         </div>
     </div>
@@ -48,11 +46,17 @@ if (!$user->isLoggedIn())
     </div>
 </div>
 
-<div id="signinbar">
+<div id="userbar">
+    <div id="userinfo">
+        <?php
+        echo $user->getEmail() . "; " . $user->getName() . "<br>";
+        echo $user->getCompanyName();
+        ?>
+    </div>
     <div class="btn-group">
-            <button id="sign-in-button" type="button" class="btn btn-warning" onclick="signOut()">
-                <span class="glyphicon glyphicon glyphicon-log-out"></span>
-            </button>
+        <button id="sign-in-button" type="button" class="btn btn-warning" onclick="signOut()">
+            <span class="glyphicon glyphicon glyphicon-log-out"></span>
+        </button>
     </div>
 </div>
 

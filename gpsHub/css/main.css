@@ -33,7 +33,8 @@ body,
   overflow: hidden;
   text-overflow: ellipsis;
 }
-#list ul li div {
+#list ul li div,
+#userbar div {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: top;
@@ -77,14 +78,20 @@ body,
 .form-control {
   border-radius: 0;
 }
+#userinfo {
+  background-color: rgba(235, 235, 235, 0.65);
+  text-align: right;
+  margin-top: 4px;
+  padding: 1px 4px;
+}
 #map-canvas {
   height: 100%;
 }
-#signinbar {
+#userbar {
   margin: 10px 10px 0 0;
   display: none;
 }
-#signinbar button {
+#userbar button {
   margin: 3px 5px;
 }
 #menubar {

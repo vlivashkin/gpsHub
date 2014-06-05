@@ -1,34 +1,35 @@
 <?php
 class User
 {
-    private $id;
-    private $mail;
-    private $fullname;
     private $login = false;
+    private $email;
+    private $name;
+    private $drivers;
 
     public function __construct()
     {
         require_once('SQLConfig.php');
         session_start();
         if (isset($_SESSION['name']) && isset($_SESSION['password'])) {
-            $query = "SELECT `user_id`, `email`, `name` FROM `users` WHERE `email` = '" . $_SESSION['name'] . "' AND `password` = '" . $_SESSION['password'] . "'";
             $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+            $query = "SELECT `user_id`, `email`, `name`, `organization_id` FROM `users` WHERE `email` = '" . $_SESSION['name'] . "' AND `password` = '" . $_SESSION['password'] . "'";
             $result = $mysqli->query($query);
-
             $user = $result->fetch_array(MYSQLI_ASSOC);
-
             if ($result->num_rows > 0) {
                 $this->login = true;
-                $this->id = $user['user_id'];
-                $this->mail = $user['email'];
-                $this->fullname = $user['name'];
+                $this->email = $user['email'];
+                $this->name = $user['name'];
+
+                $query = "SELECT `name` FROM `organization` WHERE `organization_id` = '" . $user['organization_id'] . "'";
+                $result = $mysqli->query($query);
+                $organization = $result->fetch_array(MYSQLI_ASSOC);
+                $this->companyName = $organization['name'];
+
+                $query = "SELECT * FROM `driver` WHERE `organization_id` = '" . $user['organization_id'] . "'";
+                $result = $mysqli->query($query);
+                $this->drivers = $result;
             }
         }
-    }
-
-    public function __destruct()
-    {
-
     }
 
     public function isLoggedIn()
@@ -36,27 +37,24 @@ class User
         return $this->login;
     }
 
-    public function hasName()
-    {
-        if (!empty($this->fullname))
-            return true;
-        return false;
-    }
-
-    public function getId()
-    {
-        return (int)$this->id;
-    }
-
-    public function getFullname()
-    {
-        return $this->fullname;
-    }
-
     public function getEmail()
     {
-        return $this->mail;
+        return $this->email;
     }
-}
 
-?>
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getCompanyName()
+    {
+        return $this->companyName;
+    }
+
+    public function getDrivers()
+    {
+        return $this->drivers;
+    }
+
+}
