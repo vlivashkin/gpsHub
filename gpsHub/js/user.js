@@ -8,20 +8,14 @@ function signInInit() {
 }
 
 function signIn() {
-    var $err = $("#signin-error");
+
     var email = $("#signin-email").val();
     var password = $("#signin-password").val();
 
-    if (email == "") {
-        $err.removeClass("bs-callout-danger");
-        $err.addClass("bs-callout-warning");
-        $err.find("p").text("Введите email.");
-        $err.show();
-    } else if (password == "") {
-        $err.removeClass("bs-callout-danger");
-        $err.addClass("bs-callout-warning");
-        $err.find("p").text("Введите пароль.");
-        $err.show();
+    if (email == "")
+        signInMessage("email");
+    else if (password == "") {
+        signInMessage("password");
     } else {
         $.ajax({
             url: 'classes/SignIn.php',
@@ -33,17 +27,43 @@ function signIn() {
             },
             success: function(data) {
                 if (data === "yes") {
-                    $("#signin-error").hide();
+                    signInMessage("goodpass");
                     window.location.href = "index.php";
                 } else if (data === "no") {
-                    $err.removeClass("bs-callout-warning");
-                    $err.addClass("bs-callout-danger");
-                    $err.find("p").text("Неверное имя пользователя или пароль.");
-                    $("#signin-error").show();
+                    signInMessage("badpass");
                 }
             }
         });
     }
+}
+
+function signInMessage(type) {
+    var $err = $("#signin-error");
+    $err.hide();
+    $err.removeClass("bs-callout-warning");
+    $err.removeClass("bs-callout-danger");
+    $err.removeClass("bs-callout-info");
+
+    switch (type) {
+        case "email" :
+            $err.addClass("bs-callout-warning");
+            $err.find("p").text("Введите email.");
+            break;
+        case "password" :
+            $err.addClass("bs-callout-warning");
+            $err.find("p").text("Введите пароль.");
+            break;
+        case "badpass" :
+            $err.addClass("bs-callout-danger");
+            $err.find("p").text("Неверное имя пользователя или пароль.");
+            break;
+        case "goodpass" :
+            $err.addClass("bs-callout-info");
+            $err.find("p").text("Пожалуйста, подождите...");
+            break;
+    }
+
+    $err.show();
 }
 
 function signOut() {

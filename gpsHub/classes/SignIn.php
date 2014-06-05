@@ -9,7 +9,7 @@ if ($_GET) {
     else
         $password = md5(stripslashes($_GET['password']));
 
-    $query = "SELECT * FROM `users` WHERE `email` = '" . $name . "' AND `password` = '" . $password . "'";
+    $query = "SELECT * FROM `user` WHERE `email` = '" . $name . "' AND `password` = '" . $password . "'";
     $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
     $result = $mysqli->query($query);
 
