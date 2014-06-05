@@ -18,7 +18,6 @@ html, body, .layout-item {
 #list-layout {
   overflow: hidden;
   display: none;
-  border-right: 1px solid @borders;
 }
 
 #list-header {
@@ -99,8 +98,13 @@ html, body, .layout-item {
 }
 
 .ui-layout-resizer-west {
-  width: 10px !important;
-  opacity: 0 !important;
+  width: 20px !important;
+  border-left: 1px solid @borders;
+  z-index: 800;
+}
+
+.ui-layout-resizer-drag {
+  width: 1000px !important;
 }
 
 @import "map";

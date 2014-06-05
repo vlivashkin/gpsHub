@@ -8,14 +8,18 @@ function signInInit() {
 }
 
 function signIn() {
-
+    var $btn = $("#signin-btn");
     var email = $("#signin-email").val();
     var password = $("#signin-password").val();
 
-    if (email == "")
+    $btn.prop('disabled', true);
+
+    if (email == "") {
         signInMessage("email");
-    else if (password == "") {
+        $btn.prop('disabled', false);
+    } else if (password == "") {
         signInMessage("password");
+        $btn.prop('disabled', false);
     } else {
         $.ajax({
             url: 'classes/SignIn.php',
@@ -31,10 +35,13 @@ function signIn() {
                     window.location.href = "index.php";
                 } else if (data === "no") {
                     signInMessage("badpass");
+                    $btn.prop('disabled', false);
                 }
             }
         });
     }
+
+
 }
 
 function signInMessage(type) {

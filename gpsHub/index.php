@@ -15,11 +15,10 @@ if (!$user->isLoggedIn())
     <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="js/jquery-ui-1.10.4.min.js" type="text/javascript"></script>
     <script src="js/jquery.layout-latest.min.js" type="text/javascript"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&language=ru&libraries=drawing"
-            type="text/javascript"></script>
+    <script src="OpenLayers-2.13.1/OpenLayers.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/map.min.js" type="text/javascript"></script>
-    <script src="js/user.min.js" type="text/javascript"></script>
+    <script src="js/map.js" type="text/javascript"></script>
+    <script src="js/user.js" type="text/javascript"></script>
 
     <link rel="StyleSheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="StyleSheet" type="text/css" href="css/main.min.css"/>
@@ -42,31 +41,31 @@ if (!$user->isLoggedIn())
     </div>
     <div id="map-layout" class="layout-item">
         <div id="map-canvas"></div>
-    </div>
-</div>
 
-<div id="userbar">
-    <div id="userinfo">
-        <?php
-        echo $user->getEmail() . "; " . $user->getName() . "<br>";
-        echo $user->getCompanyName();
-        ?>
-    </div>
-    <div class="btn-group">
-        <button id="sign-in-button" type="button" class="btn btn-warning" onclick="signOut()">
-            <span class="glyphicon glyphicon glyphicon-log-out"></span>
-        </button>
-    </div>
-</div>
+        <div id="userbar">
+            <div id="userinfo">
+                <?php
+                echo $user->getEmail() . "; " . $user->getName() . "<br>";
+                echo $user->getCompanyName();
+                ?>
+            </div>
+            <div class="btn-group">
+                <button id="sign-in-button" type="button" class="btn btn-warning" onclick="signOut()">
+                    <span class="glyphicon glyphicon glyphicon-log-out"></span>
+                </button>
+            </div>
+        </div>
 
-<div id="menubar">
-    <div class="btn-group">
-        <button id="zoom-out" type="button" class="btn btn-success">
-            <span class="glyphicon glyphicon-zoom-out"></span>
-        </button>
-        <button id="zoom-in" type="button" class="btn btn-success">
-            <span class="glyphicon glyphicon-zoom-in"></span>
-        </button>
+        <div id="menubar">
+            <div class="btn-group">
+                <button id="zoom-out" type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-zoom-out"></span>
+                </button>
+                <button id="zoom-in" type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-zoom-in"></span>
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 

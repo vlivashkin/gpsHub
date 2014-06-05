@@ -4,23 +4,6 @@ function tog(v) {
 
 var layout;
 var map;
-var drawingManager;
-
-var mapOptions = {
-    center: new google.maps.LatLng(55.75167, 37.61778),
-    zoom: 10,
-    mapTypeControl: true,
-    mapTypeControlOptions: {
-        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-        position: google.maps.ControlPosition.RIGHT_TOP
-    },
-    disableDefaultUI: true,
-    overviewMapControl: true
-};
-
-window.onresize = function(event) {
-    google.maps.event.trigger(map, 'resize');
-}
 
 $(document).on('input', '.clearable',function () {
     $(this)[tog(this.value)]('x');
@@ -32,43 +15,42 @@ $(document).on('input', '.clearable',function () {
 
 $(document).ready(function () {
     initMap();
-
-    $("#zoom-in").click(function () {
-        map.setZoom(map.getZoom() + 1);
-    });
-    $("#zoom-out").click(function () {
-        map.setZoom(map.getZoom() - 1);
-    });
 });
 
+window.onresize = function (event) {
+    mapResize();
+};
+
 function initMap() {
-    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    var options = {
+        projection: new OpenLayers.Projection("EPSG:900913"),
+        displayProjection: new OpenLayers.Projection("EPSG:4326"),
+        numZoomLevels: 18,
+        layers: [
+            new OpenLayers.Layer.OSM()
+        ],
+        controls: [
+            new OpenLayers.Control.Navigation({
+                dragPanOptions: {
+                    enableKinetic: true
+                }
+            }),
+            new OpenLayers.Control.Attribution(),
+            new OpenLayers.Control.Zoom({
+                zoomInId: "zoom-in",
+                zoomOutId: "zoom-out"
+            })
+        ]
+    };
+    map = new OpenLayers.Map('map-canvas', options);
 
-    var control;
-    control = document.getElementById("userbar");
-    console.log(control);
-    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(control);
-    control = document.getElementById("menubar");
-    console.log(control);
-    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(control);
+    var center = new OpenLayers.Geometry.Point(37.61778, 55.75167);
+    center.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
+    map.setCenter(new OpenLayers.LonLat(center.x, center.y), 11);
 
-    drawingManager = new google.maps.drawing.DrawingManager({
-        drawingControl: false,
-        markerOptions: {
-            draggable: true,
-            zIndex: 2,
-            flat: false
-        }
-    });
-    drawingManager.setMap(map);
-
-    google.maps.event.addListenerOnce(map, 'idle', function(){
-        initLayout();
-        $("#list-layout").show();
-        mapResize();
-        $("#userbar").show();
-        $("#menubar").show();
-    });
+    initLayout();
+    $("#list-layout").show();
+    mapResize();
 }
 
 function initLayout() {
@@ -84,7 +66,7 @@ function initLayout() {
         spacing_closed: 10,
         livePaneResizing: true,
         stateManagement__enabled: true,
-        onresize: function() {
+        onresize: function () {
             mapResize();
         }
     });
@@ -92,6 +74,6 @@ function initLayout() {
 
 function mapResize() {
     var center = map.getCenter();
-    google.maps.event.trigger(map, "resize");
+    map.updateSize();
     map.setCenter(center);
 }

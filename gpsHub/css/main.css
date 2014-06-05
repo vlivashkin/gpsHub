@@ -9,7 +9,6 @@ body,
 #list-layout {
   overflow: hidden;
   display: none;
-  border-right: 1px solid #c8c7cc;
 }
 #list-header {
   height: 44px;
@@ -80,28 +79,39 @@ body,
   border-radius: 0;
 }
 .ui-layout-resizer-west {
-  width: 10px !important;
-  opacity: 0 !important;
+  width: 20px !important;
+  border-left: 1px solid #c8c7cc;
+  z-index: 800;
+}
+.ui-layout-resizer-drag {
+  width: 1000px !important;
 }
 #map-canvas {
   height: 100%;
 }
 #userbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 800;
   margin: 10px 10px 0 0;
-  display: none;
 }
 #userbar #userinfo {
   background-color: rgba(255, 255, 255, 0.65);
   text-align: right;
   margin-right: 3px;
   padding: 2px 4px;
+  font-size: 11px;
 }
 #userbar button {
   margin: 0;
 }
 #menubar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 800;
   margin: 10px !important;
-  display: none;
 }
 #menubar .btn-group {
   margin: 0;

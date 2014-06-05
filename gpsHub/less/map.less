@@ -3,13 +3,17 @@
 }
 
 #userbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 800;
   margin: 10px 10px 0 0;
-  display: none;
   #userinfo {
     background-color: rgba(255, 255, 255, .65);
     text-align: right;
     margin-right: 3px;
     padding: 2px 4px;
+    font-size: 11px;
   }
   button {
     margin: 0;
@@ -17,8 +21,11 @@
 }
 
 #menubar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 800;
   margin: 10px !important;
-  display: none;
   .btn-group {
     margin: 0;
     button {
