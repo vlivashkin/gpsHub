@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d14e561-a5c7-40ae-a85a-c8bbb8147988" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/User.php" afterPath="$PROJECT_DIR$/classes/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/main.less" afterPath="$PROJECT_DIR$/less/main.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.min.css" afterPath="$PROJECT_DIR$/css/main.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/map.js" afterPath="$PROJECT_DIR$/js/map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/map.less" afterPath="$PROJECT_DIR$/less/map.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/map.min.js" afterPath="$PROJECT_DIR$/js/map.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/signin.php" afterPath="$PROJECT_DIR$/signin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gpsHub.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="137" selection-start="1667" selection-end="1667" vertical-scroll-proportion="0.40057638" vertical-offset="490" max-vertical-offset="1292">
+            <state line="37" column="137" selection-start="1667" selection-end="1667" vertical-scroll-proportion="-24.192308" vertical-offset="0" max-vertical-offset="1292">
               <folding>
                 <marker date="1401927998028" expanded="true" signature="1563:1666" placeholder="..." />
                 <marker date="1401927998028" expanded="true" signature="1601:1666" placeholder="..." />
@@ -117,6 +109,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="map.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/map.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="67" column="20" selection-start="1854" selection-end="1854" vertical-scroll-proportion="0.7797927" vertical-offset="838" max-vertical-offset="1700">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -165,11 +166,11 @@
         <option value="$PROJECT_DIR$/js/user.js" />
         <option value="$PROJECT_DIR$/signin.php" />
         <option value="$PROJECT_DIR$/less/map.less" />
-        <option value="$PROJECT_DIR$/js/map.js" />
         <option value="$PROJECT_DIR$/less/main.less" />
         <option value="$PROJECT_DIR$/classes/User.php" />
         <option value="$PROJECT_DIR$/p.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/js/map.js" />
       </list>
     </option>
   </component>
@@ -687,13 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/user.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="128" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="586">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="1" selection-start="815" selection-end="815" vertical-scroll-proportion="0.0" vertical-offset="515" max-vertical-offset="1955">
@@ -732,13 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="16" selection-start="1897" selection-end="1897" vertical-scroll-proportion="0.0" vertical-offset="617" max-vertical-offset="1598">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/SignOut.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="35" selection-start="81" selection-end="81" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="170">
@@ -753,6 +740,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="137" selection-start="1667" selection-end="1667" vertical-scroll-proportion="-24.192308" vertical-offset="0" max-vertical-offset="1292">
+          <folding>
+            <marker date="1401927998028" expanded="true" signature="1563:1666" placeholder="..." />
+            <marker date="1401927998028" expanded="true" signature="1601:1666" placeholder="..." />
+            <marker date="1401927998028" expanded="true" signature="1689:1708" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="992" column="0" selection-start="15260" selection-end="15260" vertical-scroll-proportion="0.3316062" vertical-offset="16736" max-vertical-offset="64821">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="67" selection-start="1071" selection-end="1097" vertical-scroll-proportion="-6.1538463" vertical-offset="248" max-vertical-offset="1105">
@@ -760,14 +765,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/js/user.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="137" selection-start="1667" selection-end="1667" vertical-scroll-proportion="0.40057638" vertical-offset="490" max-vertical-offset="1292">
-          <folding>
-            <marker date="1401927998028" expanded="true" signature="1563:1666" placeholder="..." />
-            <marker date="1401927998028" expanded="true" signature="1601:1666" placeholder="..." />
-            <marker date="1401927998028" expanded="true" signature="1689:1708" placeholder="..." />
-          </folding>
+        <state line="0" column="128" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="586">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="20" selection-start="1854" selection-end="1854" vertical-scroll-proportion="0.7797927" vertical-offset="838" max-vertical-offset="1700">
+          <folding />
         </state>
       </provider>
     </entry>

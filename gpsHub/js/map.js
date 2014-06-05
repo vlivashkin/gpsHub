@@ -7,8 +7,8 @@ var map;
 var drawingManager;
 
 var mapOptions = {
-    center: new google.maps.LatLng(-34.397, 150.644),
-    zoom: 8,
+    center: new google.maps.LatLng(55.75167, 37.61778),
+    zoom: 10,
     mapTypeControl: true,
     mapTypeControlOptions: {
         style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
@@ -65,7 +65,7 @@ function initMap() {
     google.maps.event.addListenerOnce(map, 'idle', function(){
         initLayout();
         $("#list-layout").show();
-        google.maps.event.trigger(map, 'resize');
+        mapResize();
         $("#userbar").show();
         $("#menubar").show();
     });
@@ -83,7 +83,13 @@ function initLayout() {
         livePaneResizing: true,
         stateManagement__enabled: true,
         onresize: function() {
-            google.maps.event.trigger(map, 'resize');
+            mapResize();
         }
     });
+}
+
+function mapResize() {
+    var center = map.getCenter();
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center);
 }
