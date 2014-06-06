@@ -15,7 +15,7 @@ if (!$user->isLoggedIn())
     <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="js/jquery-ui-1.10.4.min.js" type="text/javascript"></script>
     <script src="js/jquery.layout-latest.min.js" type="text/javascript"></script>
-    <script src="OpenLayers-2.13.1/OpenLayers.js" type="text/javascript"></script>
+    <script src="js/openLayers.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script src="js/map.js" type="text/javascript"></script>
     <script src="js/user.js" type="text/javascript"></script>

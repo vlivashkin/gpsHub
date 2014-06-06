@@ -1,13 +1,10 @@
 <?php
 
-require_once('SQLConfig.php');
+require_once('../classes/SQLConfig.php');
 
 if ($_GET) {
     $name = $_GET['email'];
-    if (!get_magic_quotes_gpc())
-        $password = md5($_GET['password']);
-    else
-        $password = md5(stripslashes($_GET['password']));
+    $password = md5($_GET['password']);
 
     $query = "SELECT * FROM `user` WHERE `email` = '" . $name . "' AND `password` = '" . $password . "'";
     $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);

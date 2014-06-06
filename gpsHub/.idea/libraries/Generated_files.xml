@@ -6,6 +6,7 @@
         <item url="file://$PROJECT_DIR$/OpenLayers-2.13.1/OpenLayers.min.js" />
         <item url="file://$PROJECT_DIR$/js/jquery.layout-latest.min.js" />
         <item url="file://$PROJECT_DIR$/js/user.min.js" />
+        <item url="file://$PROJECT_DIR$/js/openLayers.min.js" />
         <item url="file://$PROJECT_DIR$/js/map.min.js" />
         <item url="file://$PROJECT_DIR$/js/bootstrap.min.js" />
       </sourceFilesUrls>
@@ -714,11 +715,13 @@
       <root url="file://$PROJECT_DIR$/js/OpenLayers-2.13.1/lib/OpenLayers/BaseTypes/Pixel.min.js" />
       <root url="file://$PROJECT_DIR$/js/OpenLayers-2.13.1/lib/OpenLayers/BaseTypes/Bounds.min.js" />
       <root url="file://$PROJECT_DIR$/js/OpenLayers-2.13.1/lib/OpenLayers/Marker.min.js" />
+      <root url="file://$PROJECT_DIR$/OpenLayers-2.13.1/OpenLayers.min.js" />
       <root url="file://$PROJECT_DIR$/js/openLayers.min.js" />
       <root url="file://$PROJECT_DIR$/OpenLayers-2.13.1/OpenLayers.min.js" />
       <root url="file://$PROJECT_DIR$/js/jquery-1.11.1.min.js" />
       <root url="file://$PROJECT_DIR$/js/jquery.layout-latest.min.js" />
       <root url="file://$PROJECT_DIR$/js/jquery-ui-1.10.4.min.js" />
+      <root url="file://$PROJECT_DIR$/js/openLayers.min.js" />
       <root url="file://$PROJECT_DIR$/js/user.min.js" />
       <root url="file://$PROJECT_DIR$/js/map.min.js" />
       <root url="file://$PROJECT_DIR$/js/bootstrap.min.js" />

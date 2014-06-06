@@ -5,6 +5,12 @@ function signInInit() {
             signIn();
         }
     });
+
+    $('#signin-form').submit(function (event) {
+        event.preventDefault();
+        signIn();
+        return false;
+    });
 }
 
 function signIn() {
@@ -22,7 +28,7 @@ function signIn() {
         $btn.prop('disabled', false);
     } else {
         $.ajax({
-            url: 'classes/SignIn.php',
+            url: 'actions/SignIn.php',
             type: 'GET',
             data: {
                 signin: true,
@@ -75,7 +81,7 @@ function signInMessage(type) {
 
 function signOut() {
     $.ajax({
-        url: 'classes/SignOut.php',
+        url: 'actions/SignOut.php',
         type: 'GET',
         success: function(data) {
             location.reload();
