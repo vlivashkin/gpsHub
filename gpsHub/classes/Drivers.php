@@ -1,11 +1,16 @@
 <?php
 
-class Drivers {
-    protected static $_instance;
-    private $drivers;
+class Drivers
+{
+    public function __construct()
+    {
+        if (!isset($_SESSION))
+            session_start();
+    }
 
-    private function __construct() {
-        $this->drivers = [
+    public function init()
+    {
+        $drivers = [
             1 => [
                 "lat" => 37.61778,
                 "lng" => 55.75167,
@@ -17,25 +22,26 @@ class Drivers {
                 "time" => time()
             ]
         ];
+
+        $_SESSION['drivers'] = $drivers;
     }
 
-    private function __clone(){
+    public function setDriver($id, $lat, $lng)
+    {
+        $drivers = $_SESSION['drivers'];
+
+        $drivers[$id]["lat"] = $lat;
+        $drivers[$id]["lng"] = $lng;
+        $drivers[$id]["time"] = time();
+
+        $_SESSION['drivers'] = $drivers;
+
+        return $drivers;
     }
 
-    public static function getInstance() {
-        if (null === self::$_instance) {
-            self::$_instance = new self();
-        }
-        return self::$_instance;
-    }
-
-    public function setDriver($id, $lat, $lng) {
-        $this->drivers[$id]->lat = $lat;
-        $this->drivers[$id]->lng = $lng;
-        $this->drivers[$id]->time = time();
-    }
-
-    public function getDrivers() {
-        return $this->drivers;
+    public function getDrivers()
+    {
+        $drivers = $_SESSION['drivers'];
+        return $drivers;
     }
 } 

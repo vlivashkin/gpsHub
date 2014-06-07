@@ -18,6 +18,7 @@ function signIn() {
     var email = $("#signin-email").val();
     var password = $("#signin-password").val();
 
+    $("#signin-error").hide();
     $btn.prop('disabled', true);
 
     if (email == "") {

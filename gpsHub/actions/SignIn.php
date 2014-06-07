@@ -1,6 +1,7 @@
 <?php
 
 require_once('../classes/SQLConfig.php');
+require_once('../classes/Drivers.php');
 
 if ($_GET) {
     $name = $_GET['email'];
@@ -16,6 +17,10 @@ if ($_GET) {
         $_SESSION['password'] = $password;
         setcookie('name', $name, time() + 86400 * 30 * 12);
         setcookie('pass', $password, time() + 86400 * 30 * 12);
+
+        $drivers = new Drivers();
+        $drivers->init();
+
         echo "yes";
         return;
     }

@@ -3,44 +3,29 @@ var map;
 var driver = {};
 
 $(document).ready(function () {
+    initLayout();
     initMap();
+    $("#list-layout").show();
+    map.updateSize();
     setInterval(getDrivers, 1500);
 });
 
-window.onresize = function (event) {
-    mapResize();
-};
-
 function initMap() {
-    var options = {
-        projection: new OpenLayers.Projection("EPSG:900913"),
-        displayProjection: new OpenLayers.Projection("EPSG:4326"),
+    map = new ol.Map({
+        target: 'map-canvas',
         layers: [
-            new OpenLayers.Layer.OSM()
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            }),
+            new ol.layer.Vector({
+                source: new ol.source.Vector()
+            })
         ],
-        controls: [
-            new OpenLayers.Control.Navigation({
-                dragPanOptions: {
-                    enableKinetic: true
-                }
-            }),
-            new OpenLayers.Control.Attribution(),
-            new OpenLayers.Control.Zoom({
-                zoomInId: "zoom-in",
-                zoomOutId: "zoom-out"
-            }),
-            new OpenLayers.Control.ScaleLine(),
-            new OpenLayers.Control.MousePosition()
-        ]
-    };
-    map = new OpenLayers.Map('map-canvas', options);
-    map.setCenter(coord(37.61778, 55.75167), 11);
-    markers = new OpenLayers.Layer.Markers("Markers");
-    map.addLayer(markers);
-
-    initLayout();
-    $("#list-layout").show();
-    mapResize();
+        view: new ol.View2D({
+            center: ol.proj.transform([37.61778, 55.75167], 'EPSG:4326', 'EPSG:3857'),
+            zoom: 11
+        })
+    });
 }
 
 function initLayout() {
@@ -57,49 +42,58 @@ function initLayout() {
         livePaneResizing: true,
         stateManagement__enabled: true,
         onresize: function () {
-            mapResize();
+            map.updateSize();
         }
     });
 }
 
-function mapResize() {
-    var center = map.getCenter();
-    map.updateSize();
-    map.setCenter(center);
+function addPoint(lat, lng, id) {
+    console.log(driver);
+
+    var iconFeature = new ol.Feature({
+        geometry: new ol.geom.Point(ol.proj.transform([lat, lng], 'EPSG:4326', 'EPSG:3857')),
+        name: 'Null Island',
+        population: 4000,
+        rainfall: 500
+    });
+
+    var iconStyle = new ol.style.Style({
+        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+            anchor: [0.5, 46],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            opacity: 0.75,
+            src: 'img/marker.png'
+        }))
+    });
+
+    iconFeature.setStyle(iconStyle);
+
+    map.getLayers().getArray()[1].getSource().addFeature(iconFeature);
+
+    return iconFeature;
+}
+
+function movePoint(lat, lng, marker) {
+    marker.set('geometry', new ol.geom.Point(ol.proj.transform([lat, lng], 'EPSG:4326', 'EPSG:3857')));
 }
 
 function getDrivers() {
     $.ajax({
         url: 'actions/Drivers.php',
         type: 'GET',
-        data: 'yes',
         dataType: 'json',
         success: function (data) {
             var keys = Object.keys(data);
             keys.forEach(function (id) {
-                // if (driver[id] == undefined)
-                driver[id] = addPoint(data[id].lat, data[id].lng);
-                // else
-                // movePoint(data[id].lat, data[id].lng, driver[id]);
+                if (driver[id] == undefined)
+                    driver[id] = addPoint(data[id].lat, data[id].lng, id);
+                else
+                    movePoint(data[id].lat, data[id].lng, driver[id]);
             });
         }
-    })
+    });
 }
-
-function addPoint(lat, lng) {
-    var size = new OpenLayers.Size(21,25);
-    var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-    var icon = new OpenLayers.Icon('http://www.openlayers.org/dev/img/marker.png',size,offset);
-    var marker = new OpenLayers.Marker(coord(lat, lng),icon.clone())
-    markers.addMarker(marker);
-
-    return marker;
-}
-
-function movePoint(lat, lng, marker) {
-    marker.moveTo(coord(lat, lng));
-}
-
 
 // крестик в поиске слева
 //
@@ -113,10 +107,4 @@ $(document).on('input', '.clearable',function () {
 
 function tog(v) {
     return v ? 'addClass' : 'removeClass';
-}
-
-function coord(lat, lng) {
-    var position = new OpenLayers.Geometry.Point(lat, lng);
-    position.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
-    return new OpenLayers.LonLat(position.x, position.y);
 }

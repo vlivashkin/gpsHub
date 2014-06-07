@@ -1,15 +1,16 @@
 <?php
 
 require_once('../classes/Drivers.php');
-$drivers = Drivers::getInstance();
+$drivers = new Drivers();
 
 if ($_POST) {
-    $id = $_GET['id'];
-    $lat = $_GET['lat'];
-    $lng = $_GET['lng'];
+    $id = $_POST['id'];
+    $lat = $_POST['lat'];
+    $lng = $_POST['lng'];
 
-    $drivers->setDriver($id, $lat, $lng);
-} else if ($_GET) {
+    $list = $drivers->setDriver($id, $lat, $lng);
+    echo json_encode($list);
+} else {
     $list = $drivers->getDrivers();
     echo json_encode($list);
 }
