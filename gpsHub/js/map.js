@@ -6,6 +6,27 @@ $(document).ready(function () {
     initMap();
     getDrivers();
     setInterval(getDrivers, 1500);
+
+    $(".driver-item").click(function () {
+        var id = $(this).attr('id').substring(7);
+        var features = map.getLayers().getArray()[1].getSource().getFeatures();
+        var point;
+        features.forEach(function(item) {
+            if (item.id == id) {
+                point = item.getGeometry().getExtent();
+            }
+        });
+
+        if (point != undefined) {
+            var view = map.getView();
+            var pan = ol.animation.pan({
+                duration: 400,
+                source: (view.getCenter())
+            });
+            map.beforeRender(pan);
+            view.setCenter([point[0], point[1]]);
+        }
+    });
 });
 
 function initMap() {
@@ -62,6 +83,8 @@ function addPoint(lat, lng, id) {
         rainfall: 500
     });
 
+    iconFeature.id = id;
+
     var iconStyle = new ol.style.Style({
         image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
             anchor: [0.5, 46],
@@ -91,9 +114,10 @@ function getDrivers() {
         success: function (data) {
             var keys = Object.keys(data);
             keys.forEach(function (id) {
-                if (driver[id] == undefined)
+                if (driver[id] == undefined) {
+                    $("#driver-" + id + " .circle").addClass("online");
                     driver[id] = addPoint(data[id].lat, data[id].lng, id);
-                else
+                } else
                     movePoint(data[id].lat, data[id].lng, driver[id]);
             });
         }

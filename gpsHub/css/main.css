@@ -108,6 +108,7 @@ body,
   border-bottom: 1px solid #c8c7cc;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 }
 #list ul li div {
   display: -moz-inline-stack;
@@ -127,12 +128,10 @@ body,
   height: 9px;
   float: left;
   margin: 5px 7px 0 7px;
+  background-color: #d9534f;
 }
 .online {
   background-color: #5cb85c;
-}
-.offline {
-  background-color: #d9534f;
 }
 .clearable {
   background-image: url(../img/x.png) !important;

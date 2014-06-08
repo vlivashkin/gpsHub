@@ -13,12 +13,15 @@
     <link rel="StyleSheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 <body>
-<label for="id">id:</label>
-<input id="id" class="form-control" value="1">
-<label for="lat">lat:</label>
-<input id="lat" class="form-control" value="37.61778" onchange="send()">
-<label for="lng">lng:</label>
-<input id="lng" class="form-control" value="145.75167" onchange="send()">
+<div class="container">
+    <label for="id">id:</label>
+    <input id="id" class="form-control" value="1">
+    <label for="lat">lat:</label>
+    <input id="lat" class="form-control" value="37.61778" onchange="send()">
+    <label for="lng">lng:</label>
+    <input id="lng" class="form-control" value="145.75167" onchange="send()">
+</div>
+
 <script language="JavaScript">
     function send() {
         $.ajax({

@@ -34,7 +34,7 @@ if (!$user->isLoggedIn())
             <ul>
                 <?php
                     while($row = $user->getDrivers()->fetch_array(MYSQLI_ASSOC)){
-                        echo "<li><div class='circle online'></div><div>" . $row['name'] . "<br>" . $row['phone_number'] . "</div></li>";
+                        echo "<li id='driver-" . $row['driver_id'] . "' class='driver-item'><div class='circle'></div><div>" . $row['name'] . "<br>" . $row['phone_number'] . "</div></li>";
                     }
                 ?>
             </ul>
