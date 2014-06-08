@@ -1,5 +1,4 @@
 <?php
-
 require_once('../classes/SQLConfig.php');
 require_once('../classes/Drivers.php');
 

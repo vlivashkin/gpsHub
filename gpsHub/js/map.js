@@ -4,6 +4,7 @@ var driver = {};
 
 $(document).ready(function () {
     initMap();
+    getDrivers();
     setInterval(getDrivers, 1500);
 });
 

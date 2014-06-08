@@ -116,6 +116,9 @@ body,
   zoom: 1;
   *display: inline;
 }
+#list ul li:hover {
+  background-color: #fafafa;
+}
 .circle {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;

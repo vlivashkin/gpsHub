@@ -49,8 +49,8 @@ if (!$user->isLoggedIn())
                 <button id="sign-in-button" type="button" class="btn btn-warning" onclick="signOut()">
                     <span id="userinfo" role="tooltip">
                         <?php
-                        echo $user->getEmail() . "; " . $user->getName() . "<br>";
-                        echo $user->getCompanyName();
+                            echo $user->getEmail() . "; " . $user->getName() . "<br>";
+                            echo $user->getCompanyName();
                         ?>
                     </span>
                     <span class="glyphicon glyphicon glyphicon-log-out"></span>

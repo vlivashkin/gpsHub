@@ -26,7 +26,7 @@ function signIn() {
         signInMessage("password");
     } else {
         $btn.prop('disabled', true);
-        signInMessage("goodpass");
+        signInMessage("pleasewait");
         $.ajax({
             url: 'actions/signin.php',
             type: 'GET',
@@ -36,7 +36,7 @@ function signIn() {
             },
             success: function(data) {
                 if (data === "yes") {
-                    signInMessage("goodpass");
+                    signInMessage("pleasewait");
                     window.location.href = "index.php";
                 } else if (data === "no") {
                     signInMessage("badpass");
@@ -76,7 +76,7 @@ function signInMessage(type) {
             $err.addClass("bs-callout-danger");
             $err.find("p").text("Неверное имя пользователя или пароль.");
             break;
-        case "goodpass" :
+        case "pleasewait" :
             $err.addClass("bs-callout-info");
             $err.find("p").text("Пожалуйста, подождите...");
             break;
@@ -93,8 +93,8 @@ function signOut() {
     $.ajax({
         url: 'actions/signout.php',
         type: 'GET',
-        success: function(data) {
-            location.reload();
+        success: function() {
+            window.location.replace("signin.php");
         }
     });
 }
