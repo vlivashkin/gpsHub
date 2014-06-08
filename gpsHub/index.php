@@ -44,14 +44,15 @@ if (!$user->isLoggedIn())
         <div id="map-canvas"></div>
 
         <div id="userbar">
-            <div id="userinfo">
-                <?php
-                echo $user->getEmail() . "; " . $user->getName() . "<br>";
-                echo $user->getCompanyName();
-                ?>
-            </div>
+
             <div class="btn-group">
                 <button id="sign-in-button" type="button" class="btn btn-warning" onclick="signOut()">
+                    <span id="userinfo" role="tooltip">
+                        <?php
+                        echo $user->getEmail() . "; " . $user->getName() . "<br>";
+                        echo $user->getCompanyName();
+                        ?>
+                    </span>
                     <span class="glyphicon glyphicon glyphicon-log-out"></span>
                 </button>
             </div>

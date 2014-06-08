@@ -5,18 +5,52 @@
 
 #userbar {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: .5em;
+  right: .5em;
   z-index: 800;
-  margin: 10px 10px 0 0;
+  margin: 0;
   #userinfo {
-    background-color: rgba(255, 255, 255, .7);
-    text-align: right;
-    margin-right: 3px;
+    position: absolute;
+    top: .6em;
+    right: 2.3em;
+    display: none;
     padding: 2px 4px;
-    font-size: 11px;
+    border-radius: 4px 0 0 4px;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, .6);
+    font-size: .8em;
+    font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+    font-weight: normal;
+    text-shadow: 0 0 2px #fff;
+    text-align: right;
+    z-index: 1100;
+    color: #000;
+  }
+  .btn-group {
+    border-radius: 4px;
+    padding: 3px;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, .6);
   }
   button {
     margin: 0;
+    border: none !important;
+    border-radius: 2px;
+    height: 46px;
+    width: 23px;
+    padding-left: 5px;
+    background-color: rgba(237, 156, 40, .7);
+    &:hover {
+      background-color: rgb(237, 156, 40);
+    }
+    &:hover [role=tooltip],
+    &:focus [role=tooltip] {
+      display: block !important;
+    }
+
   }
+}
+
+.ol-logo {
+  display: none;
 }

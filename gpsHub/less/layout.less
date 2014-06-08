@@ -1,0 +1,36 @@
+@borders: rgb(200, 199, 204);
+@titlebar-background: rgb(248, 248, 248);
+
+html, body, .layout-item {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.ui-layout-pane {
+  background: #FFF;
+  overflow: hidden;
+}
+
+.ui-layout-resizer-west {
+  z-index: 800;
+}
+
+.ui-layout-resizer-open {
+  border-left: 1px solid @borders;
+  width: 10px !important;
+}
+
+.ui-layout-resizer-west-closed {
+  border-right: 1px solid @borders;
+  background-color: @titlebar-background;
+}
+
+.ui-layout-resizer-drag {
+  width: 1000px !important;
+}
+
+.ui-layout-toggler {
+  display: none !important;
+}

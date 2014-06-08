@@ -13,8 +13,8 @@
                   </CssDirectory>
                 </list>
               </option>
-              <option name="excludePattern" value="map*;lay*" />
               <option name="id" value="0" />
+              <option name="includePattern" value="main*" />
               <option name="lessDirPath" value="C:\Users\wawilon\Documents\GitHub\gpsHub\gpsHub\less" />
               <option name="name" value="default" />
             </LessProfile>

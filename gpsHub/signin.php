@@ -11,7 +11,7 @@
     <script src="js/user.min.js" type="text/javascript"></script>
 
     <link rel="StyleSheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="StyleSheet" type="text/css" href="css/callout.min.css">
+    <link rel="StyleSheet" type="text/css" href="css/main.min.css">
 
     <style>
         body {
@@ -56,7 +56,7 @@
                         <input type="password" class="form-control" id="signin-password" placeholder="Пароль">
                     </div>
                     <div style="text-align: right">
-                        <input type="submit" class="btn btn-primary" value="Войти">
+                        <input id="signin-btn" type="submit" class="btn btn-primary" value="Войти">
                     </div>
                 </form>
             </div>

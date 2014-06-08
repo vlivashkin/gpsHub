@@ -3,10 +3,7 @@ var map;
 var driver = {};
 
 $(document).ready(function () {
-    initLayout();
     initMap();
-    $("#list-layout").show();
-    map.updateSize();
     setInterval(getDrivers, 1500);
 });
 
@@ -26,6 +23,11 @@ function initMap() {
             zoom: 11
         })
     });
+
+    map.on("postrender", function() {
+        initLayout();
+        map.updateSize();
+    })
 }
 
 function initLayout() {
@@ -38,13 +40,15 @@ function initLayout() {
         west__size: 250,
         west__minSize: 200,
         spacing_open: 1,
-        spacing_closed: 10,
+        spacing_closed: 20,
         livePaneResizing: true,
         stateManagement__enabled: true,
         onresize: function () {
             map.updateSize();
         }
     });
+
+    $("#list-layout").show();
 }
 
 function addPoint(lat, lng, id) {
@@ -80,7 +84,7 @@ function movePoint(lat, lng, marker) {
 
 function getDrivers() {
     $.ajax({
-        url: 'actions/Drivers.php',
+        url: 'actions/drivers.php',
         type: 'GET',
         dataType: 'json',
         success: function (data) {

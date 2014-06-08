@@ -1,5 +1,5 @@
 function signInInit() {
-    $('input').on('keyup', function(e) {
+    $('#signin-password').on('keyup', function(e) {
         if (e.which == 13) {
             e.preventDefault();
             signIn();
@@ -19,20 +19,18 @@ function signIn() {
     var password = $("#signin-password").val();
 
     $("#signin-error").hide();
-    $btn.prop('disabled', true);
 
     if (email == "") {
         signInMessage("email");
-        $btn.prop('disabled', false);
     } else if (password == "") {
         signInMessage("password");
-        $btn.prop('disabled', false);
     } else {
+        $btn.prop('disabled', true);
+        signInMessage("goodpass");
         $.ajax({
-            url: 'actions/SignIn.php',
+            url: 'actions/signin.php',
             type: 'GET',
             data: {
-                signin: true,
                 email: email,
                 password: password
             },
@@ -43,7 +41,14 @@ function signIn() {
                 } else if (data === "no") {
                     signInMessage("badpass");
                     $btn.prop('disabled', false);
+                } else {
+                    signInMessage("connectionerror");
+                    $btn.prop('disabled', false);
                 }
+            },
+            error: function() {
+                signInMessage("connectionerror");
+                $btn.prop('disabled', false);
             }
         });
     }
@@ -75,6 +80,10 @@ function signInMessage(type) {
             $err.addClass("bs-callout-info");
             $err.find("p").text("Пожалуйста, подождите...");
             break;
+        case "connectionerror":
+            $err.addClass("bs-callout-danger");
+            $err.find("p").text("Произошла ошибка во время связи с сервером. Попробуйте обновить страницу");
+            break;
     }
 
     $err.show();
@@ -82,7 +91,7 @@ function signInMessage(type) {
 
 function signOut() {
     $.ajax({
-        url: 'actions/SignOut.php',
+        url: 'actions/signout.php',
         type: 'GET',
         success: function(data) {
             location.reload();
