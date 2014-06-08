@@ -5,7 +5,6 @@ var driver = {};
 $(document).ready(function () {
     initMap();
     getDrivers();
-    setInterval(getDrivers, 1500);
 
     $(".driver-item").click(function () {
         var id = $(this).attr('id').substring(7);
@@ -120,6 +119,7 @@ function getDrivers() {
                 } else
                     movePoint(data[id].lat, data[id].lng, driver[id]);
             });
+            getDrivers();
         }
     });
 }
