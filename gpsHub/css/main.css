@@ -83,6 +83,13 @@ body,
 .ol-logo {
   display: none;
 }
+.ol-mouse-position {
+  position: absolute;
+  left: 8px;
+  top: auto;
+  right: auto;
+  bottom: 8px;
+}
 #list-layout {
   display: none;
 }
@@ -109,6 +116,7 @@ body,
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
+  height: 40px;
 }
 #list ul li div {
   display: -moz-inline-stack;
@@ -119,6 +127,12 @@ body,
 }
 #list ul li:hover {
   background-color: #fafafa;
+}
+#list ul li .driver-color {
+  width: 10px;
+  height: 100%;
+  float: right;
+  opacity: .7;
 }
 .circle {
   -webkit-border-radius: 50%;

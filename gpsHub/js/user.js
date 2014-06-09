@@ -14,49 +14,60 @@ function signInInit() {
 }
 
 function signIn() {
-    var $btn = $("#signin-btn");
     var email = $("#signin-email").val();
     var password = $("#signin-password").val();
 
     $("#signin-error").hide();
 
     if (email == "") {
-        signInMessage("email");
+        responseMsg("email");
     } else if (password == "") {
-        signInMessage("password");
+        responseMsg("password");
     } else {
-        $btn.prop('disabled', true);
-        signInMessage("pleasewait");
-        $.ajax({
-            url: 'actions/signin.php',
-            type: 'GET',
-            data: {
-                email: email,
-                password: password
-            },
-            success: function(data) {
-                if (data === "yes") {
-                    signInMessage("pleasewait");
-                    window.location.href = "index.php";
-                } else if (data === "no") {
-                    signInMessage("badpass");
-                    $btn.prop('disabled', false);
-                } else {
-                    signInMessage("connectionerror");
-                    $btn.prop('disabled', false);
-                }
-            },
-            error: function() {
-                signInMessage("connectionerror");
-                $btn.prop('disabled', false);
-            }
-        });
+        $("#signin-btn").prop('disabled', true);
+        responseMsg("pleasewait");
+        sendRequest();
     }
-
-
 }
 
-function signInMessage(type) {
+function sendRequest() {
+    var email = $("#signin-email").val();
+    var password = $("#signin-password").val();
+
+    var shaObj = new jsSHA(password + email, "TEXT");
+    var hash = shaObj.getHash("SHA-256", "HEX");
+
+    $.ajax({
+        url: 'actions/signin.php',
+        type: 'POST',
+        data: {
+            email: email,
+            hash: hash
+        },
+        success: function(data) {
+            requestResult(data);
+        },
+        error: function() {
+            responseMsg("connectionerror");
+            $("#signin-btn").prop('disabled', false);
+        }
+    });
+}
+
+function requestResult(data) {
+    if (data === "yes") {
+        responseMsg("pleasewait");
+        window.location.href = "index.php";
+    } else if (data === "no") {
+        responseMsg("badpass");
+        $("#signin-btn").prop('disabled', false);
+    } else {
+        responseMsg("connectionerror");
+        $("#signin-btn").prop('disabled', false);
+    }
+}
+
+function responseMsg(type) {
     var $err = $("#signin-error");
     $err.hide();
     $err.removeClass("bs-callout-warning");
@@ -85,7 +96,6 @@ function signInMessage(type) {
             $err.find("p").text("Произошла ошибка во время связи с сервером. Попробуйте обновить страницу");
             break;
     }
-
     $err.show();
 }
 

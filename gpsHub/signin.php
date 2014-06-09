@@ -1,3 +1,11 @@
+<?php
+    if (isset($_SESSION['email'])) {
+        $email = $_SESSION['email'];
+    } else {
+        $email = "";
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +16,7 @@
 
     <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/sha256.js"></script>
     <script src="js/user.min.js" type="text/javascript"></script>
 
     <link rel="StyleSheet" type="text/css" href="css/bootstrap.min.css">
@@ -38,19 +47,17 @@
     </style>
 </head>
 <body onload="signInInit();">
+
 <div class="container" style="padding-top:30px">
     <h1>gpsHub</h1>
-
     <div class="col-md-4 col-md-offset-4" style="margin-top: 50px">
         <div class="panel panel-default">
             <div class="panel-heading"><h3 class="panel-title"><strong>Войти</strong></h3></div>
             <div class="panel-body">
-                <div id="signin-error" class="bs-callout bs-callout-danger">
-                    <p>Неверное имя пользователя или пароль.</p>
-                </div>
+                <div id="signin-error" class="bs-callout"><p></p></div>
                 <form id="signin-form">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="signin-email" placeholder="Логин или Email">
+                        <input type="email" class="form-control" id="signin-email" placeholder="Эл. почта" value="<?php echo $email ?>">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" id="signin-password" placeholder="Пароль">

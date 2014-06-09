@@ -8,9 +8,9 @@ if ($user->isLoggedIn()) {
     if ($_POST) {
         $id = $_POST['id'];
         $lat = $_POST['lat'];
-        $lng = $_POST['lng'];
+        $lon = $_POST['lon'];
 
-        $list = $drivers->setDriver($id, $lat, $lng);
+        $list = $drivers->setDriver($id, $lat, $lon);
         echo json_encode($list);
     } else {
         $list = $drivers->getDrivers();

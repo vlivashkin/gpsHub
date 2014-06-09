@@ -10,14 +10,14 @@ class User
     {
         require_once('SQLConfig.php');
         session_start();
-        if (isset($_SESSION['name']) && isset($_SESSION['password'])) {
+        if (isset($_SESSION['email'])) {
             $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
-            $query = "SELECT `user_id`, `email`, `name`, `company_id` FROM `user` WHERE `email` = '" . $_SESSION['name'] . "' AND `password` = '" . $_SESSION['password'] . "'";
+            $query = "SELECT `name`, `company_id` FROM `user` WHERE `email` = '" . $_SESSION['email'] . "'";
             $result = $mysqli->query($query);
             $user = $result->fetch_array(MYSQLI_ASSOC);
             if ($result->num_rows > 0) {
                 $this->login = true;
-                $this->email = $user['email'];
+                $this->email = $_SESSION['email'];
                 $this->name = $user['name'];
 
                 $query = "SELECT `name` FROM `company` WHERE `company_id` = '" . $user['company_id'] . "'";

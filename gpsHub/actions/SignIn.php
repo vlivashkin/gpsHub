@@ -2,20 +2,18 @@
 require_once('../classes/SQLConfig.php');
 require_once('../classes/Drivers.php');
 
-if ($_GET) {
-    $name = $_GET['email'];
-    $password = md5($_GET['password']);
+if($_POST) {
+    $email = $_POST['email'];
+    $hash = $_POST['hash'];
+    $hash256 = hash('sha256', $hash . $email);
 
-    $query = "SELECT * FROM `user` WHERE `email` = '" . $name . "' AND `password` = '" . $password . "'";
+    $query = "SELECT * FROM `user` WHERE `email` = '" . $email . "' AND `password` = '" . $hash256 . "'";
     $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
     $result = $mysqli->query($query);
 
     if ($result->num_rows) {
         session_start();
-        $_SESSION['name'] = $name;
-        $_SESSION['password'] = $password;
-        setcookie('name', $name, time() + 86400 * 30 * 12);
-        setcookie('pass', $password, time() + 86400 * 30 * 12);
+        $_SESSION['email'] = $email;
 
         $drivers = new Drivers();
         $drivers->init();

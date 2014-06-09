@@ -11,14 +11,14 @@ class Drivers
     public function init()
     {
         $drivers = [
-            1 => [
+            101 => [
                 "lat" => 37.61778,
-                "lng" => 55.75167,
+                "lon" => 55.75167,
                 "time" => time()
             ],
-            2 => [
+            102 => [
                 "lat" => 34.61778,
-                "lng" => 53.75167,
+                "lon" => 53.75167,
                 "time" => time()
             ]
         ];
@@ -26,17 +26,16 @@ class Drivers
         $_SESSION['drivers'] = $drivers;
     }
 
-    public function setDriver($id, $lat, $lng)
+    public function setDriver($id, $lat, $lon)
     {
-        $drivers = $_SESSION['drivers'];
 
-        $drivers[$id]["lat"] = $lat;
-        $drivers[$id]["lng"] = $lng;
-        $drivers[$id]["time"] = time();
+            $drivers = $_SESSION['drivers'];
 
-        $_SESSION['drivers'] = $drivers;
+            $drivers[$id]["lat"] = $lat;
+            $drivers[$id]["lon"] = $lon;
+            $drivers[$id]["time"] = time();
 
-        return $drivers;
+            $_SESSION['drivers'] = $drivers;
     }
 
     public function getDrivers()

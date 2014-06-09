@@ -18,8 +18,8 @@
     <input id="id" class="form-control" value="1">
     <label for="lat">lat:</label>
     <input id="lat" class="form-control" value="37.61778" onchange="send()">
-    <label for="lng">lng:</label>
-    <input id="lng" class="form-control" value="145.75167" onchange="send()">
+    <label for="lon">lon:</label>
+    <input id="lon" class="form-control" value="145.75167" onchange="send()">
 </div>
 
 <script language="JavaScript">
@@ -30,7 +30,7 @@
             data: {
                 id: $("#id").val(),
                 lat: $("#lat").val(),
-                lng: $("#lng").val()
+                lon: $("#lon").val()
             },
             success: function (data) {
                 console.log(data);
