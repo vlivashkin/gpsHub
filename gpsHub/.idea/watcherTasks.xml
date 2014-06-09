@@ -16,7 +16,7 @@
       <option name="outputFromStdout" value="false" />
       <option name="passParentEnvs" value="true" />
       <option name="program" value="C:/Program Files/nodejs/node_modules/yuicompressor/build/yuicompressor-2.4.8.jar" />
-      <option name="scopeName" value="Project Files" />
+      <option name="scopeName" value="all my css" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="C:\Users\wawilon\Documents\GitHub\gpsHub\gpsHub\css" />
       <envs />
@@ -36,7 +36,7 @@
       <option name="outputFromStdout" value="false" />
       <option name="passParentEnvs" value="true" />
       <option name="program" value="C:/Program Files/nodejs/node_modules/yuicompressor/build/yuicompressor-2.4.8.jar" />
-      <option name="scopeName" value="Project Files" />
+      <option name="scopeName" value="all my js" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="C:\Users\wawilon\Documents\GitHub\gpsHub\gpsHub\js" />
       <envs />
