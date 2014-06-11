@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:weightSum="1">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_weight="0.33">
+    </LinearLayout>
+    <TextView
+            android:layout_width="227dp"
+            android:layout_height="50dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Статус трекера"
+            android:id="@+id/mainText" android:layout_gravity="center_horizontal"
+            android:singleLine="true" android:textSize="30dp"/>
+    <Switch
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/onoff" android:layout_gravity="center_horizontal"
+            android:checked="false" android:clickable="true"/>
+</LinearLayout>

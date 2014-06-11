@@ -1,24 +1,15 @@
 <?php
-require_once('../classes/User.php');
-$user = new User();
-if ($user->isLoggedIn()) {
-    require_once('../classes/Drivers.php');
-    $drivers = new Drivers();
 
-    if ($_POST) {
-        $id = $_POST['id'];
-        $lat = $_POST['lat'];
-        $lon = $_POST['lon'];
+require_once('../classes/Drivers.php');
+$drivers = new Drivers();
 
-        $list = $drivers->setDriver($id, $lat, $lon);
-        echo json_encode($list);
-    } else {
-        $list = $drivers->getDrivers();
-        echo json_encode($list);
-    }
+if ($_POST) {
+    $id = $_POST['id'];
+    $lat = $_POST['lat'];
+    $lng = $_POST['lng'];
+
+    $drivers->setDriver($id, $lat, $lng);
 } else {
-    echo "NOT_LOGGED_IN";
+    $list = $drivers->getDrivers();
+    echo json_encode($list);
 }
-
-
-

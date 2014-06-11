@@ -1,10 +1,11 @@
 var layout;
 var map;
 var driver = {};
+var type = false;
 
 $(document).ready(function () {
     initMap();
-    getDrivers();
+    setInterval(getDrivers, 1000);
 
     $(".driver-item").click(function () {
         var id = $(this).attr('id').substring(7);
@@ -39,15 +40,11 @@ function initMap() {
                 source: new ol.source.Vector()
             })
         ],
+        projection: 'EPSG:3857',
         view: new ol.View2D({
             center: ol.proj.transform([37.61778, 55.75167], 'EPSG:4326', 'EPSG:3857'),
             zoom: 11
-        }),
-        controls: ol.control.defaults().extend([
-            new ol.control.MousePosition({
-                projection: 'EPSG:4326'
-            })
-        ])
+        })
     });
 
     map.on("postrender", function () {
@@ -83,17 +80,15 @@ function getDrivers() {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            var keys = Object.keys(data);
-            keys.forEach(function (id) {
-                if (driver[id] == undefined) {
+            data.forEach(function (row) {
+                if (driver[row.id] == undefined) {
                     var color = randomColor();
-                    $("#driver-" + id + " .circle").addClass("online");
-                    $("#driver-" + id + " .driver-color").css('background-color', color);
-                    driver[id] = addPoint(data[id].lat, data[id].lon, id, color);
+                    $("#driver-" + row.id + " .circle").addClass("online");
+                    $("#driver-" + row.id + " .driver-color").css('background-color', color);
+                    driver[row.id] = addPoint(row.lat, row.lng, row.id, color);
                 } else
-                    movePoint(data[id].lat, data[id].lon, driver[id]);
+                    movePoint(row.id, row.lat, row.lng);
             });
-            getDrivers();
         }
     });
 }
@@ -102,10 +97,7 @@ function addPoint(lat, lon, id, color) {
     console.log(driver);
 
     var iconFeature = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.transform([lat, lon], 'EPSG:4326', 'EPSG:3857')),
-        name: 'Null Island',
-        population: 4000,
-        rainfall: 500
+        geometry: new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'))
     });
 
     iconFeature.id = id;
@@ -129,8 +121,13 @@ function addPoint(lat, lon, id, color) {
     return iconFeature;
 }
 
-function movePoint(lat, lon, marker) {
-    marker.set('geometry', new ol.geom.Point(ol.proj.transform([lat, lon], 'EPSG:4326', 'EPSG:3857')));
+function movePoint(id, lat, lon) {
+    if (typeof(lat) == "string")
+        lat = parseFloat(lat);
+    if (typeof(lon) == "string")
+        lon = parseFloat(lon);
+    console.log(id + " " + lat + " " + lon);
+    driver[id].set('geometry', new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857')));
 }
 
 // крестик в поиске слева

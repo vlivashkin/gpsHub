@@ -2,45 +2,44 @@
 
 class Drivers
 {
-    public function __construct()
-    {
-        if (!isset($_SESSION))
-            session_start();
-    }
-
     public function init()
     {
-        $drivers = [
-            101 => [
-                "lat" => 37.61778,
-                "lon" => 55.75167,
-                "time" => time()
-            ],
-            102 => [
-                "lat" => 34.61778,
-                "lon" => 53.75167,
-                "time" => time()
-            ]
-        ];
-
-        $_SESSION['drivers'] = $drivers;
+        $this->setDriver(101, '55.75167', '37.61778');
+        $this->setDriver(102, '53.75167', '34.61778');
     }
 
-    public function setDriver($id, $lat, $lon)
+    public function setDriver($id, $lat, $lng)
     {
+        require_once('SQLConfig.php');
+        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $query = "UPDATE `driver` SET
+            `lat` = '" . $lat . "',
+            `lng` = '" . $lng . "',
+            `last_activity` = '" . time() . "'
+             WHERE `driver_id` = " . $id;
 
-            $drivers = $_SESSION['drivers'];
-
-            $drivers[$id]["lat"] = $lat;
-            $drivers[$id]["lon"] = $lon;
-            $drivers[$id]["time"] = time();
-
-            $_SESSION['drivers'] = $drivers;
+        $mysqli->query($query);
     }
 
     public function getDrivers()
     {
-        $drivers = $_SESSION['drivers'];
+        require_once('SQLConfig.php');
+        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $query = "SELECT `driver_id`, `lat`, `lng`, `last_activity` FROM `driver`";
+        $drivers = [];
+        if ($result = $mysqli->query($query)) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($drivers, [
+                    "id" => $row["driver_id"],
+                    "lat" => $row["lat"],
+                    "lng" => $row["lng"],
+                    "time" => $row["last_activity"]
+                ]);
+            }
+
+            $result->free();
+        }
+
         return $drivers;
     }
 } 

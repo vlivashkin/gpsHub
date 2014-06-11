@@ -15,7 +15,7 @@
 <body>
 <div class="container">
     <label for="id">id:</label>
-    <input id="id" class="form-control" value="1">
+    <input id="id" class="form-control" value="101">
     <label for="lat">lat:</label>
     <input id="lat" class="form-control" value="37.61778" onchange="send()">
     <label for="lon">lon:</label>
@@ -25,12 +25,12 @@
 <script language="JavaScript">
     function send() {
         $.ajax({
-            url: 'actions/Drivers.php',
+            url: './actions/drivers.php',
             type: 'POST',
             data: {
                 id: $("#id").val(),
                 lat: $("#lat").val(),
-                lon: $("#lon").val()
+                lng: $("#lon").val()
             },
             success: function (data) {
                 console.log(data);
