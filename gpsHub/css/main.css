@@ -100,39 +100,75 @@ body,
   border-bottom: 1px solid #c8c7cc;
   padding: 7px;
   position: absolute;
+  z-index: 800;
 }
-#list {
+#list-body {
   padding-top: 44px;
   height: 100%;
 }
-#list ul {
-  list-style: none;
-  padding: 0;
+#list-body #list {
   height: 100%;
   overflow: auto;
 }
-#list ul li {
+#list-body #list .panel {
+  border: none;
   border-bottom: 1px solid #c8c7cc;
+  margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
-  height: 40px;
+  border-radius: 0;
 }
-#list ul li div {
+#list-body #list .panel .panel-heading {
+  padding: 0;
+  height: 40px;
+  background-color: #ffffff;
+}
+#list-body #list .panel .panel-heading div {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: top;
   zoom: 1;
   *display: inline;
 }
-#list ul li:hover {
+#list-body #list .panel .panel-heading div span {
+  margin-top: 12px;
+  width: 30px;
+}
+#list-body #list .panel .panel-heading .driver-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: calc(100% - 70px);
+  height: 40px;
+}
+#list-body #list .panel .panel-heading:hover {
   background-color: #fafafa;
 }
-#list ul li .driver-color {
-  width: 10px;
-  height: 100%;
+#list-body #list .panel .panel-heading .right {
   float: right;
+  height: 100%;
+}
+#list-body #list .panel .panel-heading .right.ext-btn {
+  text-align: center;
+}
+#list-body #list .panel .panel-heading .right.ext-btn:hover {
+  background-color: #ebebeb;
+}
+#list-body #list .panel .panel-heading .right.driver-color {
+  width: 10px;
   opacity: .7;
+}
+#list-body #list .panel .panel-body {
+  padding: 0;
+}
+#list-body #list .panel .panel-body table {
+  margin: 0;
+  border: none;
+}
+#list-body #list .panel .panel-body table th {
+  border: none;
+  font-weight: normal;
+  padding: 3px 8px;
 }
 .circle {
   -webkit-border-radius: 50%;
@@ -146,6 +182,9 @@ body,
 }
 .online {
   background-color: #5cb85c;
+}
+.wait {
+  background-color: #f0ad4e;
 }
 .clearable {
   background-image: url(../img/x.png) !important;

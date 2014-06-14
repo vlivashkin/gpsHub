@@ -11,5 +11,10 @@ if ($_POST) {
     $drivers->setDriver($id, $lat, $lng);
 } else {
     $list = $drivers->getDrivers();
-    echo json_encode($list);
+    $time = time();
+    $response = [
+        'time' => $time,
+        'list' => $list
+    ];
+    echo json_encode($response);
 }

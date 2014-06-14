@@ -17,6 +17,7 @@ if (!$user->isLoggedIn())
     <script src="js/jquery.layout-latest.min.js" type="text/javascript"></script>
     <script src="js/ol.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/moment-with-langs.min.js" type="text/javascript"></script>
     <script src="js/map.js" type="text/javascript"></script>
     <script src="js/user.js" type="text/javascript"></script>
 
@@ -30,26 +31,52 @@ if (!$user->isLoggedIn())
         <div id="list-header">
             <input class="form-control input-sm clearable" placeholder="Поиск машины">
         </div>
-        <div id="list">
-            <ul>
+        <div id="list-body">
+            <div class="panel-group" id="list">
                 <?php
-                    while($row = $user->getDrivers()->fetch_array(MYSQLI_ASSOC)){
-                        $driver_id = $row['driver_id'];
-                        $name = $row['name'];
-                        $phone_number = $row['phone_number'];
-                        echo <<<EOF
-                            <li id='driver-$driver_id' class='driver-item'>
+                while($row = $user->getDrivers()->fetch_array(MYSQLI_ASSOC)){
+                    $driver_id = $row['driver_id'];
+                    $name = $row['name'];
+                    $phone_number = $row['phone_number'];
+                    $vehile_num = $row['vehile_num'];
+                    $last_activity = $row['last_activity'];
+                    echo <<<EOF
+                        <div id="driver-$driver_id-panel" class="panel panel-default">
+                            <div class="panel-heading">
                                 <div class='circle'></div>
-                                <div>
+                                <div class='driver-text'>
                                     $name<br>
-                                    $phone_number
+                                    $vehile_num
                                 </div>
-                                <div class='driver-color'></div>
-                            </li>
+                                <div class='right driver-color'></div>
+                                <div class='right ext-btn'>
+                                    <span class="glyphicon glyphicon-chevron-down"></span>
+                                </div>
+                            </div>
+                            <div id='driver-$driver_id' class="panel-collapse collapse" data-parent="#list">
+                                <div class="panel-body">
+                                    <table class="table table-striped">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>$driver_id</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Номер телефона</th>
+                                        <th>$phone_number</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Последняя активность</th>
+                                        <th>Нет информации</th>
+                                    </tr>
+                                    </table>
+                                </div>
+                                Изменить...
+                            </div>
+                        </div>
 EOF;
-                    }
+                }
                 ?>
-            </ul>
+            </div>
         </div>
     </div>
     <div id="map-layout" class="layout-item">

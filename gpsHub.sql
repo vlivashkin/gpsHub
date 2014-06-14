@@ -62,10 +62,11 @@ CREATE TABLE IF NOT EXISTS `driver` (
   DEFAULT CHARSET =utf8
   AUTO_INCREMENT =8;
 
-INSERT INTO `driver` (`driver_id`, `name`, `phone_number`, `company_id`) VALUES
-  (101, 'Vasily Pavlov', '+7 (920) 232-32-34', 1),
-  (102, 'Sergey Ivanov', '+7 (965) 453-23-42', 1),
-  (103, 'Valentin Fedorenko', '+7 (915) 112-34-45', 1);
+INSERT INTO `driver` (`driver_id`, `name`, `phone_number`, `vehile_num`, `company_id`) VALUES
+  (101, 'Василий Павлов', '+7 (920) 232-32-34', 'ТА 512 А', 1),
+  (102, 'Сергей Иванов', '+7 (965) 453-23-42', 'ЕК 777 Х', 1),
+  (103, 'Валентин Писаренко', '+7 (915) 112-34-45', 'ЕУ 312 Р', 1),
+  (104, 'Александр Фадеев', '+7 (903) 544-23-53', 'ЕН 112 К', 1);
 
 ALTER TABLE `user`
 ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`);
