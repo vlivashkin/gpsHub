@@ -1,5 +1,5 @@
 function signInInit() {
-    $('#signin-password').on('keyup', function(e) {
+    $('#signin-password').on('keyup', function (e) {
         if (e.which == 13) {
             e.preventDefault();
             signIn();
@@ -44,10 +44,10 @@ function sendRequest() {
             email: email,
             hash: hash
         },
-        success: function(data) {
+        success: function (data) {
             requestResult(data);
         },
-        error: function() {
+        error: function () {
             responseMsg("connectionerror");
             $("#signin-btn").prop('disabled', false);
         }
@@ -103,7 +103,7 @@ function signOut() {
     $.ajax({
         url: 'actions/signout.php',
         type: 'GET',
-        success: function() {
+        success: function () {
             window.location.replace("signin.php");
         }
     });

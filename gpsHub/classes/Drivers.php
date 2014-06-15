@@ -25,7 +25,17 @@ class Drivers
     {
         require_once('SQLConfig.php');
         $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
-        $query = "SELECT `driver_id`, `lat`, `lng`, `last_activity` FROM `driver`";
+        $query = "SELECT * FROM `driver`";
+        $drivers = $mysqli->query($query);
+
+        return $drivers;
+    }
+
+    public function getDriversLocation()
+    {
+        require_once('SQLConfig.php');
+        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $query = "SELECT `driver_id`, `lat`, `lng`, `last_activity` FROM `driver` ";
         $drivers = [];
         if ($result = $mysqli->query($query)) {
             while ($row = $result->fetch_assoc()) {
@@ -36,10 +46,23 @@ class Drivers
                     "time" => $row["last_activity"]
                 ]);
             }
-
             $result->free();
         }
 
         return $drivers;
     }
-} 
+
+    public function getDriver($id)
+    {
+        require_once('SQLConfig.php');
+        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $query = "SELECT * FROM `driver` WHERE `driver_id` = " . $id;
+        if ($result = $mysqli->query($query)) {
+            $driver = $result->fetch_array(MYSQLI_ASSOC);
+            if ($result->num_rows > 0) {
+                return $driver;
+            }
+        }
+        return NULL;
+    }
+}

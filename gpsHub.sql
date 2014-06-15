@@ -7,7 +7,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `company` (
   `company_id` 		INT(11)     NOT NULL AUTO_INCREMENT,
-  `company_hash`  INT(11)     NOT NULL,
+  `company_hash`  VARCHAR(50) NOT NULL,
   `name`       		VARCHAR(50) NOT NULL,
   `account_type`	VARCHAR(200),
   PRIMARY KEY (`company_id`),
@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS `company` (
   DEFAULT CHARSET =utf8
   AUTO_INCREMENT =8;
 
-INSERT INTO `company` (`company_id`, `name`) VALUES
-  (1, 'My favorite company');
+INSERT INTO `company` (`company_id`, `company_hash`, `name`) VALUES
+  (1, 'querty', 'My favorite company');
 
 CREATE TABLE IF NOT EXISTS `user` (
   `user_id`         INT(11)       NOT NULL AUTO_INCREMENT,

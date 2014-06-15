@@ -20,6 +20,9 @@ body,
   border-left: 1px solid #c8c7cc;
   width: 10px !important;
 }
+.ui-layout-resizer-open #resizer-btn {
+  display: none;
+}
 .ui-layout-resizer-west-closed {
   border-right: 1px solid #c8c7cc;
   background-color: #f8f8f8;
@@ -29,6 +32,21 @@ body,
 }
 .ui-layout-toggler {
   display: none !important;
+}
+#resizer-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 44px;
+  width: 30px;
+  border-bottom: 1px solid #c8c7cc;
+}
+#resizer-btn:hover {
+  background: #ebebeb;
+}
+#resizer-btn span {
+  font-size: 17px;
+  margin-top: 12px;
 }
 #map-canvas {
   width: 100%;
@@ -98,9 +116,29 @@ body,
   width: 100%;
   background: #f8f8f8;
   border-bottom: 1px solid #c8c7cc;
-  padding: 7px;
+  padding: 0 10px;
   position: absolute;
   z-index: 800;
+}
+#list-header .logo {
+  float: left;
+  font-weight: bold;
+  font-size: 21px;
+  cursor: default;
+}
+#list-header div {
+  height: 100%;
+  width: 30px;
+  text-align: center;
+  float: right;
+  cursor: pointer;
+}
+#list-header div:hover {
+  background: #ebebeb;
+}
+#list-header div span {
+  font-size: 17px;
+  margin-top: 13px;
 }
 #list-body {
   padding-top: 44px;
@@ -159,16 +197,14 @@ body,
   opacity: .7;
 }
 #list-body #list .panel .panel-body {
-  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
-#list-body #list .panel .panel-body table {
-  margin: 0;
-  border: none;
+#list-body #list .panel .panel-body .row .col-xs-6:first-child {
+  font-weight: bold;
 }
-#list-body #list .panel .panel-body table th {
-  border: none;
-  font-weight: normal;
-  padding: 3px 8px;
+#list-body #list .panel .panel-body .row:nth-child(2n+1) {
+  background-color: #f8f8f8;
 }
 .circle {
   -webkit-border-radius: 50%;
@@ -177,7 +213,7 @@ body,
   width: 9px;
   height: 9px;
   float: left;
-  margin: 5px 7px 0 7px;
+  margin: 5px 7px 0 10px;
   background-color: #d9534f;
 }
 .online {
@@ -186,21 +222,16 @@ body,
 .wait {
   background-color: #f0ad4e;
 }
-.clearable {
-  background-image: url(../img/x.png) !important;
-  background-color: #ffffff;
-  background-repeat: no-repeat;
-  background-position: right -10px center;
-  border: 1px solid #999;
-  padding: 3px 18px 3px 4px;
-  border-radius: 3px;
-  transition: background 0.4s;
+.modal-body label {
+  padding-left: 2px;
 }
-.clearable.x {
-  background-position: right 5px center;
+.modal-body textarea {
+  max-width: 100%;
+  min-width: 100%;
 }
-.clearable.onX {
-  cursor: pointer;
+.modal-footer a {
+  float: left;
+  margin-top: 7px;
 }
 .bs-callout {
   margin: 20px 0;

@@ -10,11 +10,20 @@ if ($_POST) {
 
     $drivers->setDriver($id, $lat, $lng);
 } else {
-    $list = $drivers->getDrivers();
-    $time = time();
-    $response = [
-        'time' => $time,
-        'list' => $list
-    ];
-    echo json_encode($response);
+    require_once('../classes/User.php');
+    $user = new User();
+    if ($user->isLoggedIn()) {
+        if (isset($_GET['id'])) {
+            $driver = $drivers->getDriver($_GET['id']);
+            echo json_encode($driver);
+        } else {
+            $list = $drivers->getDriversLocation();
+            $time = time();
+            $response = [
+                'time' => $time,
+                'list' => $list
+            ];
+            echo json_encode($response);
+        }
+    }
 }

@@ -1,9 +1,11 @@
 <?php
-    if (isset($_SESSION['email'])) {
-        $email = $_SESSION['email'];
-    } else {
-        $email = "";
-    }
+session_start();
+
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+} else {
+    $email = "";
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +52,7 @@
 
 <div class="container" style="padding-top:30px">
     <h1>gpsHub</h1>
+
     <div class="col-md-4 col-md-offset-4" style="margin-top: 50px">
         <div class="panel panel-default">
             <div class="panel-heading"><h3 class="panel-title"><strong>Войти</strong></h3></div>
@@ -57,7 +60,8 @@
                 <div id="signin-error" class="bs-callout"><p></p></div>
                 <form id="signin-form">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="signin-email" placeholder="Эл. почта" value="<?php echo $email ?>">
+                        <input type="email" class="form-control" id="signin-email" placeholder="Эл. почта"
+                               value="<?php echo $email ?>">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" id="signin-password" placeholder="Пароль">

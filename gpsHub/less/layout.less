@@ -20,6 +20,9 @@ html, body, .layout-item {
 .ui-layout-resizer-open {
   border-left: 1px solid @borders;
   width: 10px !important;
+  #resizer-btn {
+    display: none;
+  }
 }
 
 .ui-layout-resizer-west-closed {
@@ -34,3 +37,20 @@ html, body, .layout-item {
 .ui-layout-toggler {
   display: none !important;
 }
+
+#resizer-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 44px;
+  width: 30px;
+  border-bottom: 1px solid @borders;
+  &:hover {
+    background: @hover-btn-background;
+  }
+  span {
+    font-size: 17px;
+    margin-top: 12px;
+  }
+}
+

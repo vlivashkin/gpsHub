@@ -9,9 +9,9 @@
 
 @brand-primary: #428bca;
 @brand-success: #5cb85c;
-@brand-info:    #5bc0de;
+@brand-info: #5bc0de;
 @brand-warning: #f0ad4e;
-@brand-danger:  #d9534f;
+@brand-danger: #d9534f;
 
 #list-layout {
   display: none;
@@ -22,12 +22,32 @@
   width: 100%;
   background: @bar-background;
   border-bottom: 1px solid @borders;
-  padding: 7px;
+  padding: 0 10px;
   position: absolute;
   z-index: 800;
+  .logo {
+    float: left;
+    font-weight: bold;
+    font-size: 21px;
+    cursor: default;
+  }
+  div {
+    height: 100%;
+    width: 30px;
+    text-align: center;
+    float: right;
+    cursor: pointer;
+    &:hover {
+      background: @hover-btn-background;
+    }
+    span {
+      font-size: 17px;
+      margin-top: 13px;
+    }
+  }
 }
 
-#list-body{
+#list-body {
   padding-top: 44px;
   height: 100%;
   #list {
@@ -81,15 +101,13 @@
         }
       }
       .panel-body {
-        padding: 0;
-        table {
-          margin: 0;
-          border: none;
-          th {
-            border: none;
-            font-weight: normal;
-            padding: 3px 8px;
-          }
+        padding-top: 0;
+        padding-bottom: 0;
+        .row .col-xs-6:first-child {
+          font-weight: bold;
+        }
+        .row:nth-child(2n+1) {
+          background-color: @bar-background;
         }
       }
     }
@@ -103,7 +121,7 @@
   width: 9px;
   height: 9px;
   float: left;
-  margin: 5px 7px 0 7px;
+  margin: 5px 7px 0 10px;
   background-color: @brand-danger;
 }
 
@@ -113,21 +131,4 @@
 
 .wait {
   background-color: @brand-warning;
-}
-
-.clearable {
-  background-image: url(../img/x.png) !important;
-  background-color: @view-background;
-  background-repeat: no-repeat;
-  background-position: right -10px center;
-  border: 1px solid #999;
-  padding: 3px 18px 3px 4px;
-  border-radius: 3px;
-  transition: background 0.4s;
-  &.x {
-    background-position: right 5px center;
-  }
-  &.onX {
-    cursor: pointer;
-  }
 }
