@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_POST) && isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'create':

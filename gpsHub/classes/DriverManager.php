@@ -4,7 +4,8 @@ class DriverManager {
     public function createDriver()
     {
         require_once('SQLConfig.php');
-        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $sqlconfig = new SQLConfig();
+        $mysqli = $sqlconfig->getMysqli();
 
         $random = rand();
 
@@ -24,7 +25,8 @@ class DriverManager {
     public function modifyDriver($id, $data)
     {
         require_once('SQLConfig.php');
-        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $sqlconfig = new SQLConfig();
+        $mysqli = $sqlconfig->getMysqli();
         $query = "UPDATE `driver` SET `name` = '" . $data['name'] . "', `alias` = '" . $data['alias'] . "',
             `phone_number` = '" . $data['phone_number'] . "', `vehile_num` = '" . $data['vehile_num'] . "',
             `vehile_description` = '" . $data['vehile_description'] . "' WHERE `driver_id` = " . $id;
@@ -36,7 +38,8 @@ class DriverManager {
     public function deleteDriver($id)
     {
         require_once('SQLConfig.php');
-        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $sqlconfig = new SQLConfig();
+        $mysqli = $sqlconfig->getMysqli();
         $query = "DELETE FROM `driver` WHERE `driver_id` = " . $id;
         $mysqli->query($query);
 
@@ -46,7 +49,8 @@ class DriverManager {
     public function isTrueHash($company_hash)
     {
         require_once('SQLConfig.php');
-        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $sqlconfig = new SQLConfig();
+        $mysqli = $sqlconfig->getMysqli();
         $query = "SELECT * FROM `company` WHERE `company_hash` = '" . $company_hash . "'";
         $result = $mysqli->query($query);
         if ($result->num_rows > 0)
@@ -58,7 +62,8 @@ class DriverManager {
     public function isUnconfirmed($id)
     {
         require_once('SQLConfig.php');
-        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $sqlconfig = new SQLConfig();
+        $mysqli = $sqlconfig->getMysqli();
         $query = "SELECT * FROM `driver` WHERE driver_id = " . $id;
         $result = $mysqli->query($query);
         if ($result->num_rows > 0) {

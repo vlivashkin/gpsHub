@@ -11,7 +11,8 @@ class Drivers
     public function setDriver($id, $lat, $lng)
     {
         require_once('SQLConfig.php');
-        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $sqlconfig = new SQLConfig();
+        $mysqli = $sqlconfig->getMysqli();
         $query = "UPDATE `driver` SET
             `lat` = '" . $lat . "',
             `lng` = '" . $lng . "',
@@ -24,7 +25,8 @@ class Drivers
     public function getDrivers()
     {
         require_once('SQLConfig.php');
-        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $sqlconfig = new SQLConfig();
+        $mysqli = $sqlconfig->getMysqli();
         $query = "SELECT * FROM `driver`";
         $drivers = $mysqli->query($query);
 
@@ -34,8 +36,9 @@ class Drivers
     public function getDriversLocation()
     {
         require_once('SQLConfig.php');
-        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
-        $query = "SELECT `driver_id`, `lat`, `lng`, `last_activity` FROM `driver` ";
+        $sqlconfig = new SQLConfig();
+        $mysqli = $sqlconfig->getMysqli();
+        $query = "SELECT `driver_id`, `lat`, `lng`, `last_activity` FROM `driver`";
         $drivers = [];
         if ($result = $mysqli->query($query)) {
             while ($row = $result->fetch_assoc()) {
@@ -55,7 +58,8 @@ class Drivers
     public function getDriver($id)
     {
         require_once('SQLConfig.php');
-        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $sqlconfig = new SQLConfig();
+        $mysqli = $sqlconfig->getMysqli();
         $query = "SELECT * FROM `driver` WHERE `driver_id` = " . $id;
         if ($result = $mysqli->query($query)) {
             $driver = $result->fetch_array(MYSQLI_ASSOC);

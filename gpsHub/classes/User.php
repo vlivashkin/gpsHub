@@ -13,7 +13,8 @@ class User
         session_start();
         if (isset($_SESSION['email'])) {
             require_once('SQLConfig.php');
-            $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+            $sqlconfig = new SQLConfig();
+            $mysqli = $sqlconfig->getMysqli();
             $query = "SELECT * FROM `user` WHERE `email` = '" . $_SESSION['email'] . "'";
             $result = $mysqli->query($query);
             if ($result->num_rows > 0) {

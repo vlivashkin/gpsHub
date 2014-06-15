@@ -1,4 +1,5 @@
 <?php
+
 require_once('classes/User.php');
 $user = new User();
 if (!$user->isLoggedIn())
@@ -146,7 +147,7 @@ EOF;
             <div class="modal-footer">
                 <a id="modal-delete" href="#">Удалить водителя</a>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                <button type="button" class="btn btn-primary">Сохранить изменения</button>
+                <button id="modal-save" type="button" class="btn btn-primary">Сохранить изменения</button>
             </div>
         </div>
     </div>

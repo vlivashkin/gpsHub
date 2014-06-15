@@ -208,7 +208,7 @@ function buildModal(id) {
     $("#modify-vehile-num").val("");
     $("#modify-vehile-description").val("");
     $("#modal-delete").unbind('click');
-
+    $("#modal-save").unbind('click');
 
     $.ajax({
         url: 'actions/drivers.php',
@@ -226,6 +226,10 @@ function buildModal(id) {
             $("#modify-vehile-description").val(data.vehile_description);
             $("#modal-delete").click(function() {
                 deleteDriver(data.driver_id);
+                return false;
+            });
+            $("#modal-save").click(function() {
+                modifyDriver(data.driver_id);
                 return false;
             });
         }
