@@ -1,16 +1,17 @@
 <?php
 
 class DriverManager {
-    public function createDriver($company_id)
+    public function createDriver()
     {
-        $random = rand();
-
         require_once('SQLConfig.php');
         $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
-        $query = "INSERT INTO `driver` (`company_id`, `name`, `status`) VALUE (" . $company_id . ", '" . $random . "', 'unconfirmed')";
+
+        $random = rand();
+
+        $query = "INSERT INTO `driver` (`name`, `status`) VALUE ('" . $random . "', 'unconfirmed')";
         $mysqli->query($query);
 
-        $query = "SELECT * FROM `driver` WHERE `company_id` = " . $company_id . " AND `name` = '" . $random . "'";
+        $query = "SELECT * FROM `driver` WHERE `name` = '" . $random . "'";
         $result = $mysqli->query($query);
         if ($result->num_rows > 0) {
             $driver = $result->fetch_array(MYSQLI_ASSOC);
@@ -20,46 +21,45 @@ class DriverManager {
         return NULL;
     }
 
-    public function modifyDriver($company_id, $id, $data)
-    {
-
-    }
-
-    public function deleteDriver($company_id, $id)
+    public function modifyDriver($id, $data)
     {
         require_once('SQLConfig.php');
         $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
-        $query = "DELETE FROM `drivers` WHERE `company_id` = " . $company_id . "AND `driver_id` = '" . $id . "'";
+        $query = "UPDATE `driver` SET `name` = '" . $data['name'] . "', `alias` = '" . $data['alias'] . "',
+            `phone_number` = '" . $data['phone_number'] . "', `vehile_num` = '" . $data['vehile_num'] . "',
+            `vehile_description` = '" . $data['vehile_description'] . "' WHERE `driver_id` = " . $id;
         $mysqli->query($query);
 
-        $query = "SELECT * FROM `drivers` WHERE `company_id` = " . $company_id . "AND `driver_id` = '" . $id . "'";
-        $result = $mysqli->query($query);
-        if ($result->num_rows == 0) {
-            return true;
-        }
-
-        return false;
+        return true;
     }
 
-    public function getCompanyId($company_hash)
+    public function deleteDriver($id)
+    {
+        require_once('SQLConfig.php');
+        $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
+        $query = "DELETE FROM `driver` WHERE `driver_id` = " . $id;
+        $mysqli->query($query);
+
+        return true;
+    }
+
+    public function isTrueHash($company_hash)
     {
         require_once('SQLConfig.php');
         $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
         $query = "SELECT * FROM `company` WHERE `company_hash` = '" . $company_hash . "'";
         $result = $mysqli->query($query);
-        if ($result->num_rows > 0) {
-            $company = $result->fetch_array(MYSQLI_ASSOC);
-            return $company['company_id'];
-        }
+        if ($result->num_rows > 0)
+            return true;
 
-        return NULL;
+        return false;
     }
 
-    public function isUnconfirmed($company_id, $id)
+    public function isUnconfirmed($id)
     {
         require_once('SQLConfig.php');
         $mysqli = new mysqli(SQLConfig::SERVERNAME, SQLConfig::USER, SQLConfig::PASSWORD, SQLConfig::DATABASE);
-        $query = "SELECT * FROM `driver` WHERE `company_id` = " . $company_id . " AND driver_id = " . $id;
+        $query = "SELECT * FROM `driver` WHERE driver_id = " . $id;
         $result = $mysqli->query($query);
         if ($result->num_rows > 0) {
             $driver = $result->fetch_array(MYSQLI_ASSOC);

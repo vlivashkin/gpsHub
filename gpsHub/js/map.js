@@ -167,7 +167,7 @@ function addPoint(id, lat, lon) {
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
         opacity: 0.75,
-        src: 'actions/taxiimage.php?color=' + encodeURIComponent(color),
+        src: 'actions/marker.php?color=' + encodeURIComponent(color),
         size: [36, 48]
     });
 
@@ -234,6 +234,27 @@ function buildModal(id) {
     $("#modifyModal").modal("show");
 }
 
+function modifyDriver(id) {
+    $.ajax({
+        url: 'actions/drivermanager.php',
+        type: 'POST',
+        data: {
+            action : "modify",
+            driver_id: id,
+            name: $("#modify-name").val(),
+            alias: $("#modify-alias").val(),
+            phone_number: $("#modify-phone").val(),
+            vehile_num: $("#modify-vehile-num").val(),
+            vehile_description: $("#modify-vehile-description").val()
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            document.location.reload();
+        }
+    });
+}
+
 function deleteDriver(id) {
     if (confirm("Вы уверены, что хотите удалить аккаунт водителя #" + id + "?")) {
         $.ajax({
@@ -246,7 +267,7 @@ function deleteDriver(id) {
             dataType: 'json',
             success: function (data) {
                 console.log(data);
-                location.reload();
+                document.location.reload();
             }
         });
     }

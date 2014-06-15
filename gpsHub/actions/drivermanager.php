@@ -5,8 +5,8 @@ if (isset($_POST) && isset($_POST['action'])) {
             if (isset($_POST['company_hash'])) {
                 require_once('../classes/DriverManager.php');
                 $driverManager = new DriverManager();
-                if ($company_id = $driverManager->getCompanyId($_POST['company_hash']))
-                    echo $driverManager->createDriver($company_id);
+                if ($driverManager->isTrueHash($_POST['company_hash']))
+                    echo $driverManager->createDriver();
                 else {
                     echo 'NOT_VALID_COMPANY_HASH';
                 }
@@ -19,16 +19,23 @@ if (isset($_POST) && isset($_POST['action'])) {
                 require_once('../classes/User.php');
                 $user = new User();
                 if ($user->isLoggedIn()) {
-                    $company_id = $user->getCompanyId();
+                    require_once('../classes/DriverManager.php');
+                    $driverManager = new DriverManager();
+                    $result = $driverManager->modifyDriver($_POST['driver_id'], $_POST);
                 } else {
                     if (isset($_POST['company_hash'])) {
                         require_once('../classes/DriverManager.php');
                         $driverManager = new DriverManager();
-                        if ($company_id = $driverManager->getCompanyId($_POST['company_hash']) &&
-                            $driverManager->isUnconfirmed($company_id, $_POST['driver_id'])) {
-
+                        if ($driverManager->isTrueHash($_POST['company_hash']) &&
+                            $driverManager->isUnconfirmed($_POST['driver_id'])) {
+                            $result = $driverManager->modifyDriver($_POST['driver_id'], $_POST);
                         }
                     }
+                }
+                if (isset($result) && $result) {
+                    echo 'SUCCESS';
+                } else {
+                    echo 'ERROR';
                 }
             }
             break;
@@ -39,10 +46,14 @@ if (isset($_POST) && isset($_POST['action'])) {
                 if ($user->isLoggedIn()) {
                     require_once('../classes/DriverManager.php');
                     $driverManager = new DriverManager();
-                    $driverManager->deleteDriver($user->getCompanyId(), $_POST['driver_id']);
+                    $result = $driverManager->deleteDriver($_POST['driver_id']);
+                }
+                if (isset($result) && $result) {
+                    echo 'SUCCESS';
+                } else {
+                    echo 'ERROR';
                 }
             }
             break;
     }
-
 }
