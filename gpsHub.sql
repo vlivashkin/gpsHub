@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `company` (
   `company_hash`  VARCHAR(50) NOT NULL,
   `name`       		VARCHAR(50) NOT NULL,
   `account_type`	VARCHAR(200),
+  `locversion`    INT(11)
   PRIMARY KEY (`company_id`),
   UNIQUE KEY `company_id` (`company_id`)
 )
@@ -40,12 +41,13 @@ INSERT INTO `user` (`user_id`, `email`, `password`, `name`, `company_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `driver` (
   `driver_id`       	INT(11)       NOT NULL AUTO_INCREMENT,
+  `confirmed`				  TINYINT(1)    NOT NULL,
+  `rand`             	INT(5),
   `name`            	VARCHAR(70),
   `alias`				      VARCHAR(50),
   `phone_number`    	VARCHAR(20),
   `vehile_num`			  VARCHAR(20),
   `vehile_description`VARCHAR(200),
-  `status`				    VARCHAR(20),
   `lat`               VARCHAR(20),
   `lng`               VARCHAR(20),
   `last_activity`   	VARCHAR(20),
@@ -57,11 +59,11 @@ CREATE TABLE IF NOT EXISTS `driver` (
   DEFAULT CHARSET =utf8
   AUTO_INCREMENT =8;
 
-INSERT INTO `driver` (`driver_id`, `name`, `phone_number`, `vehile_num`) VALUES
-  (101, 'Р’Р°СЃРёР»РёР№ РџР°РІР»РѕРІ', '+7 (920) 232-32-34', 'РўРђ 512 Рђ'),
-  (102, 'РЎРµСЂРіРµР№ РРІР°РЅРѕРІ', '+7 (965) 453-23-42', 'Р•Рљ 777 РҐ'),
-  (103, 'Р’Р°Р»РµРЅС‚РёРЅ РџРёСЃР°СЂРµРЅРєРѕ', '+7 (915) 112-34-45', 'Р•РЈ 312 Р '),
-  (104, 'РђР»РµРєСЃР°РЅРґСЂ Р¤Р°РґРµРµРІ', '+7 (903) 544-23-53', 'Р•Рќ 112 Рљ');
+INSERT INTO `driver` (`driver_id`, `confirmed`, `name`, `phone_number`, `vehile_num`) VALUES
+  (101, 1, 'Василий Павлов', '+7 (920) 232-32-34', 'ТА 512 А'),
+  (102, 1, 'Сергей Иванов', '+7 (965) 453-23-42', 'ЕК 777 Х'),
+  (103, 1, 'Валентин Писаренко', '+7 (915) 112-34-45', 'ЕУ 312 Р'),
+  (104, 1, 'Александр Фадеев', '+7 (903) 544-23-53', 'ЕН 112 К');
 
 ALTER TABLE `user`
 ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`);

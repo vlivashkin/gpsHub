@@ -46,7 +46,7 @@ class Drivers
                     "id" => $row["driver_id"],
                     "lat" => $row["lat"],
                     "lng" => $row["lng"],
-                    "time" => $row["last_activity"]
+                    "last_activity" => $row["last_activity"]
                 ]);
             }
             $result->free();

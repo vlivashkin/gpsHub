@@ -1,5 +1,5 @@
 var map;
-var driver = {};
+var drivers = {};
 
 $(document).ready(function () {
     initMap();
@@ -7,7 +7,7 @@ $(document).ready(function () {
     resizeList();
     moment.lang('ru');
 
-    setInterval(getDrivers, 1000);
+    setInterval(getDriversLocation, 1000);
 });
 
 function bindListEvents() {
@@ -117,62 +117,87 @@ function resizeList() {
         $(".panel-collapse .col-xs-6").width("20%");
 }
 
-function getDrivers() {
+function getDriversLocation() {
     $.ajax({
         url: 'actions/drivers.php',
         type: 'GET',
+        data: {
+            type: 'location'
+        },
         dataType: 'json',
         success: function (data) {
-            data.list.forEach(function (row) {
-                if (driver[row.id] == undefined)
-                    driver[row.id] = addPoint(row.id, row.lat, row.lng);
-                else
-                    movePoint(row.id, row.lat, row.lng);
+            data.list.forEach(function (driver) {
+                if (driver.id == null || driver.lat == null|| driver.lng == null) {
+                    $("#driver-" + driver.id + "-panel .panel-heading").addClass('striped unknown');
+                    return;
+                }
 
-                updateDriverStatus(row.id, row.time, data.time);
+                if (drivers[driver.id] == undefined)
+                    drivers[driver.id] = addPoint(driver.id, driver.lat, driver.lng);
+                else
+                    movePoint(driver.id, driver.lat, driver.lng);
+
+                drivers[driver.id].last_activity = driver.last_activity;
             });
+            updateOnlineStatuses(data.time);
         }
     });
 }
 
-function updateDriverStatus(id, last_activity, now) {
-    $circle = $("#driver-" + id + "-panel .circle");
-
-    var diff = now - last_activity;
-    if (diff < 60)
-        $circle.addClass("online");
-    else if (diff < 5 * 60) {
-        $circle.removeClass("online").addClass("wait");
-    } else {
-        $circle.removeClass("online").removeClass("wait");
-    }
-
-    var a = moment(last_activity, "X");
-    var b = moment(now, "X");
-    $("#driver-" + id + " .last-activity").text(a.from(b));
+function updateOnlineStatuses(now) {
+    Object.keys(drivers).forEach(function (id) {
+        var diff = now - drivers[id].last_activity;
+        var status;
+        if (diff < 60)
+            status = 'online';
+        else if (diff < 5 * 60) {
+            status = 'wait';
+        } else {
+            status = 'offline';
+        }
+        if (drivers[id].status !== status) {
+            $circle = $("#driver-" + id + "-panel .circle");
+            switch (status) {
+                case 'online':
+                    $circle.removeClass("wait").addClass("online");
+                    break;
+                case 'wait':
+                    $circle.removeClass("online").addClass("wait");
+                    break;
+                case 'offline':
+                    $circle.removeClass("online").removeClass("wait");
+                    break;
+            }
+        }
+        var a = moment(drivers[id].last_activity, "X");
+        var b = moment(now, "X");
+        $("#driver-" + id + " .last-activity").text(a.from(b));
+    });
 }
 
 function addPoint(id, lat, lon) {
     var color = randomColor();
     $("#driver-" + id + "-panel .driver-color").css('background-color', color);
 
-    var point = new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'));
+    if (typeof(lat) == "string")
+        lat = parseFloat(lat);
+    if (typeof(lon) == "string")
+        lon = parseFloat(lon);
+
     var iconFeature = new ol.Feature({
-        geometry: point
+        geometry: new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'))
     });
     iconFeature.id = id;
 
-    var icon = new ol.style.Icon({
-        anchor: [0.5, 46],
-        anchorXUnits: 'fraction',
-        anchorYUnits: 'pixels',
-        opacity: 0.75,
-        src: 'actions/marker.php?color=' + encodeURIComponent(color),
-        size: [36, 48]
-    });
-
     var iconStyle = new ol.style.Style({
-        image: icon
+        image: new ol.style.Icon({
+            anchor: [0.5, 46],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            opacity: 0.75,
+            src: 'img/marker.php?color=' + encodeURIComponent(color),
+            size: [36, 48]
+        })
     });
     iconFeature.setStyle(iconStyle);
 
@@ -188,7 +213,7 @@ function movePoint(id, lat, lon) {
         lon = parseFloat(lon);
 
     var point = new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'));
-    driver[id].set('geometry', point);
+    drivers[id].set('geometry', point);
 }
 
 function randomColor() {
@@ -198,81 +223,4 @@ function randomColor() {
     color = "#" + r.toString(16) + g.toString(16) + b.toString(16);
 
     return color;
-}
-
-function buildModal(id) {
-    $("#modifyModalLabel").text("Пожалуйста, подождите...");
-    $("#modify-name").val("");
-    $("#modify-alias").val("");
-    $("#modify-phone").val("");
-    $("#modify-vehile-num").val("");
-    $("#modify-vehile-description").val("");
-    $("#modal-delete").unbind('click');
-    $("#modal-save").unbind('click');
-
-    $.ajax({
-        url: 'actions/drivers.php',
-        type: 'GET',
-        data: {
-            id : id
-        },
-        dataType: 'json',
-        success: function (data) {
-            $("#modifyModalLabel").text("Информация о водителе #" + data.driver_id);
-            $("#modify-name").val(data.name);
-            $("#modify-alias").val(data.alias);
-            $("#modify-phone").val(data.phone_number);
-            $("#modify-vehile-num").val(data.vehile_num);
-            $("#modify-vehile-description").val(data.vehile_description);
-            $("#modal-delete").click(function() {
-                deleteDriver(data.driver_id);
-                return false;
-            });
-            $("#modal-save").click(function() {
-                modifyDriver(data.driver_id);
-                return false;
-            });
-        }
-    });
-
-    $("#modifyModal").modal("show");
-}
-
-function modifyDriver(id) {
-    $.ajax({
-        url: 'actions/drivermanager.php',
-        type: 'POST',
-        data: {
-            action : "modify",
-            driver_id: id,
-            name: $("#modify-name").val(),
-            alias: $("#modify-alias").val(),
-            phone_number: $("#modify-phone").val(),
-            vehile_num: $("#modify-vehile-num").val(),
-            vehile_description: $("#modify-vehile-description").val()
-        },
-        dataType: 'json',
-        success: function (data) {
-            console.log(data);
-            document.location.reload();
-        }
-    });
-}
-
-function deleteDriver(id) {
-    if (confirm("Вы уверены, что хотите удалить аккаунт водителя #" + id + "?")) {
-        $.ajax({
-            url: 'actions/drivermanager.php',
-            type: 'POST',
-            data: {
-                action : "delete",
-                driver_id: id
-            },
-            dataType: 'json',
-            success: function (data) {
-                console.log(data);
-                document.location.reload();
-            }
-        });
-    }
 }

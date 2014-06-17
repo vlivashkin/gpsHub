@@ -1,11 +1,4 @@
 function signInInit() {
-    $('#signin-password').on('keyup', function (e) {
-        if (e.which == 13) {
-            e.preventDefault();
-            signIn();
-        }
-    });
-
     $('#signin-form').submit(function (event) {
         event.preventDefault();
         signIn();
@@ -55,10 +48,10 @@ function sendRequest() {
 }
 
 function requestResult(data) {
-    if (data === "yes") {
+    if (data === "SUCCESS") {
         responseMsg("pleasewait");
         window.location.href = "index.php";
-    } else if (data === "no") {
+    } else if (data === "FAILURE") {
         responseMsg("badpass");
         $("#signin-btn").prop('disabled', false);
     } else {

@@ -19,9 +19,9 @@ if ($_POST) {
         $drivers = new Drivers();
         $drivers->init();
 
-        echo "yes";
+        echo "SUCCESS";
         return;
     }
 
-    echo "no";
+    echo "FAILURE";
 }

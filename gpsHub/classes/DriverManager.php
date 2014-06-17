@@ -3,16 +3,13 @@
 class DriverManager {
     public function createDriver()
     {
-        require_once('SQLConfig.php');
-        $sqlconfig = new SQLConfig();
-        $mysqli = $sqlconfig->getMysqli();
+        $mysqli = $this->getMysqli();
+        $random = rand(0, 9999);
 
-        $random = rand();
-
-        $query = "INSERT INTO `driver` (`name`, `status`) VALUE ('" . $random . "', 'unconfirmed')";
+        $query = "INSERT INTO `driver` (`confirmed`, `rand`) VALUE (0, " . $random . ")";
         $mysqli->query($query);
 
-        $query = "SELECT * FROM `driver` WHERE `name` = '" . $random . "'";
+        $query = "SELECT * FROM `driver` WHERE `rand` = " . $random;
         $result = $mysqli->query($query);
         if ($result->num_rows > 0) {
             $driver = $result->fetch_array(MYSQLI_ASSOC);
@@ -27,9 +24,13 @@ class DriverManager {
         require_once('SQLConfig.php');
         $sqlconfig = new SQLConfig();
         $mysqli = $sqlconfig->getMysqli();
-        $query = "UPDATE `driver` SET `name` = '" . $data['name'] . "', `alias` = '" . $data['alias'] . "',
-            `phone_number` = '" . $data['phone_number'] . "', `vehile_num` = '" . $data['vehile_num'] . "',
-            `vehile_description` = '" . $data['vehile_description'] . "' WHERE `driver_id` = " . $id;
+        $query = "UPDATE `driver` SET
+            `name` = '" . $data['name'] . "',
+            `alias` = '" . $data['alias'] . "',
+            `phone_number` = '" . $data['phone_number'] . "',
+            `vehile_num` = '" . $data['vehile_num'] . "',
+            `vehile_description` = '" . $data['vehile_description'] . "'
+             WHERE `driver_id` = " . $id;
         $mysqli->query($query);
 
         return true;
@@ -46,6 +47,17 @@ class DriverManager {
         return true;
     }
 
+    public function confirmDriver($id)
+    {
+        require_once('SQLConfig.php');
+        $sqlconfig = new SQLConfig();
+        $mysqli = $sqlconfig->getMysqli();
+        $query = "UPDATE `drivers` SET `confirm` = 1 WHERE `driver_id` = " . $id;
+        $mysqli->query($query);
+
+        return true;
+    }
+
     public function isTrueHash($company_hash)
     {
         require_once('SQLConfig.php');
@@ -53,10 +65,8 @@ class DriverManager {
         $mysqli = $sqlconfig->getMysqli();
         $query = "SELECT * FROM `company` WHERE `company_hash` = '" . $company_hash . "'";
         $result = $mysqli->query($query);
-        if ($result->num_rows > 0)
-            return true;
 
-        return false;
+        return $result->num_rows > 0;
     }
 
     public function isUnconfirmed($id)
@@ -68,7 +78,7 @@ class DriverManager {
         $result = $mysqli->query($query);
         if ($result->num_rows > 0) {
             $driver = $result->fetch_array(MYSQLI_ASSOC);
-            return $driver->status == 'unconfirmed';
+            return $driver->confirmed == 1;
         }
 
         return false;

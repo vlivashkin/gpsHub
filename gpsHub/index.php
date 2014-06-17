@@ -20,6 +20,7 @@ if (!$user->isLoggedIn())
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script src="js/moment-with-langs.min.js" type="text/javascript"></script>
     <script src="js/map.js" type="text/javascript"></script>
+    <script src="js/modal.js" type="text/javascript"></script>
     <script src="js/user.js" type="text/javascript"></script>
 
     <link rel="StyleSheet" type="text/css" href="css/ol.css">
