@@ -3,7 +3,9 @@
 class DriverManager {
     public function createDriver()
     {
-        $mysqli = $this->getMysqli();
+        require_once('SQLConfig.php');
+        $sqlconfig = new SQLConfig();
+        $mysqli = $sqlconfig->getMysqli();
         $random = rand(0, 9999);
 
         $query = "INSERT INTO `driver` (`confirmed`, `rand`) VALUE (0, " . $random . ")";
