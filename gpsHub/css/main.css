@@ -42,7 +42,7 @@ body,
   border-bottom: 1px solid #c8c7cc;
 }
 #resizer-btn:hover {
-  background: #ebebeb;
+  background: rgba(100, 100, 100, 0.4);
 }
 #resizer-btn span {
   font-size: 17px;
@@ -134,7 +134,7 @@ body,
   cursor: pointer;
 }
 #list-header div:hover {
-  background: #ebebeb;
+  background: rgba(100, 100, 100, 0.4);
 }
 #list-header div span {
   font-size: 17px;
@@ -191,7 +191,7 @@ body,
   text-align: center;
 }
 #list-body #list .panel .panel-heading .right.ext-btn:hover {
-  background-color: #ebebeb;
+  background-color: rgba(100, 100, 100, 0.4);
 }
 #list-body #list .panel .panel-heading .right.driver-color {
   width: 10px;
@@ -233,6 +233,13 @@ body,
 }
 .unconfirmed {
   background-color: #f0ad4e !important;
+}
+.modal-body .bs-callout {
+  margin-top: 0;
+}
+.modal-body .bs-callout button {
+  margin-top: 10px;
+  float: right;
 }
 .modal-body label {
   padding-left: 2px;

@@ -14,17 +14,32 @@
 </head>
 <body>
 <div class="container">
+    <h1>Add driver</h1>
+    <button class="btn btn-primary" onclick="addDriver();">Send request</button>
     <h1>Change driver's location</h1>
     <label for="id">id:</label>
     <input id="id" class="form-control" value="101">
     <label for="lat">lat:</label>
-    <input id="lat" class="form-control" value="55.75167" onchange="send()">
+    <input id="lat" class="form-control" value="55.75167" onchange="changeLocation()">
     <label for="lon">lon:</label>
-    <input id="lon" class="form-control" value="37.61778" onchange="send()">
+    <input id="lon" class="form-control" value="37.61778" onchange="changeLocation()">
 </div>
 
 <script language="JavaScript">
-    function send() {
+    function addDriver() {
+        $.ajax({
+            url: '../actions/manager.php',
+            type: 'POST',
+            data: {
+                action: "create",
+                company_hash: "qwerty"
+            },
+            success: function (data) {
+                console.log(data);
+            }
+        })
+    }
+    function changeLocation() {
         $.ajax({
             url: '../actions/drivers.php',
             type: 'POST',

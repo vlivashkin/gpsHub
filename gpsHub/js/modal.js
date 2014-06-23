@@ -7,6 +7,8 @@ function buildModal(id) {
     $("#modify-vehile-description").val("");
     $("#modal-delete").unbind('click');
     $("#modal-save").unbind('click');
+    $("#modal-confirm-msg").hide();
+    $("#modal-confirm-btn").unbind('click');
 
     $.ajax({
         url: 'actions/drivers.php',
@@ -31,6 +33,12 @@ function buildModal(id) {
                 modifyDriver(data.driver_id);
                 return false;
             });
+            if (data.confirmed == 0)
+                $("#modal-confirm-msg").show();
+            $("#modal-confirm-btn").click(function() {
+                confirmDriver(data.driver_id);
+                return false;
+            });
         }
     });
 
@@ -52,14 +60,28 @@ function modifyDriver(id) {
         },
         dataType: 'json',
         success: function (data) {
-            console.log(data);
-            document.location.reload();
+            getList();
+        }
+    });
+}
+function confirmDriver(id) {
+    $.ajax({
+        url: 'actions/manager.php',
+        type: 'POST',
+        data: {
+            action : "confirm",
+            driver_id: id
+        },
+        dataType: 'json',
+        success: function (data) {
+            getList();
+            $("#modal-confirm-msg").hide();
         }
     });
 }
 
 function deleteDriver(id) {
-    if (confirm("Вы уверены, что хотите удалить аккаунт водителя #" + id + "?")) {
+    if (window.confirm("Вы уверены, что хотите удалить аккаунт водителя #" + id + "?")) {
         $.ajax({
             url: 'actions/manager.php',
             type: 'POST',
@@ -69,8 +91,7 @@ function deleteDriver(id) {
             },
             dataType: 'json',
             success: function (data) {
-                console.log(data);
-                document.location.reload();
+                getList();
             }
         });
     }

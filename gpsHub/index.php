@@ -38,50 +38,7 @@ if (!$user->isLoggedIn())
         </div>
         <div id="list-body">
             <div class="panel-group" id="list">
-                <?php
-                require_once('classes/Drivers.php');
-                $drivers = new Drivers();
-                $drivers_array = $drivers->getDrivers();
-                while ($row = $drivers_array->fetch_array(MYSQLI_ASSOC)) {
-                    $driver_id = $row['driver_id'];
-                    $name = $row['name'];
-                    $phone_number = $row['phone_number'];
-                    $vehile_num = $row['vehile_num'];
-                    $last_activity = $row['last_activity'];
-                    echo <<<EOF
-                        <div id="driver-$driver_id-panel" class="panel panel-default">
-                            <div class="panel-heading">
-                                <div class='circle'></div>
-                                <div class='driver-text'>
-                                    $name<br>
-                                    $vehile_num
-                                </div>
-                                <div class='right driver-color'></div>
-                                <div class='right ext-btn'>
-                                    <span class="glyphicon glyphicon-chevron-down"></span>
-                                </div>
-                            </div>
-                            <div id='driver-$driver_id' class="panel-collapse collapse" data-parent="#list">
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-xs-6">Id</div>
-                                        <div class="col-xs-6">$driver_id</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6">Номер телефона</div>
-                                        <div class="col-xs-6">$phone_number</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6">Последняя активность</div>
-                                        <div class="col-xs-6 last-activity">Нет информации</div>
-                                    </div>
-                                    <a href="#" onclick="buildModal($driver_id);">Изменить...</a>
-                                </div>
-                            </div>
-                        </div>
-EOF;
-                }
-                ?>
+
             </div>
         </div>
     </div>
@@ -112,6 +69,17 @@ EOF;
                 <h4 class="modal-title" id="modifyModalLabel">Пожалуйста, подождите...</h4>
             </div>
             <div class="modal-body">
+                <div id="modal-confirm-msg" class="bs-callout bs-callout-warning">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4>Этот аккаунт не подтвержден</h4>
+                            <p>Пока аккаунт не подтвержден, водитель может изменять информацию о себе</p>
+                        </div>
+                        <div class="col-md-4">
+                            <button id="modal-confirm-btn" class="btn btn-lg btn-warning">Подтвердить</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-horizontal">
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="modify-name">Полное имя:</label>
@@ -148,7 +116,7 @@ EOF;
             <div class="modal-footer">
                 <a id="modal-delete" href="#">Удалить водителя</a>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                <button id="modal-save" type="button" class="btn btn-primary">Сохранить изменения</button>
+                <button id="modal-save" type="button" class="btn btn-primary" data-dismiss="modal">Сохранить изменения</button>
             </div>
         </div>
     </div>

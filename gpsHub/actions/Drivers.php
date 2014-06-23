@@ -1,5 +1,7 @@
 <?php
 
+define("TIMEOUT", 25);
+
 require_once('../classes/Drivers.php');
 $drivers = new Drivers();
 
@@ -20,11 +22,7 @@ if ($_POST) {
     $lat = $_POST['lat'];
     $lng = $_POST['lng'];
 
-    $drivers->setDriver($id, $lat, $lng);
-
-    $random = rand(0, 9999);
-    session_start();
-    $_SESSION['locversion'] = $random;
+    $drivers->setLocation($id, $lat, $lng);
 } else if ($_GET) {
     require_once('../classes/User.php');
     $user = new User();
@@ -42,12 +40,16 @@ if ($_POST) {
                 $response = [
                     'time' => time(),
                     'list' => $drivers->getDriversLocation(),
+                    'loc_version' => $drivers->getLocationVersion(),
                 ];
                 echo json_encode($response);
                 break;
-            case 'all':
-                $list = $drivers->getDrivers();
-                echo json_encode($list);
+            case 'list':
+                $response = [
+                    'list' => $drivers->getDrivers(),
+                    'list_version' => $drivers->getLocationVersion(),
+                ];
+                echo json_encode($response);
                 break;
         }
     } else if (isset($_GET['company_hash'])) {

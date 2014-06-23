@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `company` (
   `company_hash`  VARCHAR(50) NOT NULL,
   `name`       		VARCHAR(50) NOT NULL,
   `account_type`	VARCHAR(200),
-  `locversion`    INT(11)
+  `locversion`    INT(11),
   PRIMARY KEY (`company_id`),
   UNIQUE KEY `company_id` (`company_id`)
 )

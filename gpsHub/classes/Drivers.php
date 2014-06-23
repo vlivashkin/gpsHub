@@ -4,11 +4,11 @@ class Drivers
 {
     public function init()
     {
-        $this->setDriver(101, '55.75167', '37.61778');
-        $this->setDriver(102, '53.75167', '34.61778');
+        $this->setLocation(101, '55.75167', '37.61778');
+        $this->setLocation(102, '53.75167', '34.61778');
     }
 
-    public function setDriver($id, $lat, $lng)
+    public function setLocation($id, $lat, $lng)
     {
         require_once('SQLConfig.php');
         $sqlconfig = new SQLConfig();
@@ -20,6 +20,8 @@ class Drivers
              WHERE `driver_id` = " . $id;
 
         $mysqli->query($query);
+
+        $this->updateLocationVersion();
     }
 
     public function getDrivers()
@@ -27,8 +29,14 @@ class Drivers
         require_once('SQLConfig.php');
         $sqlconfig = new SQLConfig();
         $mysqli = $sqlconfig->getMysqli();
-        $query = "SELECT * FROM `driver`";
-        $drivers = $mysqli->query($query);
+        $query = "SELECT * FROM `driver` ORDER BY `confirmed`";
+        $drivers = [];
+        if ($result = $mysqli->query($query)) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($drivers, $row);
+            }
+            $result->free();
+        }
 
         return $drivers;
     }
@@ -68,5 +76,21 @@ class Drivers
             }
         }
         return NULL;
+    }
+
+    public function getListVersion()
+    {
+        return file_get_contents('./list_version.tmp');
+    }
+
+    public function getLocationVersion()
+    {
+        return file_get_contents('./loc_version.tmp');
+    }
+
+    private function updateLocationVersion() {
+        $temp_fh = fopen('./loc_version.tmp','wb') or die($php_errormsg);
+        fputs($temp_fh, microtime(true));
+        fclose($temp_fh) or die($php_errormsg);
     }
 }
