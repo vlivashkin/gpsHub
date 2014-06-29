@@ -124,7 +124,7 @@ function getList() {
         },
         dataType: 'json',
         success: function (data) {
-            if (data && data.list && data.list_version != list_version) {
+            if (data && data.list) {
                 $("#list").empty();
                 data.list.forEach(function (driver) {
                     addDriverToList(driver);

@@ -59,8 +59,9 @@ function modifyDriver(id) {
             vehile_description: $("#modify-vehile-description").val()
         },
         dataType: 'json',
-        success: function (data) {
+        complete: function (data) {
             getList();
+            $("#modifyModal").modal("hide");
         }
     });
 }
@@ -73,7 +74,7 @@ function confirmDriver(id) {
             driver_id: id
         },
         dataType: 'json',
-        success: function (data) {
+        complete: function (data) {
             getList();
             $("#modal-confirm-msg").hide();
         }
@@ -90,8 +91,9 @@ function deleteDriver(id) {
                 driver_id: id
             },
             dataType: 'json',
-            success: function (data) {
+            complete: function (data) {
                 getList();
+                $("#modifyModal").modal("hide");
             }
         });
     }
