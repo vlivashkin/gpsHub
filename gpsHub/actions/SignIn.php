@@ -15,10 +15,6 @@ if ($_POST) {
         session_start();
         $_SESSION['email'] = $email;
 
-        require_once('../classes/Drivers.php');
-        $drivers = new Drivers();
-        $drivers->init();
-
         echo "SUCCESS";
         return;
     }
