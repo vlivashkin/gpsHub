@@ -11,7 +11,6 @@ $(document).ready(function () {
 
     getList();
     getDriversLocation();
-    setInterval(getList, 5000);
     setInterval(getDriversLocation, 1000);
 });
 

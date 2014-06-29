@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -26,9 +26,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends Activity {
+    public static final String PREFS_NAME = "gpshubprefs";
 
-    Timer timer;
     public static boolean enabled = false;
+    Timer timer;
     private android.content.Context mContext = this;
     private GPSMonitor gps;
 
@@ -37,26 +38,37 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        final Button button = (Button) findViewById(R.id.onoff);
+        final Button tracker = (Button) findViewById(R.id.onoff);
+        final Button logout = (Button) findViewById(R.id.logout);
         gps = new GPSMonitor(MainActivity.this);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        tracker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!enabled) {
                     if (gps.isGPSEnabled()) {
                         startTimer();
-                        button.setText("disable tracker");
+                        tracker.setText("Отключить");
                     } else {
                         showSettingsAlert();
                         return;
                     }
                 } else {
                     stopTimer();
-                    button.setText("enable tracker");
+                    tracker.setText("Включить");
                 }
 
                 enabled = !enabled;
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                settings.edit().remove("driver_id").commit();
+                Intent login = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(login);
             }
         });
     }
@@ -68,10 +80,6 @@ public class MainActivity extends Activity {
             @Override
             public void run() {
                 Location location = gps.getCurrentLocation();
-                if (location == null) {
-                    System.out.println("last known");
-                    location = gps.getLastKnownLocation();
-                }
                 double latitude = location.getLatitude();
                 double longitude = location.getLongitude();
 
@@ -99,10 +107,15 @@ public class MainActivity extends Activity {
         HttpPost httppost = new HttpPost("http://javafiddle.org/gpsHub/actions/drivers.php");
 
         try {
+            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+            String company_hash = settings.getString("company_hash", null);
+            String driver_id = settings.getString("driver_id", null);
+
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("company_hash", company_hash));
+            nameValuePairs.add(new BasicNameValuePair("id", driver_id));
             nameValuePairs.add(new BasicNameValuePair("lat", Double.toString(lat)));
             nameValuePairs.add(new BasicNameValuePair("lng", Double.toString(lng)));
-            nameValuePairs.add(new BasicNameValuePair("id", "101"));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
             HttpResponse response = httpclient.execute(httppost);

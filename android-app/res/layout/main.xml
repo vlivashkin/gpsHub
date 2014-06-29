@@ -4,22 +4,33 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:weightSum="1">
+        android:weightSum="1" android:padding="15dp">
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_weight="0.33">
+            android:layout_height="wrap_content" android:layout_weight="0.60">
     </LinearLayout>
-    <TextView
-            android:layout_width="227dp"
-            android:layout_height="50dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Статус трекера"
-            android:id="@+id/mainText" android:layout_gravity="center_horizontal"
-            android:singleLine="true" android:textSize="30dp"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="303dp" android:layout_weight="0.34">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Включить трекер"
+                android:id="@+id/mainText" android:layout_gravity="center_horizontal"
+                android:singleLine="true" android:textSize="30dp"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Включить"
+                android:id="@+id/onoff" android:layout_gravity="center_horizontal" android:textSize="17dp"/>
+    </LinearLayout>
     <Button
-            android:layout_width="wrap_content"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="69dp"
             android:layout_height="wrap_content"
-            android:text="Enable tracker"
-            android:id="@+id/onoff" android:layout_gravity="center_horizontal"/>
+            android:text="Выйти"
+            android:id="@+id/logout" android:layout_gravity="right"/>
 </LinearLayout>

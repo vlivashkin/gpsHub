@@ -54,20 +54,21 @@ if ($_POST) {
         }
     } else if (isset($_GET['company_hash'])) {
         require_once('../classes/DriverManager.php');
+
         $driverManager = new DriverManager();
-        if (!$driverManager->isTrueHash($_POST['company_hash'])) {
+        if (!$driverManager->isTrueHash($_GET['company_hash'])) {
             echo 'NOT_TRUE_HASH';
             exit;
         }
-        if (!$driverManager->isUnconfirmed($_POST['driver_id'])) {
-            echo 'DRIVER_IS_CONFIRMED';
-            exit;
-        }
-        if (!isset($_GET['id'])) {
+		if (!isset($_GET['id'])) {
             echo 'NEED_ID';
             exit;
         }
         $driver = $drivers->getDriver($_GET['id']);
-        echo json_encode($driver);
+
+        if ($driver != NULL)
+            echo 'OK';
+        else
+            echo 'NOT_FOUND';
     }
 }
