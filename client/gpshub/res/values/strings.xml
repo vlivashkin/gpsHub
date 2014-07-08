@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">gpsHub</string>
+
+    <string name="action_settings">action_settings</string>
+    <string name="action_item_1">Item 1</string>
+    <string name="action_item_2">Item 2</string>
+    <string name="action_item_3">Item 3</string>
+</resources>
