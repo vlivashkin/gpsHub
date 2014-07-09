@@ -93,10 +93,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GPSService.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.24548736" vertical-offset="0" max-vertical-offset="612">
+              <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GPSService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/gpshub/gps/GPSService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9133574" vertical-offset="1532" max-vertical-offset="2108">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1532" max-vertical-offset="2108">
               <caret line="105" column="89" selection-start-line="105" selection-start-column="89" selection-end-line="105" selection-end-column="89" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -119,16 +129,6 @@
                 <element signature="e#687#688#0" expanded="true" />
                 <element signature="e#725#726#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153">
-              <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -235,7 +235,6 @@
         <option value="$PROJECT_DIR$/src/com/gpshub/gps/Service.java" />
         <option value="$PROJECT_DIR$/src/com/gpshub/gps/LocalService.java" />
         <option value="$PROJECT_DIR$/src/com/gpshub/gps/MessengerService.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/gpshub/gps/GpsService.java" />
         <option value="$PROJECT_DIR$/src/com/gpshub/gps/GPSMonitor.java" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
@@ -245,6 +244,7 @@
         <option value="$PROJECT_DIR$/src/com/gpshub/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/com/gpshub/api/DataProvider.java" />
         <option value="$PROJECT_DIR$/src/com/gpshub/gps/GPSService.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -840,12 +840,12 @@
       <workItem from="1404834079742" duration="1072000" />
       <workItem from="1404835368140" duration="4443000" />
       <workItem from="1404839901185" duration="9790000" />
-      <workItem from="1404878805484" duration="10026000" />
+      <workItem from="1404878805484" duration="10582000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72151000" />
+    <option name="totallyTimeSpent" value="72707000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -886,7 +886,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4799358" sideWeight="0.86329305" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4799358" sideWeight="0.86329305" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1273,14 +1273,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="612">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/threadsample/DisplayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-23.287672" vertical-offset="6800" max-vertical-offset="8942">
@@ -1415,7 +1407,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gpshub/gps/GPSService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9133574" vertical-offset="1532" max-vertical-offset="2108">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1532" max-vertical-offset="2108">
           <caret line="105" column="89" selection-start-line="105" selection-start-column="89" selection-end-line="105" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1424,6 +1416,14 @@
             <element signature="e#2324#2325#0" expanded="true" />
             <element signature="e#3604#3635#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24548736" vertical-offset="0" max-vertical-offset="612">
+          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
