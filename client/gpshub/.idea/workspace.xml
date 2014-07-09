@@ -96,14 +96,14 @@
       <file leaf-file-name="GPSService.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/gpshub/gps/GPSService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7906137" vertical-offset="1532" max-vertical-offset="2108">
-              <caret line="103" column="61" selection-start-line="103" selection-start-column="61" selection-end-line="103" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.9133574" vertical-offset="1532" max-vertical-offset="2108">
+              <caret line="105" column="89" selection-start-line="105" selection-start-column="89" selection-end-line="105" selection-end-column="89" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1175#1206#0" expanded="true" />
                 <element signature="e#1705#2335#0" expanded="true" />
                 <element signature="e#2324#2325#0" expanded="true" />
-                <element signature="e#3597#3628#0" expanded="true" />
+                <element signature="e#3604#3635#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -840,12 +840,12 @@
       <workItem from="1404834079742" duration="1072000" />
       <workItem from="1404835368140" duration="4443000" />
       <workItem from="1404839901185" duration="9790000" />
-      <workItem from="1404878805484" duration="9451000" />
+      <workItem from="1404878805484" duration="10026000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71576000" />
+    <option name="totallyTimeSpent" value="72151000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -869,7 +869,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1415,14 +1415,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gpshub/gps/GPSService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7906137" vertical-offset="1532" max-vertical-offset="2108">
-          <caret line="103" column="61" selection-start-line="103" selection-start-column="61" selection-end-line="103" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.9133574" vertical-offset="1532" max-vertical-offset="2108">
+          <caret line="105" column="89" selection-start-line="105" selection-start-column="89" selection-end-line="105" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1175#1206#0" expanded="true" />
             <element signature="e#1705#2335#0" expanded="true" />
             <element signature="e#2324#2325#0" expanded="true" />
-            <element signature="e#3597#3628#0" expanded="true" />
+            <element signature="e#3604#3635#0" expanded="true" />
           </folding>
         </state>
       </provider>

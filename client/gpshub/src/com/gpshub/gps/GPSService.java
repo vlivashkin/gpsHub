@@ -95,7 +95,7 @@ public class GPSService extends Service {
 
     private void showNotification() {
         // In this sample, we'll use the same text for the ticker and the expanded notification
-        CharSequence text = "GPS-сервис работает";
+        CharSequence text = "Нажмите, чтобы открыть приложение.";
 
         // Set the icon, scrolling text and timestamp
         Notification notification = new Notification(R.drawable.ic_launcher, text,
@@ -108,7 +108,7 @@ public class GPSService extends Service {
                 new Intent(this, MainActivity.class), 0);
 
         // Set the info for the views that show in the notification panel.
-        notification.setLatestEventInfo(this, "gpsHub: GPS-сервис работает",
+        notification.setLatestEventInfo(this, "GPS-сервис работает",
                 text, contentIntent);
 
         // Send the notification.
