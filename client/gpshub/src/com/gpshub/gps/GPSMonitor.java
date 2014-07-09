@@ -1,4 +1,4 @@
-package com.gpshub.utils;
+package com.gpshub.gps;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,7 +14,7 @@ public class GPSMonitor {
     private static final String TAG = GPSMonitor.class.getSimpleName();
     private static final long MIN_TIME_BW_UPDATES = 1000;  // 1 sec;
     private static final float MIN_DISTANCE_CHANGE_FOR_UPDATES = 2;  // 2 meters
-    private final Activity activity;
+    private final Context context;
     private final LocationManager locationManager;
     private LocationListener listener;
     private boolean collecting = false;
@@ -22,17 +22,22 @@ public class GPSMonitor {
     private Location currentLocation = null;
     private final LocationListener _listener = new Listener();
 
-    public GPSMonitor(Activity activity) {
-        this(activity, null);
+    public GPSMonitor(Context context) {
+        this(context, null);
     }
 
-    public GPSMonitor(Activity activity, LocationListener listener) {
+    public GPSMonitor(Context context, LocationListener listener) {
         this.listener = listener;
-        this.activity = activity;
-        locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
+        this.context = context;
+        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
     }
 
     public boolean isGPSEnabled() {
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+    }
+
+    public static boolean isGPSEnabled(Activity activity) {
+        LocationManager locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
@@ -40,8 +45,8 @@ public class GPSMonitor {
         return locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
     }
 
-    public Activity getActivity() {
-        return activity;
+    public Context getContext() {
+        return context;
     }
 
     public Location getCurrentLocation() {
@@ -72,15 +77,17 @@ public class GPSMonitor {
             );
             collecting = true;
             currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            System.out.println("GPSMonitor started.");
         } else {
             stop();
-            Toast.makeText(activity, "Please, allow access to GPS location provider.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Please, allow access to GPS location provider.", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void stop() {
         collecting = false;
         locationManager.removeUpdates(_listener);
+        System.out.println("GPSMonitor stopped.");
     }
 
     private class Listener implements LocationListener {

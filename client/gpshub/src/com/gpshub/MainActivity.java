@@ -2,10 +2,9 @@ package com.gpshub;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.location.Location;
+import android.content.*;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,31 +12,22 @@ import android.view.View;
 import android.widget.Button;
 
 import android.widget.TextView;
-import com.gpshub.utils.GPSMonitor;
-import com.gpshub.utils.SettingsKeeper;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
+import com.gpshub.gps.GPSMonitor;
+import com.gpshub.gps.GPSService;
+import com.gpshub.utils.AccountManager;
+import com.gpshub.utils.TempSettings;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends Activity {
-    private boolean gpsEnabled = false;
-    private boolean isBusy = false;
-    private Timer timer;
-    private GPSMonitor gps;
+    GPSService mService;
+    TempSettings ts;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        ts = TempSettings.getInstance();
 
         final TextView gpsStatus = (TextView) findViewById(R.id.gpsstatus);
         final TextView busyStatus = (TextView) findViewById(R.id.busystatus);
@@ -45,46 +35,58 @@ public class MainActivity extends Activity {
         final Button gpsBtn = (Button) findViewById(R.id.gpsbtn);
         final Button busyBtn = (Button) findViewById(R.id.busybtn);
 
-        gps = new GPSMonitor(MainActivity.this);
+        if (ts.isGpsEnabled()) {
+            gpsStatus.setText("Включен");
+            gpsBtn.setText("Отключить GPS");
+        } else {
+            gpsStatus.setText("Отключен");
+            gpsBtn.setText("Включить GPS");
+        }
+
+        if (ts.isBusy()) {
+            busyStatus.setText("Занят");
+            busyBtn.setText("Свободен");
+        } else {
+            busyStatus.setText("Свободен");
+            busyBtn.setText("Занят");
+        }
 
         gpsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!gpsEnabled) {
-                    if (gps.isGPSEnabled()) {
-                        startTimer();
+                if (!ts.isGpsEnabled()) {
+                    if (GPSMonitor.isGPSEnabled(MainActivity.this)) {
+                        startService();
                         gpsStatus.setText("Включен");
                         gpsBtn.setText("Отключить GPS");
-
+                        ts.setGpsEnabled(true);
                     } else {
                         showSettingsAlert();
-                        return;
+                        ts.setGpsEnabled(false);
                     }
                 } else {
-                    stopTimer();
+                    stopService();
                     gpsStatus.setText("Отключен");
-                    gpsBtn.setText("Включить");
+                    gpsBtn.setText("Включить GPS");
+                    ts.setGpsEnabled(false);
                 }
-
-                gpsEnabled = !gpsEnabled;
             }
         });
 
         busyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!isBusy) {
+                if (!ts.isBusy()) {
                     busyStatus.setText("Занят");
                     busyBtn.setText("Свободен");
+                    ts.setBusy(true);
                 } else {
                     busyStatus.setText("Свободен");
                     busyBtn.setText("Занят");
+                    ts.setBusy(false);
                 }
-
-                isBusy = !isBusy;
             }
         });
-
     }
 
     @Override
@@ -107,68 +109,49 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void startTimer() {
-        gps.start();
+    public void startService() {
+        System.out.println("start service....");
+        Intent intent = new Intent(this, GPSService.class);
+        getApplicationContext().bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+        ts.setConnection(mConnection);
 
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                Location location = gps.getCurrentLocation();
-                double latitude = location.getLatitude();
-                double longitude = location.getLongitude();
-
-                try {
-                    postData(latitude, longitude);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 2 * 1000);
     }
 
-    public void stopTimer() {
-        timer.cancel();
-        gps.stop();
-    }
-
-    public void postData(double lat, double lng) throws IOException {
-        System.out.println("lat: " + lat + ", lng: " + lng);
-
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://javafiddle.org/gpsHub/actions/drivers.php");
-
-        try {
-            SettingsKeeper sk = new SettingsKeeper(MainActivity.this);
-            String company_hash = sk.getSharedPreference("company_hash");
-            String driver_id = sk.getSharedPreference("driver_id");
-
-            List<NameValuePair> nameValuePairs = new ArrayList<>();
-            nameValuePairs.add(new BasicNameValuePair("company_hash", company_hash));
-            nameValuePairs.add(new BasicNameValuePair("id", driver_id));
-            nameValuePairs.add(new BasicNameValuePair("lat", Double.toString(lat)));
-            nameValuePairs.add(new BasicNameValuePair("lng", Double.toString(lng)));
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-            httpclient.execute(httppost);
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void stopService() {
+        System.out.println("stop service....");
+        if (ts.isGpsEnabled()) {
+            getApplicationContext().unbindService(ts.getConnection());
+            ts.setGpsEnabled(false);
         }
     }
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className,
+                                       IBinder service) {
+            // We've bound to LocalService, cast the IBinder and get LocalService instance
+            GPSService.LocalBinder binder = (GPSService.LocalBinder) service;
+            mService = binder.getService();
+            ts.setGpsEnabled(true);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName arg0) {
+            ts.setGpsEnabled(false);
+        }
+    };
 
     public void showSettingsAlert() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
         // Setting Dialog Title
-        alertDialog.setTitle("GPS is settings");
+        alertDialog.setTitle("Настройки GPS");
 
         // Setting Dialog Message
-        alertDialog.setMessage("GPS is not gpsEnabled. Do you want to go to settings menu?");
+        alertDialog.setMessage("GPS-трекинг не разрешен. Разрешите доступ к GPS в настройках, чтобы продолжить");
 
         // On pressing Settings button
-        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton("Настройки", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivity(intent);
@@ -176,7 +159,7 @@ public class MainActivity extends Activity {
         });
 
         // on pressing cancel button
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
@@ -185,5 +168,4 @@ public class MainActivity extends Activity {
         // Showing Alert Message
         alertDialog.show();
     }
-
 }

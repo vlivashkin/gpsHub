@@ -1,4 +1,4 @@
-package com.gpshub;
+package com.gpshub.utils;
 
 import android.app.Activity;
 import android.os.StrictMode;
