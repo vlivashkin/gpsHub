@@ -35,6 +35,9 @@ if (!$user->isLoggedIn())
             <div id="list-toggler">
                 <span class="glyphicon glyphicon-chevron-left" style=""></span>
             </div>
+            <div class="new-driver" onclick="newDriver()">
+                <span class="glyphicon glyphicon-plus" style=""></span>
+            </div>
         </div>
         <div id="list-body">
             <div class="panel-group" id="list">

@@ -2,12 +2,11 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/js/list.min.js" />
-        <item url="file://$PROJECT_DIR$/js/modal.min.js" />
+        <item url="file://$PROJECT_DIR$/js/bootstrap.min.js" />
         <item url="file://$PROJECT_DIR$/js/jquery.layout-latest.min.js" />
         <item url="file://$PROJECT_DIR$/js/user.min.js" />
+        <item url="file://$PROJECT_DIR$/js/modal.min.js" />
         <item url="file://$PROJECT_DIR$/js/map.min.js" />
-        <item url="file://$PROJECT_DIR$/js/bootstrap.min.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -722,13 +721,13 @@
       <root url="file://$PROJECT_DIR$/js/sha256.min.min.js" />
       <root url="file://$PROJECT_DIR$/js/ol.min.js" />
       <root url="file://$PROJECT_DIR$/js/list.min.js" />
+      <root url="file://$PROJECT_DIR$/js/bootstrap.min.js" />
       <root url="file://$PROJECT_DIR$/js/jquery-1.11.1.min.js" />
       <root url="file://$PROJECT_DIR$/js/jquery.layout-latest.min.js" />
-      <root url="file://$PROJECT_DIR$/js/modal.min.js" />
-      <root url="file://$PROJECT_DIR$/js/jquery-ui-1.10.4.min.js" />
       <root url="file://$PROJECT_DIR$/js/user.min.js" />
+      <root url="file://$PROJECT_DIR$/js/modal.min.js" />
       <root url="file://$PROJECT_DIR$/js/map.min.js" />
-      <root url="file://$PROJECT_DIR$/js/bootstrap.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jquery-ui-1.10.4.min.js" />
     </CLASSES>
     <SOURCES />
   </library>

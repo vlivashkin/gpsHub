@@ -136,9 +136,13 @@ body,
 #list-header div:hover {
   background: rgba(100, 100, 100, 0.4);
 }
-#list-header div span {
+#list-header div .glyphicon-chevron-left {
   font-size: 17px;
   margin-top: 13px;
+}
+#list-header div .glyphicon-plus {
+  font-size: 17px;
+  margin-top: 12px;
 }
 #list-body {
   padding-top: 44px;

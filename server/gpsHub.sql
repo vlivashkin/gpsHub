@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `driver` (
   `vehile_description`VARCHAR(200),
   `lat`               VARCHAR(20),
   `lng`               VARCHAR(20),
+  `busy`              VARCHAR(20),
   `last_activity`   	VARCHAR(20),
   `properties`      	VARCHAR(200),
   PRIMARY KEY (`driver_id`),
@@ -60,10 +61,7 @@ CREATE TABLE IF NOT EXISTS `driver` (
   AUTO_INCREMENT =8;
 
 INSERT INTO `driver` (`driver_id`, `confirmed`, `name`, `phone_number`, `vehile_num`) VALUES
-  (101, 1, 'Василий Павлов', '+7 (920) 232-32-34', 'ТА 512 А'),
-  (102, 1, 'Сергей Иванов', '+7 (965) 453-23-42', 'ЕК 777 Х'),
-  (103, 1, 'Валентин Писаренко', '+7 (915) 112-34-45', 'ЕУ 312 Р'),
-  (104, 1, 'Александр Фадеев', '+7 (903) 544-23-53', 'ЕН 112 К');
-
-ALTER TABLE `user`
-ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`);
+  (101, 1, 'Иван Петров', '+7 (920) 232-32-34', 'А 512 ТА'),
+  (102, 1, 'Петр Иванов', '+7 (965) 453-23-42', 'К 777 ВН'),
+  (103, 1, 'Сергей Федоров', '+7 (915) 112-34-45', 'Е 312 КХ'),
+  (104, 1, 'Виталий Мелихов', '+7 (903) 544-23-53', 'А 112 МВ');

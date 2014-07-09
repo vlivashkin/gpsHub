@@ -15,11 +15,10 @@ class DriverManager {
         $result = $mysqli->query($query);
         if ($result->num_rows > 0) {
             $driver = $result->fetch_array(MYSQLI_ASSOC);
-            $this->updateListVersion();
             return $driver['driver_id'];
         }
 
-        return NULL;
+        return 0;
     }
 
     public function modifyDriver($id, $data)
@@ -35,7 +34,6 @@ class DriverManager {
             `vehile_description` = '" . $data['vehile_description'] . "'
              WHERE `driver_id` = " . $id;
         $mysqli->query($query);
-        $this->updateListVersion();
         return true;
     }
 
@@ -46,7 +44,6 @@ class DriverManager {
         $mysqli = $sqlconfig->getMysqli();
         $query = "DELETE FROM `driver` WHERE `driver_id` = " . $id;
         $mysqli->query($query);
-        $this->updateListVersion();
         return true;
     }
 
@@ -57,7 +54,6 @@ class DriverManager {
         $mysqli = $sqlconfig->getMysqli();
         $query = "UPDATE `driver` SET `confirmed` = 1 WHERE `driver_id` = " . $id;
         $mysqli->query($query);
-        $this->updateListVersion();
         return true;
     }
 
@@ -85,11 +81,5 @@ class DriverManager {
         }
 
         return false;
-    }
-
-    private function updateListVersion() {
-        $temp_fh = fopen('./loc_version.tmp','wb') or die($php_errormsg);
-        fputs($temp_fh, microtime(true));
-        fclose($temp_fh) or die($php_errormsg);
     }
 } 

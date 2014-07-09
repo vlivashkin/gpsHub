@@ -46,7 +46,7 @@ function initLayout() {
         west__paneSelector: "#list-layout",
         center__minWidth: 300,
         west__size: 250,
-        west__minSize: 150,
+        west__minSize: 170,
         spacing_open: 1,
         spacing_closed: 20,
         livePaneResizing: true,
@@ -193,6 +193,27 @@ function driverToggle(id) {
     return false;
 }
 
+function newDriver() {
+    $.ajax({
+        url: 'actions/manager.php',
+        type: 'POST',
+        data: {
+            action: 'create'
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data && isNumber(data)) {
+                getList();
+                buildModal(data);
+            }
+        }
+    });
+}
+
+function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 function getDriversLocation() {
     $.ajax({
         url: 'actions/drivers.php',
@@ -202,15 +223,15 @@ function getDriversLocation() {
         },
         dataType: 'json',
         success: function (data) {
-            if (data && data.list && data.loc_version != loc_version) {
+            if (data && data.list) {
                 data.list.forEach(function (driver) {
                     if (driver.id === null || driver.lat === null || driver.lng === null)
                         return;
 
                     if (drivers[driver.id] === undefined)
-                        drivers[driver.id] = addPoint(driver.id, driver.lat, driver.lng);
+                        drivers[driver.id] = addPoint(driver.id, driver.lat, driver.lng, driver.busy);
                     else
-                        movePoint(driver.id, driver.lat, driver.lng);
+                        movePoint(driver.id, driver.lat, driver.lng, driver.busy);
                     drivers[driver.id].last_activity = driver.last_activity;
                 });
             }
@@ -220,10 +241,7 @@ function getDriversLocation() {
     });
 }
 
-function addPoint(id, lat, lon) {
-    var color = randomColor();
-    $("#driver-" + id + " .driver-color").css('background-color', color);
-
+function addPoint(id, lat, lon, busy) {
     if (typeof(lat) === "string")
         lat = parseFloat(lat);
     if (typeof(lon) === "string")
@@ -233,17 +251,10 @@ function addPoint(id, lat, lon) {
         geometry: new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'))
     });
     iconFeature.id = id;
-    iconFeature.color = color;
+    iconFeature.busy = busy == undefined ? "free" : busy;
 
     var iconStyle = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [0.5, 46],
-            anchorXUnits: 'fraction',
-            anchorYUnits: 'pixels',
-            opacity: 0.75,
-            src: 'img/marker.php?color=' + encodeURIComponent(color),
-            size: [36, 48]
-        })
+        image: icon("online", busy)
     });
     iconFeature.setStyle(iconStyle);
 
@@ -252,7 +263,7 @@ function addPoint(id, lat, lon) {
     return iconFeature;
 }
 
-function movePoint(id, lat, lon) {
+function movePoint(id, lat, lon, busy) {
     if (typeof(lat) === "string")
         lat = parseFloat(lat);
     if (typeof(lon) === "string")
@@ -260,6 +271,12 @@ function movePoint(id, lat, lon) {
 
     var point = new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'));
     drivers[id].set('geometry', point);
+
+    drivers[id].busy = busy;
+    var iconStyle = new ol.style.Style({
+        image: icon("online", busy)
+    });
+    drivers[id].setStyle(iconStyle);
 }
 
 function updateOnlineStatuses(now) {
@@ -289,13 +306,21 @@ function updateOnlineStatuses(now) {
         var a = moment(drivers[id].last_activity, "X");
         var b = moment(now, "X");
         $("#driver-" + id + " .last-activity").text(a.from(b));
+
+        var iconStyle = new ol.style.Style({
+            image: icon(status, drivers[id].busy)
+        });
+        drivers[id].setStyle(iconStyle);
     });
 }
 
-function randomColor() {
-    var r = (Math.floor(Math.random() * 16 / 3) * 3).toString(16);
-    var g = (Math.floor(Math.random() * 16 / 3) * 3).toString(16);
-    var b = (Math.floor(Math.random() * 16 / 3) * 3).toString(16);
-
-    return "#" + r.toString(16) + g.toString(16) + b.toString(16);
+function icon(online, busy) {
+    return new ol.style.Icon({
+        anchor: [0.5, 38],
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'pixels',
+        opacity: 0.75,
+        src: 'img/taxi-' + busy + '-' + online + '.svg',
+        size: [36, 38]
+    })
 }

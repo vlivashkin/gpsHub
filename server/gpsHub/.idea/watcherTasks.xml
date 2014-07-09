@@ -18,7 +18,7 @@
       <option name="program" value="C:/Program Files/nodejs/node_modules/yuicompressor/build/yuicompressor-2.4.8.jar" />
       <option name="scopeName" value="all my css" />
       <option name="trackOnlyRoot" value="true" />
-      <option name="workingDir" value="C:\Users\wawilon\Documents\GitHub\gpsHub\gpsHub\css" />
+      <option name="workingDir" value="C:\Users\wawilon\Documents\GitHub\gpsHub\server\gpsHub\css" />
       <envs />
     </TaskOptions>
     <TaskOptions isEnabled="true">
@@ -38,7 +38,7 @@
       <option name="program" value="C:/Program Files/nodejs/node_modules/yuicompressor/build/yuicompressor-2.4.8.jar" />
       <option name="scopeName" value="all my js" />
       <option name="trackOnlyRoot" value="true" />
-      <option name="workingDir" value="C:\Users\wawilon\Documents\GitHub\gpsHub\gpsHub\js" />
+      <option name="workingDir" value="C:\Users\wawilon\Documents\GitHub\gpsHub\server\gpsHub\js" />
       <envs />
     </TaskOptions>
   </component>

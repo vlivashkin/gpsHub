@@ -3,16 +3,8 @@
 if (isset($_POST) && isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'create':
-            if (!isset($_POST['company_hash'])) {
-                echo 'NEED_COMPANY_HASH';
-                exit;
-            }
             require_once('../classes/DriverManager.php');
             $driverManager = new DriverManager();
-            if (!$driverManager->isTrueHash($_POST['company_hash'])) {
-                echo 'NOT_VALID_COMPANY_HASH';
-                exit;
-            }
             $result = $driverManager->createDriver();
             if (isset($result) && $result) {
                 echo $result;

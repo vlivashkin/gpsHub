@@ -8,21 +8,27 @@ $drivers = new Drivers();
 if ($_POST) {
     if (!isset($_POST['id'])) {
         echo 'NEED_ID';
-        exit;
     }
     if (!isset($_POST['lat'])) {
         echo 'NEED_LAT';
-        exit;
     }
     if (!isset($_POST['lng'])) {
         echo 'NEED_LNG';
-        exit;
+    }
+    if (!isset($_POST['busy'])) {
+        echo 'NEED_BUSY';
     }
     $id = $_POST['id'];
     $lat = $_POST['lat'];
     $lng = $_POST['lng'];
+    $busy = $_POST['busy'] == "true" ? "busy" : "free";
 
-    $drivers->setLocation($id, $lat, $lng);
+    $file = 'log.tmp';
+    $current = file_get_contents($file);
+    $current .= time(). " id: " . $id . " lat: " . $lat . " lng: " . $lng . " busy: " . $busy . "\n";
+    file_put_contents("log.tmp", $current);
+
+    $drivers->setLocation($id, $lat, $lng, $busy);
 } else if ($_GET) {
     require_once('../classes/User.php');
     $user = new User();

@@ -4,11 +4,11 @@ class Drivers
 {
     public function init()
     {
-        $this->setLocation(101, '55.75167', '37.61778');
-        $this->setLocation(102, '53.75167', '34.61778');
+        $this->setLocation(101, '55.75167', '37.61778', 'false');
+        $this->setLocation(102, '53.75167', '34.61778', 'false');
     }
 
-    public function setLocation($id, $lat, $lng)
+    public function setLocation($id, $lat, $lng, $busy)
     {
         require_once('SQLConfig.php');
         $sqlconfig = new SQLConfig();
@@ -16,6 +16,7 @@ class Drivers
         $query = "UPDATE `driver` SET
             `lat` = '" . $lat . "',
             `lng` = '" . $lng . "',
+            `busy` = '" . $busy . "',
             `last_activity` = '" . time() . "'
              WHERE `driver_id` = " . $id;
 
@@ -46,7 +47,7 @@ class Drivers
         require_once('SQLConfig.php');
         $sqlconfig = new SQLConfig();
         $mysqli = $sqlconfig->getMysqli();
-        $query = "SELECT `driver_id`, `lat`, `lng`, `last_activity` FROM `driver`";
+        $query = "SELECT `driver_id`, `lat`, `lng`, `busy`, `last_activity` FROM `driver`";
         $drivers = [];
         if ($result = $mysqli->query($query)) {
             while ($row = $result->fetch_assoc()) {
@@ -54,6 +55,7 @@ class Drivers
                     "id" => $row["driver_id"],
                     "lat" => $row["lat"],
                     "lng" => $row["lng"],
+                    "busy" => $row["busy"],
                     "last_activity" => $row["last_activity"]
                 ]);
             }
