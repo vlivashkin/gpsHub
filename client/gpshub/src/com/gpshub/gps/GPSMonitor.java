@@ -7,7 +7,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 public class GPSMonitor {
 
@@ -68,20 +67,15 @@ public class GPSMonitor {
     public void start() {
         if (collecting)
             return;
-        if (isGPSEnabled()) {
-            locationManager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER,
-                    MIN_TIME_BW_UPDATES,
-                    MIN_DISTANCE_CHANGE_FOR_UPDATES,
-                    _listener
-            );
-            collecting = true;
-            currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            System.out.println("GPSMonitor started.");
-        } else {
-            stop();
-            Toast.makeText(context, "Please, allow access to GPS location provider.", Toast.LENGTH_SHORT).show();
-        }
+        locationManager.requestLocationUpdates(
+                LocationManager.GPS_PROVIDER,
+                MIN_TIME_BW_UPDATES,
+                MIN_DISTANCE_CHANGE_FOR_UPDATES,
+                _listener
+        );
+        collecting = true;
+        currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        System.out.println("GPSMonitor started.");
     }
 
     public void stop() {

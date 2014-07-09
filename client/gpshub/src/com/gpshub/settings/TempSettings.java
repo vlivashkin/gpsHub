@@ -44,4 +44,9 @@ public class TempSettings {
     public void setBusy(boolean isBusy) {
         this.isBusy = isBusy;
     }
+
+    public void wipeData() {
+        gpsEnabled = false;
+        isBusy = false;
+    }
 }

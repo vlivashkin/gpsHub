@@ -33,7 +33,7 @@ public class DataProvider {
             String company_hash = sk.getSharedPreference("company_hash");
             String driver_id = sk.getSharedPreference("driver_id");
 
-            List<NameValuePair> nameValuePairs = new ArrayList<>();
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("company_hash", company_hash));
             nameValuePairs.add(new BasicNameValuePair("id", driver_id));
             nameValuePairs.add(new BasicNameValuePair("lat", Double.toString(lat)));

@@ -17,9 +17,9 @@
 <resources>
 
     <style name="Theme.Base.AppCompat.DialogWhenLarge"
-           parent="Theme.Base.AppCompat.Dialog.FixedSize"/>
+           parent="Theme.Base.AppCompat.Dialog.FixedSize" />
 
     <style name="Theme.Base.AppCompat.Light.DialogWhenLarge"
-           parent="Theme.Base.AppCompat.Dialog.Light.FixedSize"/>
+           parent="Theme.Base.AppCompat.Dialog.Light.FixedSize" />
 
 </resources>

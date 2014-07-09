@@ -27,7 +27,7 @@ public class AccountManager {
     }
 
     public boolean login(String company_hash, String driver_id) {
-        List<NameValuePair> nameValuePairs = new ArrayList<>();
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("company_hash", company_hash));
         nameValuePairs.add(new BasicNameValuePair("id", driver_id));
         String paramString = URLEncodedUtils.format(nameValuePairs, "utf-8");

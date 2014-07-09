@@ -40,7 +40,7 @@
                 android:singleLine="true"
                 android:duplicateParentState="true"
                 android:ellipsize="marquee"
-                android:fadingEdge="horizontal"/>
+                android:fadingEdge="horizontal" />
 
         <TextView
                 android:id="@+id/shortcut"
@@ -49,7 +49,7 @@
                 android:layout_below="@id/title"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:singleLine="true"
-                android:duplicateParentState="true"/>
+                android:duplicateParentState="true" />
 
     </RelativeLayout>
 

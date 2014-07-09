@@ -1,11 +1,11 @@
 package com.gpshub;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.*;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +19,7 @@ import com.gpshub.settings.AccountManager;
 import com.gpshub.settings.TempSettings;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
     GPSService mService;
     TempSettings ts;
     DataProvider dp;
@@ -103,6 +103,8 @@ public class MainActivity extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.logoutbtn:
+                stopService();
+                TempSettings.getInstance().wipeData();
                 new AccountManager(MainActivity.this).logout();
                 Intent login = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(login);

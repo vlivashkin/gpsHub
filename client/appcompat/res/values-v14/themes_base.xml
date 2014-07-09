@@ -107,10 +107,10 @@
     </style>
 
     <style name="Theme.Base.AppCompat.DialogWhenLarge"
-           parent="Theme.Base.AppCompat.DialogWhenLarge.Base"/>
+           parent="Theme.Base.AppCompat.DialogWhenLarge.Base" />
 
     <style name="Theme.Base.AppCompat.Light.DialogWhenLarge"
-           parent="Theme.Base.AppCompat.Light.DialogWhenLarge.Base"/>
+           parent="Theme.Base.AppCompat.Light.DialogWhenLarge.Base" />
 
     <!--
         As we have defined the theme in values-large (for compat) and values-large takes precedence

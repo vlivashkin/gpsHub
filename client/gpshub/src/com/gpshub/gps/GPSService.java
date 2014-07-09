@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.StrictMode;
 import com.gpshub.MainActivity;
 import com.gpshub.R;
 import com.gpshub.api.DataProvider;
@@ -35,6 +36,10 @@ public class GPSService extends Service {
         mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         dp = new DataProvider(GPSService.this);
         showNotification();
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         super.onCreate();
     }
 
