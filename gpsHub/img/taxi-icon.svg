@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   width="566.43402"
+   height="566.42999"
+   version="1.0"
+   sodipodi:docbase="F:\WIKI\Draws\Buenos\Pa subir"
+   sodipodi:docname="Aiga taxi..svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs5" />
+  <sodipodi:namedview
+     inkscape:window-height="742"
+     inkscape:window-width="1024"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     width="566.434px"
+     height="566.43px"
+     inkscape:zoom="0.52997864"
+     inkscape:cx="253.11927"
+     inkscape:cy="241.63833"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:current-layer="svg2" />
+  <path
+     id="path2256"
+     style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
+     d="M 307.27965,142.81625 C 317.16167,144.32195 319.09403,148.27368 319.2876,155.15776 L 319.2876,175.50458 L 364.31744,176.17169 C 381.33713,175.56956 395.9665,181.07602 405.01108,200.85471 L 437.69941,282.57554 C 461.49299,289.13542 471.84029,306.4211 472.38906,320.60074 L 472.38906,427.67169 L 441.03495,427.67169 L 441.03495,463.69556 C 442.55554,498.03291 386.25625,499.38419 384.99781,463.36201 L 384.33071,428.00525 L 180.78647,428.00493 L 180.11937,463.36169 C 178.86093,499.38387 122.56164,498.03259 124.08223,463.69524 L 124.08223,427.67137 L 92.728117,427.67137 L 92.728117,320.60042 C 93.276885,306.42078 103.62419,289.1351 127.41777,282.57522 L 160.1061,200.85439 C 169.15068,181.0757 183.78005,175.56924 200.79974,176.17137 L 245.82958,175.50426 L 245.82958,155.15744 C 246.02315,148.27336 247.95551,144.32163 257.83753,142.81593 L 307.27965,142.81625 z "
+     sodipodi:nodetypes="ccccccccccccccccccccccccc" />
+  <path
+     style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+     d="M 160.24566,280.90296 L 405.14778,281.23652 L 381.61915,217.83104 C 375.87275,205.05522 370.13107,204.77941 356.61815,205.09467 L 208.97069,204.62296 C 196.79592,204.12913 187.64192,205.1345 183.49796,219.24619 L 160.24566,280.90296 z "
+     id="path3253"
+     sodipodi:nodetypes="ccccccc" />
+  <path
+     sodipodi:type="arc"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="path4224"
+     sodipodi:cx="412.27322"
+     sodipodi:cy="341.11401"
+     sodipodi:rx="26.350796"
+     sodipodi:ry="26.517572"
+     d="M 438.62402 341.11401 A 26.350796 26.517572 0 1 1  385.92243,341.11401 A 26.350796 26.517572 0 1 1  438.62402 341.11401 z"
+     transform="matrix(1.0062109,0,0,0.9998826,-1.3932259,-1.6274615)" />
+  <path
+     sodipodi:type="arc"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="path4226"
+     sodipodi:cx="412.27322"
+     sodipodi:cy="341.11401"
+     sodipodi:rx="26.350796"
+     sodipodi:ry="26.517572"
+     d="M 438.62402 341.11401 A 26.350796 26.517572 0 1 1  385.92243,341.11401 A 26.350796 26.517572 0 1 1  438.62402 341.11401 z"
+     transform="matrix(1.0062109,0,0,0.9998826,-261.70715,-1.6274752)" />
+</svg>
