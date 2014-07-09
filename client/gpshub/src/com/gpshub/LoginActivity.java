@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.gpshub.utils.AccountManager;
+import com.gpshub.settings.AccountManager;
 
 public class LoginActivity  extends Activity {
 

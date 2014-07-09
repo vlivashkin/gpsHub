@@ -10,17 +10,9 @@ import android.os.Binder;
 import android.os.IBinder;
 import com.gpshub.MainActivity;
 import com.gpshub.R;
-import com.gpshub.utils.SettingsKeeper;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
+import com.gpshub.api.DataProvider;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,6 +21,7 @@ public class GPSService extends Service {
     NotificationManager mNM;
     private Timer timer;
     private GPSMonitor gps;
+    private DataProvider dp;
 
     public class LocalBinder extends Binder {
         public GPSService getService() {
@@ -40,6 +33,7 @@ public class GPSService extends Service {
     @Override
     public void onCreate() {
         mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        dp = new DataProvider(GPSService.this);
         showNotification();
         super.onCreate();
     }
@@ -77,7 +71,7 @@ public class GPSService extends Service {
                     double longitude = location.getLongitude();
 
                     try {
-                        postData(latitude, longitude);
+                        dp.postLocation(latitude, longitude);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -99,30 +93,6 @@ public class GPSService extends Service {
         System.out.println("timer stopped.");
     }
 
-    public void postData(double lat, double lng) throws IOException {
-        System.out.println("lat: " + lat + ", lng: " + lng);
-
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://javafiddle.org/gpsHub/actions/drivers.php");
-
-        try {
-            SettingsKeeper sk = new SettingsKeeper(GPSService.this);
-            String company_hash = sk.getSharedPreference("company_hash");
-            String driver_id = sk.getSharedPreference("driver_id");
-
-            List<NameValuePair> nameValuePairs = new ArrayList<>();
-            nameValuePairs.add(new BasicNameValuePair("company_hash", company_hash));
-            nameValuePairs.add(new BasicNameValuePair("id", driver_id));
-            nameValuePairs.add(new BasicNameValuePair("lat", Double.toString(lat)));
-            nameValuePairs.add(new BasicNameValuePair("lng", Double.toString(lng)));
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-            httpclient.execute(httppost);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void showNotification() {
         // In this sample, we'll use the same text for the ticker and the expanded notification
         CharSequence text = "GPS-сервис работает";
@@ -130,6 +100,8 @@ public class GPSService extends Service {
         // Set the icon, scrolling text and timestamp
         Notification notification = new Notification(R.drawable.ic_launcher, text,
                 System.currentTimeMillis());
+
+        notification.flags = Notification.FLAG_ONGOING_EVENT;
 
         // The PendingIntent to launch our activity if the user selects this notification
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,

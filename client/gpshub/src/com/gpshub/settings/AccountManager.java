@@ -1,8 +1,7 @@
-package com.gpshub.utils;
+package com.gpshub.settings;
 
 import android.app.Activity;
 import android.os.StrictMode;
-import com.gpshub.utils.SettingsKeeper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;

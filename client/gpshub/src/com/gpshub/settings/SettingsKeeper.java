@@ -1,4 +1,4 @@
-package com.gpshub.utils;
+package com.gpshub.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;

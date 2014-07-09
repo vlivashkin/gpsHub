@@ -12,15 +12,17 @@ import android.view.View;
 import android.widget.Button;
 
 import android.widget.TextView;
+import com.gpshub.api.DataProvider;
 import com.gpshub.gps.GPSMonitor;
 import com.gpshub.gps.GPSService;
-import com.gpshub.utils.AccountManager;
-import com.gpshub.utils.TempSettings;
+import com.gpshub.settings.AccountManager;
+import com.gpshub.settings.TempSettings;
 
 
 public class MainActivity extends Activity {
     GPSService mService;
     TempSettings ts;
+    DataProvider dp;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
 
         ts = TempSettings.getInstance();
+        dp = new DataProvider(MainActivity.this);
 
         final TextView gpsStatus = (TextView) findViewById(R.id.gpsstatus);
         final TextView busyStatus = (TextView) findViewById(R.id.busystatus);
