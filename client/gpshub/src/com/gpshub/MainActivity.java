@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
+import android.text.method.PasswordTransformationMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
             Intent login = new Intent(this, LoginActivity.class);
             startActivity(login);
             finish();
+            return;
         }
 
         setContentView(R.layout.main);
@@ -97,6 +99,7 @@ public class MainActivity extends ActionBarActivity {
         switch (item.getItemId()) {
             case R.id.logoutbtn:
                 final EditText input = new EditText(MainActivity.this);
+                input.setTransformationMethod(new PasswordTransformationMethod());
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Выход из аккаунта")
                         .setMessage("Введите мастер-пароль для выхода:")
