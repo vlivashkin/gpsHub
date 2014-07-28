@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Статус"
+                android:text="@string/status"
                 android:id="@+id/textView"
                 android:layout_gravity="center_horizontal"
                 android:singleLine="false"
@@ -46,7 +46,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="GPS-трекинг"
+                        android:text="@string/gps_tracker"
                         android:id="@+id/textView2"
                         android:layout_weight="0.5"
                         android:singleLine="true"
@@ -56,7 +56,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Отключен"
+                        android:text="@string/disabled"
                         android:layout_weight="0.5"
                         android:id="@+id/gpsstatus"
                         android:textSize="23dp"/>
@@ -71,7 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Водитель занят"
+                        android:text="@string/driver_busy"
                         android:id="@+id/textView4"
                         android:layout_weight="0.5"
                         android:singleLine="true"
@@ -81,7 +81,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Свободен"
+                        android:text="@string/free"
                         android:layout_weight="0.5"
                         android:id="@+id/busystatus"
                         android:textSize="23dp"/>
@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Действия"
+                android:text="@string/action"
                 android:id="@+id/mainText" android:layout_gravity="center_horizontal"
                 android:singleLine="true" android:textSize="30dp"
                 android:layout_marginBottom="10dp"
@@ -108,19 +108,11 @@
         <Button
                 android:layout_width="185dp"
                 android:layout_height="wrap_content"
-                android:text="Включить GPS"
-                android:id="@+id/gpsbtn" android:layout_gravity="center_horizontal" android:textSize="20dp"
-                android:layout_marginBottom="10dp"/>
-
-        <Button
-                android:layout_width="185dp"
-                android:layout_height="wrap_content"
-                android:text="Занят"
+                android:text="@string/busy"
                 android:id="@+id/busybtn"
                 android:layout_gravity="center_horizontal"
                 android:textSize="20dp"
                 android:layout_marginBottom="10dp"/>
-
     </LinearLayout>
 
 </LinearLayout>

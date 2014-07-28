@@ -2,4 +2,31 @@
 <resources>
     <string name="app_name">gpsHub</string>
     <string name="remote_service_started">remote_service_started</string>
+
+    <string name="sign_in">Войти</string>
+    <string name="sign_out">Выйти</string>
+    <string name="settings">Настройки</string>
+
+    <string name="driver_id">ID водителя</string>
+    <string name="status">Статус</string>
+    <string name="gps_tracker">GPS-трекинг</string>
+    <string name="driver_busy">Водитель занят</string>
+
+    <string name="action">Действия</string>
+    <string name="gpsSettings">Настройки GPS</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="enabled">Включен</string>
+    <string name="disabled">Отключен</string>
+
+    <string name="free">Свободен</string>
+    <string name="busy">Занят</string>
+
+    <string name="enable_gps">Включить GPS</string>
+    <string name="disable_gps">Отключить GPS</string>
+
+    <string name="gpsDisabledMessage">GPS-трекинг не разрешен. Разрешите доступ к GPS в настройках, чтобы продолжить</string>
+    <string name="loginFailMessage">Неверный номер водителя</string>
 </resources>

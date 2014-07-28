@@ -20,7 +20,7 @@ public class SettingsKeeper {
         SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString(key, value);
-        editor.commit();
+        editor.apply();
     }
 
     public void setSharedPreferences(String company_hash, String driver_id) {
@@ -28,11 +28,11 @@ public class SettingsKeeper {
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("company_hash", company_hash);
         editor.putString("driver_id", driver_id);
-        editor.commit();
+        editor.apply();
     }
 
     public void removeSharedPreferences() {
         SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
-        settings.edit().remove("driver_id").commit();
+        settings.edit().remove("driver_id").apply();
     }
 }

@@ -18,10 +18,6 @@ public class LoginActivity  extends ActionBarActivity {
 
         final AccountManager am = new AccountManager(LoginActivity.this);
 
-        if (am.isLoggedIn()) {
-            showMainActivity();
-        }
-
         final Button login = (Button) findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +39,6 @@ public class LoginActivity  extends ActionBarActivity {
     }
 
     private void showErrorMessage() {
-        Toast.makeText(this, "Wrong data.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.loginFailMessage), Toast.LENGTH_SHORT).show();
     }
 }

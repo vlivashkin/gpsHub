@@ -1,6 +1,6 @@
 package com.gpshub.settings;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.StrictMode;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -17,10 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountManager {
-    Activity activity;
+    private final String urlBase = "http://javafiddle.org/gpsHub/actions/drivers.php";
+    private Context context;
 
-    public AccountManager(Activity activity) {
-        this.activity = activity;
+    public AccountManager(Context context) {
+        this.context = context;
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -32,7 +33,7 @@ public class AccountManager {
         nameValuePairs.add(new BasicNameValuePair("id", driver_id));
         String paramString = URLEncodedUtils.format(nameValuePairs, "utf-8");
 
-        String url = "http://javafiddle.org/gpsHub/actions/drivers.php?" + paramString;
+        String url = urlBase + "?" + paramString;
         System.out.println(url);
 
         HttpClient httpclient = new DefaultHttpClient();
@@ -46,7 +47,7 @@ public class AccountManager {
             System.out.println(responseText);
 
             if ("OK".equals(responseText)) {
-                SettingsKeeper sk = new SettingsKeeper(activity);
+                SettingsKeeper sk = new SettingsKeeper(context);
                 sk.setSharedPreferences(company_hash, driver_id);
                 return true;
             }
@@ -58,7 +59,7 @@ public class AccountManager {
     }
 
     public boolean isLoggedIn() {
-        SettingsKeeper sk = new SettingsKeeper(activity);
+        SettingsKeeper sk = new SettingsKeeper(context);
         String company_hash = sk.getSharedPreference("company_hash");
         String driver_id = sk.getSharedPreference("driver_id");
 
@@ -67,6 +68,6 @@ public class AccountManager {
     }
 
     public void logout() {
-        new SettingsKeeper(activity).removeSharedPreferences();
+        new SettingsKeeper(context).removeSharedPreferences();
     }
 }

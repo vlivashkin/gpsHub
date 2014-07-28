@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+            android:title="Общие настройки"
+            android:key="pref_key_storage_settings">
+            <CheckBoxPreference
+                    android:key="pref_autoload"
+                    android:title="Автозапуск"
+                    android:summary="Приложение будет висеть в трее, даже если не запущено"
+                    android:defaultValue="true" />
+    </PreferenceCategory>
+</PreferenceScreen>

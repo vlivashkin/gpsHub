@@ -20,16 +20,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="ID водителя"
+                android:text="@string/driver_id"
                 android:id="@+id/textView" android:paddingTop="5dp" android:paddingBottom="4dp"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/driver_id"/>
+                android:id="@+id/driver_id"
+                android:inputType=""/>
         <Button
                 android:layout_width="132dp"
                 android:layout_height="wrap_content"
-                android:text="Войти"
+                android:text="@string/sign_in"
                 android:id="@+id/login" android:layout_gravity="right" android:textSize="20dp"/>
     </LinearLayout>
     <LinearLayout
