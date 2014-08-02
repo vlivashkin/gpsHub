@@ -1,6 +1,7 @@
 package com.gpshub.api;
 
 import android.content.Context;
+
 import com.gpshub.settings.SettingsKeeper;
 import com.gpshub.settings.TempSettings;
 import org.apache.http.NameValuePair;
@@ -28,22 +29,18 @@ public class DataProvider {
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(driversURL);
 
-        try {
-            SettingsKeeper sk = new SettingsKeeper(context);
-            String company_hash = sk.getSharedPreference("company_hash");
-            String driver_id = sk.getSharedPreference("driver_id");
+        SettingsKeeper sk = new SettingsKeeper(context);
+        String company_hash = sk.getSharedPreference("company_hash");
+        String driver_id = sk.getSharedPreference("driver_id");
 
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-            nameValuePairs.add(new BasicNameValuePair("company_hash", company_hash));
-            nameValuePairs.add(new BasicNameValuePair("id", driver_id));
-            nameValuePairs.add(new BasicNameValuePair("lat", Double.toString(lat)));
-            nameValuePairs.add(new BasicNameValuePair("lng", Double.toString(lng)));
-            nameValuePairs.add(new BasicNameValuePair("busy", Boolean.toString(TempSettings.getInstance().isBusy())));
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("company_hash", company_hash));
+        nameValuePairs.add(new BasicNameValuePair("id", driver_id));
+        nameValuePairs.add(new BasicNameValuePair("lat", Double.toString(lat)));
+        nameValuePairs.add(new BasicNameValuePair("lng", Double.toString(lng)));
+        nameValuePairs.add(new BasicNameValuePair("busy", Boolean.toString(TempSettings.getInstance().isBusy())));
+        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-            httpclient.execute(httppost);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        httpclient.execute(httppost);
     }
 }

@@ -39,28 +39,23 @@ public class GPSMonitor {
     public void start() {
         if (collecting)
             return;
-        locationManager.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER,
-                GPS_UPDATE_TIME,
-                GPS_UPDATE_DISTANCE,
-                _listener
-        );
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GPS_UPDATE_TIME, GPS_UPDATE_DISTANCE, _listener);
         collecting = true;
-        currentLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        currentLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
         System.out.println("GPSMonitor started.");
     }
 
     public void stop() {
         collecting = false;
         locationManager.removeUpdates(_listener);
-        System.out.println("GPSMonitor stopped.");
+        Log.d(TAG, "GPSMonitor stopped.");
     }
 
     private class Listener implements LocationListener {
 
         @Override
         public void onLocationChanged(Location location) {
-            Log.d(TAG, "onLocationChanged(): lat="+location.getLatitude() + ", long=" + location.getLongitude());
+            Log.d(TAG, "onLocationChanged(): lat="+location.getLatitude() + ", lng=" + location.getLongitude());
             currentLocation = location;
         }
 
@@ -71,12 +66,12 @@ public class GPSMonitor {
 
         @Override
         public void onProviderEnabled(String provider) {
-            Toast.makeText(context, "Gps turned on", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "GPS turned ON", Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void onProviderDisabled(String provider) {
-            Toast.makeText(context, "Gps turned off", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "GPS turned OFF", Toast.LENGTH_LONG).show();
         }
     }
 }

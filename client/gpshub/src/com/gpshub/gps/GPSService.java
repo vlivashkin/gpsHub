@@ -9,6 +9,8 @@ import android.location.Location;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.StrictMode;
+import android.widget.Toast;
+
 import com.gpshub.MainActivity;
 import com.gpshub.R;
 import com.gpshub.api.DataProvider;
@@ -26,7 +28,6 @@ public class GPSService extends Service {
 
     public class LocalBinder extends Binder {
         public GPSService getService() {
-            // Return this instance of LocalService so clients can call public methods
             return GPSService.this;
         }
     }
@@ -51,20 +52,20 @@ public class GPSService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        gps = new GPSMonitor(GPSService.this);
         startTimer();
-        System.out.println("service started.");
+        Toast.makeText(this, "gpsHub: Сервис запущен", Toast.LENGTH_LONG).show();
         return mBinder;
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
         stopTimer();
-        System.out.println("service stopped.");
+        Toast.makeText(this, "gpsHub: Сервис остановлен", Toast.LENGTH_LONG).show();
         return super.onUnbind(intent);
     }
 
     public void startTimer() {
+        gps = new GPSMonitor(GPSService.this);
         gps.start();
 
         TimerTask timerTask = new TimerTask() {
@@ -78,12 +79,11 @@ public class GPSService extends Service {
                     try {
                         dp.postLocation(latitude, longitude);
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        System.out.println("Data transfer error");
                     }
                 } else {
                     System.out.println("Location is null!");
                 }
-
             }
         };
 
@@ -99,25 +99,11 @@ public class GPSService extends Service {
     }
 
     private void showNotification() {
-        // In this sample, we'll use the same text for the ticker and the expanded notification
         CharSequence text = "Нажмите, чтобы открыть приложение.";
-
-        // Set the icon, scrolling text and timestamp
-        Notification notification = new Notification(R.drawable.ic_launcher, text,
-                System.currentTimeMillis());
-
+        Notification notification = new Notification(R.drawable.ic_launcher, text, System.currentTimeMillis());
         notification.flags = Notification.FLAG_ONGOING_EVENT;
-
-        // The PendingIntent to launch our activity if the user selects this notification
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivity.class), 0);
-
-        // Set the info for the views that show in the notification panel.
-        notification.setLatestEventInfo(this, "GPS-сервис работает",
-                text, contentIntent);
-
-        // Send the notification.
-        // We use a string id because it is a unique number.  We use it later to cancel.
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
+        notification.setLatestEventInfo(this, "GPS-сервис работает", text, contentIntent);
         mNM.notify(R.string.remote_service_started, notification);
     }
 }
