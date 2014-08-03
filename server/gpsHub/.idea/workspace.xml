@@ -26,7 +26,7 @@
       <file leaf-file-name="manager.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/actions/manager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="21" selection-start="338" selection-end="338" vertical-scroll-proportion="-0.0" vertical-offset="153" max-vertical-offset="1547">
+            <state line="9" column="21" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1547">
               <folding />
             </state>
           </provider>
@@ -35,7 +35,7 @@
       <file leaf-file-name="Drivers.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/Drivers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="60" selection-start="1398" selection-end="1398" vertical-scroll-proportion="6.730769" vertical-offset="1008" max-vertical-offset="1751">
+            <state line="49" column="60" selection-start="1398" selection-end="1398" vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="1751">
               <folding>
                 <marker date="1404893663073" expanded="true" signature="872:915" placeholder="SELECT * FRO..." />
                 <marker date="1404893663073" expanded="true" signature="1356:1427" placeholder="SELECT `driv..." />
@@ -74,7 +74,7 @@
       <file leaf-file-name="drivers.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/actions/drivers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="29" selection-start="1229" selection-end="1242" vertical-scroll-proportion="0.41535777" vertical-offset="527" max-vertical-offset="1445">
+            <state line="10" column="5" selection-start="173" selection-end="173" vertical-scroll-proportion="0.23734729" vertical-offset="34" max-vertical-offset="1445">
               <folding />
             </state>
           </provider>
@@ -176,10 +176,10 @@
         <option value="$PROJECT_DIR$/css/main.min.css" />
         <option value="$PROJECT_DIR$/less/list.less" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/actions/drivers.php" />
         <option value="$PROJECT_DIR$/js/map.js" />
         <option value="$PROJECT_DIR$/classes/DriverManager.php" />
         <option value="$PROJECT_DIR$/actions/manager.php" />
+        <option value="$PROJECT_DIR$/actions/drivers.php" />
       </list>
     </option>
   </component>
@@ -471,13 +471,13 @@
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32972136" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -501,9 +501,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/tests/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="33" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1071">
-          <folding />
-        </state>
+        <state line="23" column="33" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1071" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/Drivers.php">
@@ -721,9 +719,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="33" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1071">
-          <folding />
-        </state>
+        <state line="23" column="33" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1071" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/less/list.less">
@@ -777,7 +773,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/Drivers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="60" selection-start="1398" selection-end="1398" vertical-scroll-proportion="6.730769" vertical-offset="1008" max-vertical-offset="1751">
+        <state line="49" column="60" selection-start="1398" selection-end="1398" vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="1751">
           <folding>
             <marker date="1404893663073" expanded="true" signature="872:915" placeholder="SELECT * FRO..." />
             <marker date="1404893663073" expanded="true" signature="1356:1427" placeholder="SELECT `driv..." />
@@ -787,7 +783,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/actions/drivers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="29" selection-start="1229" selection-end="1242" vertical-scroll-proportion="0.41535777" vertical-offset="527" max-vertical-offset="1445">
+        <state line="10" column="5" selection-start="173" selection-end="173" vertical-scroll-proportion="0.23734729" vertical-offset="34" max-vertical-offset="1445">
           <folding />
         </state>
       </provider>

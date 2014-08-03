@@ -29,4 +29,5 @@
 
     <string name="gpsDisabledMessage">GPS-трекинг не разрешен. Разрешите доступ к GPS в настройках, чтобы продолжить</string>
     <string name="loginFailMessage">Неверный номер водителя</string>
+    <string name="connectionErrorMessage">Запрос не отправлен.\nПроверьте свое подключение к интернету</string>
 </resources>

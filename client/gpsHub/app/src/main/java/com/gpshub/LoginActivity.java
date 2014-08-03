@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.gpshub.settings.AccountManager;
 
+import java.io.IOException;
+
 public class LoginActivity  extends ActionBarActivity {
 
     @Override
@@ -23,9 +25,13 @@ public class LoginActivity  extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 EditText driverId = (EditText) findViewById(R.id.driver_id);
-                if (am.login("qwerty", driverId.getText().toString())) {
-                    showMainActivity();
-                } else {
+                try {
+                    if (am.login("qwerty", driverId.getText().toString())) {
+                        showMainActivity();
+                    } else {
+                        showWrongNumberMessage();
+                    }
+                } catch (IOException e) {
                     showErrorMessage();
                 }
             }
@@ -38,7 +44,11 @@ public class LoginActivity  extends ActionBarActivity {
         finish();
     }
 
-    private void showErrorMessage() {
+    private void showWrongNumberMessage() {
         Toast.makeText(this, getString(R.string.loginFailMessage), Toast.LENGTH_SHORT).show();
+    }
+
+    private void showErrorMessage() {
+        Toast.makeText(this, getString(R.string.connectionErrorMessage), Toast.LENGTH_LONG).show();
     }
 }

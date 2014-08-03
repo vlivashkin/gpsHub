@@ -36,6 +36,7 @@ public class DataProvider {
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("company_hash", company_hash));
         nameValuePairs.add(new BasicNameValuePair("id", driver_id));
+        nameValuePairs.add(new BasicNameValuePair("action", "post_location"));
         nameValuePairs.add(new BasicNameValuePair("lat", Double.toString(lat)));
         nameValuePairs.add(new BasicNameValuePair("lng", Double.toString(lng)));
         nameValuePairs.add(new BasicNameValuePair("busy", Boolean.toString(TempSettings.getInstance().isBusy())));

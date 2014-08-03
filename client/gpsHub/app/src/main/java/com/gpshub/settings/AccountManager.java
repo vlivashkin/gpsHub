@@ -27,7 +27,7 @@ public class AccountManager {
         StrictMode.setThreadPolicy(policy);
     }
 
-    public boolean login(String company_hash, String driver_id) {
+    public boolean login(String company_hash, String driver_id) throws IOException {
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("company_hash", company_hash));
         nameValuePairs.add(new BasicNameValuePair("id", driver_id));
@@ -39,20 +39,16 @@ public class AccountManager {
         HttpClient httpclient = new DefaultHttpClient();
         HttpGet httpget = new HttpGet(url);
 
-        try {
-            HttpResponse response = httpclient.execute(httpget);
+        HttpResponse response = httpclient.execute(httpget);
 
-            HttpEntity entity = response.getEntity();
-            String responseText = EntityUtils.toString(entity);
-            System.out.println(responseText);
+        HttpEntity entity = response.getEntity();
+        String responseText = EntityUtils.toString(entity);
+        System.out.println(responseText);
 
-            if ("OK".equals(responseText)) {
-                SettingsKeeper sk = new SettingsKeeper(context);
-                sk.setSharedPreferences(company_hash, driver_id);
-                return true;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        if ("OK".equals(responseText)) {
+            SettingsKeeper sk = new SettingsKeeper(context);
+            sk.setSharedPreferences(company_hash, driver_id);
+            return true;
         }
 
         return false;
