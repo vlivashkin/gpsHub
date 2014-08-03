@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../appcompat/appcompat.iml" filepath="$PROJECT_DIR$/../appcompat/appcompat.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gpshub.iml" filepath="$PROJECT_DIR$/gpshub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gpsHub.iml" filepath="$PROJECT_DIR$/gpsHub.iml" />
     </modules>
   </component>
 </project>
