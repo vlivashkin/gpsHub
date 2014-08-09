@@ -1,8 +1,11 @@
 package com.gpshub.api;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.StrictMode;
 import android.util.Log;
 
+import com.gpshub.utils.ContextHack;
 import com.gpshub.utils.Preferences;
 
 import org.apache.http.HttpEntity;
@@ -55,7 +58,7 @@ public class AccountManager {
         String driver_id = Preferences.getPreference("driver_id");
 
         Log.d("isLoggedIn", "server_url: " + server_url + ", driver_id: " + driver_id);
-        return server_url != null && driver_id != null;
+        return server_url != null && driver_id != null || tryMigration();
     }
 
     public static void logout() {
@@ -67,7 +70,17 @@ public class AccountManager {
         Log.d("logout", "");
     }
 
-    public static void migration() {
-        Preferences.
+    public static boolean tryMigration() {
+        Context context = ContextHack.getAppContext();
+        String PREFS_NAME = "gpshubprefs";
+        SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
+        String driverID = settings.getString("driver_id", null);
+        if (driverID != null) {
+            settings.edit().remove("driver_id").apply();
+            Preferences.setPreference("server_url", "http://javafiddle.org/gpsHub");
+            Preferences.setPreference("driver_id", driverID);
+            return true;
+        }
+        return false;
     }
 }

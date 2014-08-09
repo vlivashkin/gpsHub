@@ -24,8 +24,8 @@ android {
             minSdkVersion 9
             applicationId 'com.gpshub'
             targetSdkVersion 20
-            versionCode 7
-            versionName '1.05'
+            versionCode 8
+            versionName '1.1.8'
         }
     }
 }
