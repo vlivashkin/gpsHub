@@ -1,9 +1,7 @@
 package com.gpshub.api;
 
-import android.content.Context;
-
-import com.gpshub.settings.SettingsKeeper;
-import com.gpshub.settings.TempSettings;
+import com.gpshub.utils.Preferences;
+import com.gpshub.utils.TempSettings;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -16,25 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataProvider {
-    final String driversURL = "http://javafiddle.org/gpsHub/actions/drivers.php";
-    Context context;
-
-    public DataProvider(Context context) {
-        this.context = context;
-    }
 
     public void postLocation(double lat, double lng) throws IOException {
-        System.out.println("Send: lat: " + lat + ", lng: " + lng + " busy: " + TempSettings.getInstance().isBusy());
+        String url = Preferences.getPreference("server_url");
+        String driver_id = Preferences.getPreference("driver_id");
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost(driversURL);
-
-        SettingsKeeper sk = new SettingsKeeper(context);
-        String company_hash = sk.getSharedPreference("company_hash");
-        String driver_id = sk.getSharedPreference("driver_id");
+        HttpPost httppost = new HttpPost(url + "/actions/drivers.php");
 
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-        nameValuePairs.add(new BasicNameValuePair("company_hash", company_hash));
         nameValuePairs.add(new BasicNameValuePair("id", driver_id));
         nameValuePairs.add(new BasicNameValuePair("action", "post_location"));
         nameValuePairs.add(new BasicNameValuePair("lat", Double.toString(lat)));

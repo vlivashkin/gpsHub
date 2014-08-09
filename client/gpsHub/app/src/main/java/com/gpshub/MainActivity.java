@@ -16,8 +16,9 @@ import android.widget.Toast;
 
 import com.gpshub.api.DataProvider;
 import com.gpshub.gps.GPSServiceManager;
-import com.gpshub.settings.AccountManager;
-import com.gpshub.settings.TempSettings;
+import com.gpshub.api.AccountManager;
+import com.gpshub.utils.TempSettings;
+import com.gpshub.utils.ContextHack;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -28,8 +29,9 @@ public class MainActivity extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final AccountManager am = new AccountManager(MainActivity.this);
-        if (!am.isLoggedIn()) {
+        ContextHack.setAppContext(getApplicationContext());
+
+        if (!new AccountManager().isLoggedIn()) {
             Intent login = new Intent(this, LoginActivity.class);
             startActivity(login);
             finish();
@@ -39,7 +41,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.main);
 
         ts = TempSettings.getInstance();
-        dp = new DataProvider(MainActivity.this);
+        dp = new DataProvider();
 
         final TextView gpsStatus = (TextView) findViewById(R.id.gpsstatus);
         final TextView busyStatus = (TextView) findViewById(R.id.busystatus);
@@ -88,6 +90,10 @@ public class MainActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
+            case R.id.prefsbtn:
+                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intent);
+                return true;
             case R.id.logoutbtn:
                 final EditText input = new EditText(MainActivity.this);
                 input.setTransformationMethod(new PasswordTransformationMethod());
@@ -117,7 +123,7 @@ public class MainActivity extends ActionBarActivity {
     public void logout() {
         GPSServiceManager.stopService(this);
         TempSettings.getInstance().wipeData();
-        new AccountManager(MainActivity.this).logout();
+        new AccountManager().logout();
         Intent login = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(login);
     }

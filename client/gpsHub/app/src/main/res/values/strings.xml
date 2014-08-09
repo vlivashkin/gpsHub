@@ -5,7 +5,7 @@
 
     <string name="sign_in">Войти</string>
     <string name="sign_out">Выйти</string>
-    <string name="settings">Настройки</string>
+    <string name="preferences">Настройки</string>
 
     <string name="driver_id">ID водителя</string>
     <string name="status">Статус</string>
@@ -27,7 +27,7 @@
     <string name="enable_gps">Включить GPS</string>
     <string name="disable_gps">Отключить GPS</string>
 
-    <string name="gpsDisabledMessage">GPS-трекинг не разрешен. Разрешите доступ к GPS в настройках, чтобы продолжить</string>
-    <string name="loginFailMessage">Неверный номер водителя</string>
-    <string name="connectionErrorMessage">Запрос не отправлен.\nПроверьте свое подключение к интернету</string>
+    <string name="gps_disabled_message">GPS-трекинг не разрешен. Разрешите доступ к GPS в настройках, чтобы продолжить</string>
+    <string name="login_fail_message">Неверный номер водителя</string>
+    <string name="connection_error_message">Запрос не отправлен.\nПроверьте свое подключение к интернету</string>
 </resources>

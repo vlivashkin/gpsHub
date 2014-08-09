@@ -20,23 +20,16 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class GPSService extends Service {
-    private final IBinder mBinder = new LocalBinder();
+    private final IBinder mBinder = new Binder();
     NotificationManager mNM;
     private Timer timer;
     private GPSMonitor gps;
     private DataProvider dp;
 
-    public class LocalBinder extends Binder {
-        public GPSService getService() {
-            return GPSService.this;
-        }
-    }
-
     @Override
     public void onCreate() {
         mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        dp = new DataProvider(GPSService.this);
-        showNotification();
+        dp = new DataProvider();
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -46,13 +39,13 @@ public class GPSService extends Service {
 
     @Override
     public void onDestroy() {
-        mNM.cancel(R.string.remote_service_started);
         super.onDestroy();
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         startTimer();
+        showNotification();
         Toast.makeText(this, "gpsHub: Сервис запущен", Toast.LENGTH_LONG).show();
         return mBinder;
     }
@@ -60,6 +53,7 @@ public class GPSService extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         stopTimer();
+        hideNotification();
         Toast.makeText(this, "gpsHub: Сервис остановлен", Toast.LENGTH_LONG).show();
         return super.onUnbind(intent);
     }
@@ -105,5 +99,9 @@ public class GPSService extends Service {
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
         notification.setLatestEventInfo(this, "GPS-сервис работает", text, contentIntent);
         mNM.notify(R.string.remote_service_started, notification);
+    }
+
+    private void hideNotification() {
+        mNM.cancel(R.string.remote_service_started);
     }
 }

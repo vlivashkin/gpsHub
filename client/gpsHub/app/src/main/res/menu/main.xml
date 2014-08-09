@@ -3,6 +3,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:sabd="http://schemas.android.com/apk/res-auto" >
     <item
+            android:id="@+id/prefsbtn"
+            android:title="@string/preferences"
+            android:icon="@android:drawable/ic_menu_preferences"
+            sabd:showAsAction="collapseActionView" />
+    <item
             android:id="@+id/logoutbtn"
             android:title="@string/sign_out"
             android:icon="@android:drawable/ic_menu_close_clear_cancel"

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="server_urls">
+        <item>"http://client01.gpshub.ru"</item>
+        <item>"http://javafiddle.org/gpsHub"</item>
+    </string-array>
+</resources>

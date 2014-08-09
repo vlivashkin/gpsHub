@@ -1,4 +1,4 @@
-package com.gpshub.settings;
+package com.gpshub.utils;
 
 import android.content.ServiceConnection;
 
@@ -7,9 +7,6 @@ public class TempSettings {
     private ServiceConnection mConnection;
     private boolean gpsEnabled = false;
     private boolean isBusy = false;
-
-    private TempSettings() {
-    }
 
     public static synchronized TempSettings getInstance() {
         if (instance == null) {
