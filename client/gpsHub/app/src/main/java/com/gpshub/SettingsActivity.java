@@ -8,18 +8,19 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.support.v4.app.NavUtils;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.gpshub.utils.ContextHack;
+import com.gpshub.utils.ThemeUtils;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         ContextHack.setAppContext(getApplicationContext());
+        ThemeUtils.onActivityCreateSetTheme(this);
+        super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.preferences);
         if (Build.VERSION.SDK_INT >= 11) {
@@ -30,24 +31,29 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     protected void onResume() {
         super.onResume();
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     protected void onPause() {
         super.onPause();
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference connectionPref = findPreference(key);
         // Set summary to be the user-description for the selected value
         connectionPref.setSummary(sharedPreferences.getString(key, ""));
-        Log.d("rr", key);
-    }
+        if (key.equals("ui_theme")) {
+            ThemeUtils.changeTheme(this);
+        }
+     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -59,4 +65,5 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

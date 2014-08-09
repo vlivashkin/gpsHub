@@ -1,6 +1,7 @@
 package com.gpshub.api;
 
 import android.os.StrictMode;
+import android.util.Log;
 
 import com.gpshub.utils.Preferences;
 
@@ -19,12 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountManager {
-    public AccountManager() {
+    public static boolean login(String url, String driver_id) throws IOException {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-    }
 
-    public boolean login(String url, String driver_id) throws IOException {
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("company_hash", "qwerty"));
         nameValuePairs.add(new BasicNameValuePair("id", driver_id));
@@ -37,7 +36,7 @@ public class AccountManager {
 
         HttpEntity entity = response.getEntity();
         String responseText = EntityUtils.toString(entity);
-        System.out.println(responseText);
+        Log.d("login", responseText);
 
         if ("OK".equals(responseText)) {
             Preferences.setPreference("server_url", url);
@@ -48,16 +47,27 @@ public class AccountManager {
         return false;
     }
 
-    public boolean isLoggedIn() {
+    public static boolean isLoggedIn() {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         String server_url = Preferences.getPreference("server_url");
         String driver_id = Preferences.getPreference("driver_id");
 
-        System.out.println("server_url = " + server_url + ", driver_id = " + driver_id);
+        Log.d("isLoggedIn", "server_url: " + server_url + ", driver_id: " + driver_id);
         return server_url != null && driver_id != null;
     }
 
-    public void logout() {
-        Preferences.removePreference("server_url");
+    public static void logout() {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         Preferences.removePreference("driver_id");
+
+        Log.d("logout", "");
+    }
+
+    public static void migration() {
+        Preferences.
     }
 }

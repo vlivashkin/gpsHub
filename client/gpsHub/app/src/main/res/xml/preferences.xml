@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="ui_theme"
+        android:title="Тема приложения"
+        android:summary="Выбор темы приложения"
+        android:dialogTitle="Выбор темы"
+        android:entries="@array/ui_themes"
+        android:entryValues="@array/ui_themes"
+        android:defaultValue="Theme.AppCompat.Light"
+        />
     <PreferenceCategory
-        android:title="Системные настройки">
+        android:title="Настройки аккаунта">
         <ListPreference
             android:key="server_url"
             android:title="Сервер"
@@ -10,7 +19,7 @@
             android:dialogTitle="Выбор сервера"
             android:entries="@array/server_urls"
             android:entryValues="@array/server_urls"
-        />
+         />
         <EditTextPreference
             android:key="driver_id"
             android:title="ID водителя"

@@ -1,117 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:weightSum="1" android:padding="15dp">
-
+        android:layout_height="fill_parent"
+        android:weightSum="1"
+        android:padding="15dp">
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2">
-    </LinearLayout>
-
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="1"
-            android:paddingBottom="10dp"
-            android:layout_weight="0.3">
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/status"
-                android:id="@+id/textView"
-                android:layout_gravity="center_horizontal"
-                android:singleLine="false"
-                android:textSize="30sp"
-                android:paddingBottom="10dp"/>
-
-        <TableLayout
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_weight="0.6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.38">
-
-            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp">
+            <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/status"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="30sp"
+                    android:paddingBottom="7dp"/>
+            <TableLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                <TextView
-                        android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1">
+                    <TextView
+                        android:id="@+id/driver_id_label"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/gps_tracker"
-                        android:id="@+id/textView2"
+                        android:text="@string/driver_id"
                         android:layout_weight="0.5"
                         android:singleLine="true"
-                        android:textSize="23sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
+                        android:textSize="22sp"/>
+                    <TextView
+                        android:id="@+id/driver_id"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/disabled"
-                        android:layout_weight="0.5"
-                        android:id="@+id/gpsstatus"
-                        android:textSize="23sp"/>
-            </TableRow>
-
-            <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/tableRow">
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/driver_busy"
-                        android:id="@+id/textView4"
+                        android:text="@string/unknown"
                         android:layout_weight="0.5"
                         android:singleLine="true"
-                        android:textSize="23sp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
+                        android:textSize="22sp"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/free"
-                        android:layout_weight="0.5"
-                        android:id="@+id/busystatus"
-                        android:textSize="23sp"/>
-            </TableRow>
-
-        </TableLayout>
-
+                        android:weightSum="1">
+                    <TextView
+                            android:id="@+id/gps_status_label"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/gps_tracker"
+                            android:layout_weight="0.5"
+                            android:singleLine="true"
+                            android:textSize="22sp"/>
+                    <TextView
+                            android:id="@+id/gps_status"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/disabled"
+                            android:layout_weight="0.5"
+                            android:singleLine="true"
+                            android:textSize="22sp"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:weightSum="1">
+                    <TextView
+                            android:id="@+id/busy_status_label"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/driver_busy"
+                            android:layout_weight="0.5"
+                            android:singleLine="true"
+                            android:textSize="22sp"/>
+                    <TextView
+                            android:id="@+id/busy_status"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/free"
+                            android:layout_weight="0.5"
+                            android:singleLine="true"
+                            android:textSize="22sp"/>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:id="@+id/mainText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/action"
+                    android:layout_gravity="center_horizontal"
+                    android:singleLine="true" android:textSize="30sp"
+                    android:layout_marginBottom="7dp"/>
+            <Button
+                    android:layout_width="185dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/busy"
+                    android:id="@+id/busybtn"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="20sp"/>
+        </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/action"
-                android:id="@+id/mainText" android:layout_gravity="center_horizontal"
-                android:singleLine="true" android:textSize="30sp"
-                android:layout_marginBottom="10dp"
-                />
-        <Button
-                android:layout_width="185dp"
-                android:layout_height="wrap_content"
-                android:text="@string/busy"
-                android:id="@+id/busybtn"
-                android:layout_gravity="center_horizontal"
-                android:textSize="20sp"
-                android:layout_marginBottom="10dp"/>
-    </LinearLayout>
-
 </LinearLayout>

@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.gpshub.gps.GPSServiceManager;
+import com.gpshub.utils.GPSServiceManager;
 import com.gpshub.api.AccountManager;
 
 public class BootCompleteReceiver extends BroadcastReceiver {

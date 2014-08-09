@@ -1,7 +1,9 @@
 package com.gpshub.api;
 
+import android.util.Log;
+
 import com.gpshub.utils.Preferences;
-import com.gpshub.utils.TempSettings;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -14,20 +16,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataProvider {
-
-    public void postLocation(double lat, double lng) throws IOException {
-        String url = Preferences.getPreference("server_url");
+    public static void postLocation(double lat, double lng) throws IOException {
+        String url = Preferences.getPreference("server_url") + "/actions/drivers.php";
         String driver_id = Preferences.getPreference("driver_id");
+        String latString = Double.toString(lat);
+        String lngString = Double.toString(lng);
+        String busyString = Boolean.toString(Preferences.isBusy());
+
+        Log.d("postLocation", "url: " + url + ", id: " + driver_id);
+        Log.d("postLocation", "lat: " + latString + ", lng: " + lngString + ", busy: " + busyString);
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost(url + "/actions/drivers.php");
+        HttpPost httppost = new HttpPost(url);
 
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("id", driver_id));
         nameValuePairs.add(new BasicNameValuePair("action", "post_location"));
-        nameValuePairs.add(new BasicNameValuePair("lat", Double.toString(lat)));
-        nameValuePairs.add(new BasicNameValuePair("lng", Double.toString(lng)));
-        nameValuePairs.add(new BasicNameValuePair("busy", Boolean.toString(TempSettings.getInstance().isBusy())));
+        nameValuePairs.add(new BasicNameValuePair("lat", latString));
+        nameValuePairs.add(new BasicNameValuePair("lng", lngString));
+        nameValuePairs.add(new BasicNameValuePair("busy", busyString));
         httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
         httpclient.execute(httppost);

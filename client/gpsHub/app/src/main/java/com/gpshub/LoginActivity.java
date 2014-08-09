@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +13,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import com.gpshub.api.AccountManager;
 import com.gpshub.utils.ContextHack;
+import com.gpshub.utils.Preferences;
+import com.gpshub.utils.ThemeUtils;
 
 import java.io.IOException;
 
@@ -21,10 +22,9 @@ public class LoginActivity  extends ActionBarActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         ContextHack.setAppContext(getApplicationContext());
-
+        ThemeUtils.onActivityCreateSetTheme(this);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
         final SpinnerActivity sa = new SpinnerActivity();
@@ -34,14 +34,18 @@ public class LoginActivity  extends ActionBarActivity {
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(sa);
 
+        String url = Preferences.getPreference("server_url");
+        if (url != null) {
+            spinner.setSelection(adapter.getPosition(url));
+        }
+
         final Button login = (Button) findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditText driverId = (EditText) findViewById(R.id.driver_id);
                 try {
-                    Log.d("ee", sa.getUrl());
-                    if (new AccountManager().login(sa.getUrl(), driverId.getText().toString())) {
+                    if (AccountManager.login(sa.getUrl(), driverId.getText().toString())) {
                         showMainActivity();
                     } else {
                         showWrongNumberMessage();

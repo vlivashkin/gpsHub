@@ -7,6 +7,7 @@
     <string name="sign_out">Выйти</string>
     <string name="preferences">Настройки</string>
 
+    <string name="server">Сервер</string>
     <string name="driver_id">ID водителя</string>
     <string name="status">Статус</string>
     <string name="gps_tracker">GPS-трекинг</string>
@@ -20,6 +21,7 @@
 
     <string name="enabled">Включен</string>
     <string name="disabled">Отключен</string>
+    <string name="unknown">Неизвестен</string>
 
     <string name="free">Свободен</string>
     <string name="busy">Занят</string>

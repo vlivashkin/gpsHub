@@ -1,4 +1,4 @@
-package com.gpshub.gps;
+package com.gpshub;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -11,9 +11,8 @@ import android.os.IBinder;
 import android.os.StrictMode;
 import android.widget.Toast;
 
-import com.gpshub.MainActivity;
-import com.gpshub.R;
 import com.gpshub.api.DataProvider;
+import com.gpshub.gps.GPSMonitor;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -24,12 +23,10 @@ public class GPSService extends Service {
     NotificationManager mNM;
     private Timer timer;
     private GPSMonitor gps;
-    private DataProvider dp;
 
     @Override
     public void onCreate() {
         mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        dp = new DataProvider();
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -71,7 +68,7 @@ public class GPSService extends Service {
                     double longitude = location.getLongitude();
 
                     try {
-                        dp.postLocation(latitude, longitude);
+                        DataProvider.postLocation(latitude, longitude);
                     } catch (IOException e) {
                         System.out.println("Data transfer error");
                     }
@@ -92,6 +89,7 @@ public class GPSService extends Service {
         System.out.println("timer stopped.");
     }
 
+    @SuppressWarnings("deprecation")
     private void showNotification() {
         CharSequence text = "Нажмите, чтобы открыть приложение.";
         Notification notification = new Notification(R.drawable.ic_launcher, text, System.currentTimeMillis());

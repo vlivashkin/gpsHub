@@ -14,67 +14,42 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gpshub.api.DataProvider;
-import com.gpshub.gps.GPSServiceManager;
+import com.gpshub.utils.GPSServiceManager;
 import com.gpshub.api.AccountManager;
-import com.gpshub.utils.TempSettings;
+import com.gpshub.utils.Preferences;
 import com.gpshub.utils.ContextHack;
+import com.gpshub.utils.ThemeUtils;
 
 
 public class MainActivity extends ActionBarActivity {
-    TempSettings ts;
-    DataProvider dp;
+    AlertDialog ad;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        ContextHack.setAppContext(getApplicationContext());
+        ThemeUtils.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
 
-        ContextHack.setAppContext(getApplicationContext());
-
-        if (!new AccountManager().isLoggedIn()) {
+        if (!AccountManager.isLoggedIn()) {
             Intent login = new Intent(this, LoginActivity.class);
             startActivity(login);
             finish();
             return;
         }
 
-        setContentView(R.layout.main);
-
-        ts = TempSettings.getInstance();
-        dp = new DataProvider();
-
-        final TextView gpsStatus = (TextView) findViewById(R.id.gpsstatus);
-        final TextView busyStatus = (TextView) findViewById(R.id.busystatus);
-        final Button busyBtn = (Button) findViewById(R.id.busybtn);
-
-        gpsStatus.setText(getString(ts.isGpsEnabled() ? R.string.enabled : R.string.disabled));
-
-        if (ts.isBusy()) {
-            busyStatus.setText(getString(R.string.busy));
-            busyBtn.setText(getString(R.string.free));
-        } else {
-            busyStatus.setText(getString(R.string.free));
-            busyBtn.setText(getString(R.string.busy));
-        }
-
-        if (!ts.isGpsEnabled()) {
+        if (!Preferences.isGpsEnabled()) {
             GPSServiceManager.startService(this);
-            gpsStatus.setText(getString(R.string.enabled));
-            ts.setGpsEnabled(true);
+            Preferences.setGpsEnabled(true);
         }
 
+        setContentView(R.layout.main);
+        restoreLabels();
+
+        Button busyBtn = (Button) findViewById(R.id.busybtn);
         busyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!ts.isBusy()) {
-                    busyStatus.setText(getString(R.string.busy));
-                    busyBtn.setText(getString(R.string.free));
-                    ts.setBusy(true);
-                } else {
-                    busyStatus.setText(getString(R.string.free));
-                    busyBtn.setText(getString(R.string.busy));
-                    ts.setBusy(false);
-                }
+                toggleBusy();
             }
         });
     }
@@ -88,42 +63,89 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
             case R.id.prefsbtn:
-                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(intent);
+                buildDialog("Настройки", "Введите мастер-пароль для изменения настроек:", R.id.prefsbtn);
                 return true;
             case R.id.logoutbtn:
-                final EditText input = new EditText(MainActivity.this);
-                input.setTransformationMethod(new PasswordTransformationMethod());
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Выход из аккаунта")
-                        .setMessage("Введите мастер-пароль для выхода:")
-                        .setView(input)
-                        .setPositiveButton("ОК", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                String value = input.getText().toString();
-                                if (value.equals("qwerty"))
-                                    logout();
-                                else
-                                    Toast.makeText(MainActivity.this, "Неверный мастер-пароль", Toast.LENGTH_LONG).show();
-                            }
-                        }).setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        //nothing
-                    }
-                }).show();
+                buildDialog("Выход из аккаунта", "Введите мастер-пароль для выхода:", R.id.logoutbtn);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    private void restoreLabels() {
+        TextView idStatus = (TextView) findViewById(R.id.driver_id);
+        TextView gpsStatus = (TextView) findViewById(R.id.gps_status);
+        TextView busyStatus = (TextView) findViewById(R.id.busy_status);
+        Button busyBtn = (Button) findViewById(R.id.busybtn);
+
+        idStatus.setText(Preferences.getPreference("driver_id"));
+        gpsStatus.setText(getString(Preferences.isGpsEnabled() ? R.string.enabled : R.string.disabled));
+
+        if (Preferences.isBusy()) {
+            busyStatus.setText(getString(R.string.busy));
+            busyBtn.setText(getString(R.string.free));
+        } else {
+            busyStatus.setText(getString(R.string.free));
+            busyBtn.setText(getString(R.string.busy));
+        }
+    }
+
+    private void toggleBusy() {
+        final TextView busyStatus = (TextView) findViewById(R.id.busy_status);
+        final Button busyBtn = (Button) findViewById(R.id.busybtn);
+
+        if (!Preferences.isBusy()) {
+            busyStatus.setText(getString(R.string.busy));
+            busyBtn.setText(getString(R.string.free));
+            Preferences.setBusy(true);
+        } else {
+            busyStatus.setText(getString(R.string.free));
+            busyBtn.setText(getString(R.string.busy));
+            Preferences.setBusy(false);
+        }
+    }
+
+    private void buildDialog(String title, String message, final int method) {
+        final EditText input = new EditText(MainActivity.this);
+        input.setTransformationMethod(new PasswordTransformationMethod());
+        ad = new AlertDialog.Builder(MainActivity.this)
+                .setTitle(title)
+                .setMessage(message)
+                .setView(input)
+                .setPositiveButton("ОК", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String value = input.getText().toString();
+                        if (value.equals("qwerty"))
+                            switch (method) {
+                                case R.id.prefsbtn:
+                                    showPreferences();
+                                    break;
+                                case R.id.logoutbtn:
+                                    logout();
+                                    break;
+                            }
+                        else
+                            Toast.makeText(MainActivity.this, "Неверный мастер-пароль", Toast.LENGTH_LONG).show();
+                    }
+                }).setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //nothing
+            }
+        }).show();
+    }
+
+    public void showPreferences() {
+        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        startActivity(intent);
+    }
+
     public void logout() {
         GPSServiceManager.stopService(this);
-        TempSettings.getInstance().wipeData();
-        new AccountManager().logout();
+        Preferences.wipeTempSettings();
+        AccountManager.logout();
         Intent login = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(login);
     }
