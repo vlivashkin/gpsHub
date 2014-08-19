@@ -47,7 +47,7 @@ class Drivers
         require_once('SQLConfig.php');
         $sqlconfig = new SQLConfig();
         $mysqli = $sqlconfig->getMysqli();
-        $query = "SELECT `driver_id`, `lat`, `lng`, `busy`, `last_activity` FROM `driver`";
+        $query = "SELECT `driver_id`, `lat`, `lng`, `busy`, `vehicle_num`, `last_activity` FROM `driver`";
         $drivers = [];
         if ($result = $mysqli->query($query)) {
             while ($row = $result->fetch_assoc()) {
@@ -56,6 +56,7 @@ class Drivers
                     "lat" => $row["lat"],
                     "lng" => $row["lng"],
                     "busy" => $row["busy"],
+                    "number" => $row["vehicle_num"],
                     "last_activity" => $row["last_activity"]
                 ]);
             }

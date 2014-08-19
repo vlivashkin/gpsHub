@@ -30,8 +30,8 @@ class DriverManager {
             `name` = '" . $data['name'] . "',
             `alias` = '" . $data['alias'] . "',
             `phone_number` = '" . $data['phone_number'] . "',
-            `vehile_num` = '" . $data['vehile_num'] . "',
-            `vehile_description` = '" . $data['vehile_description'] . "'
+            `vehicle_num` = '" . $data['vehicle_num'] . "',
+            `vehicle_description` = '" . $data['vehicle_description'] . "'
              WHERE `driver_id` = " . $id;
         $mysqli->query($query);
         return true;

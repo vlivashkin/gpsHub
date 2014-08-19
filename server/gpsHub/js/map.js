@@ -27,8 +27,8 @@ function initMap() {
         ],
         projection: 'EPSG:3857',
         view: new ol.View2D({
-            center: ol.proj.transform([37.61778, 55.75167], 'EPSG:4326', 'EPSG:3857'),
-            zoom: 11
+            center: ol.proj.transform([38.457470, 55.786079], 'EPSG:4326', 'EPSG:3857'),
+            zoom: 12
         })
     });
 
@@ -137,7 +137,7 @@ function getList() {
 }
 
 function addDriverToList(driver) {
-    var heading_text = driver.name != undefined ? driver.name + '<br>' + driver.vehile_num : "Нет информации <br> Id: " + driver.driver_id;
+    var heading_text = driver.name != undefined ? driver.name + '<br>' + driver.vehicle_num : "Нет информации <br> Id: " + driver.driver_id;
 
     var properties = [];
     properties.push({name : "Id", value : driver.driver_id});
@@ -147,8 +147,8 @@ function addDriverToList(driver) {
     if (driver.phone_number != undefined && driver.phone_number != "") {
         properties.push({name : 'Номер телефона', value : driver.phone_number});
     }
-    if (driver.vehile_description != undefined && driver.vehile_description != "") {
-        properties.push({name : 'Описание машины', value : driver.vehile_description});
+    if (driver.vehicle_description != undefined && driver.vehicle_description != "") {
+        properties.push({name : 'Описание машины', value : driver.vehicle_description});
     }
     properties.push({name : "Последняя активность", value : "Нет информации", classname : "last-activity"});
 
@@ -233,6 +233,7 @@ function getDriversLocation() {
                     else
                         movePoint(driver.id, driver.lat, driver.lng, driver.busy);
                     drivers[driver.id].last_activity = driver.last_activity;
+                    drivers[driver.id].number = driver.number;
                 });
             }
             updateOnlineStatuses(data.time);
@@ -274,7 +275,13 @@ function movePoint(id, lat, lon, busy) {
 
     drivers[id].busy = busy;
     var iconStyle = new ol.style.Style({
-        image: icon("online", busy)
+        image: icon("online", busy),
+        text: new ol.style.Text({
+            font: '12px Calibri,sans-serif',
+            text: drivers[id].number,
+            fill: new ol.style.Fill({color: '#333'}),
+            stroke: new ol.style.Stroke({color: '#eee', width: 4})
+        })
     });
     drivers[id].setStyle(iconStyle);
 }
@@ -303,12 +310,18 @@ function updateOnlineStatuses(now) {
                     break;
             }
         }
-        var a = moment(drivers[id].last_activity, "X");
-        var b = moment(now, "X");
-        $("#driver-" + id + " .last-activity").text(a.from(b));
+        var a = moment(drivers[id].last_activity, "X").format("dd, DD MMM, hh:mm");
+        $("#driver-" + id + " .last-activity").text(a);
 
         var iconStyle = new ol.style.Style({
-            image: icon(status, drivers[id].busy)
+            image: icon(status, drivers[id].busy),
+            text: new ol.style.Text({
+                font: '12px Calibri,sans-serif',
+                text: drivers[id].number,
+                fill: new ol.style.Fill({color: '#333'}),
+                stroke: new ol.style.Stroke({color: '#eee', width: 4})
+            })
+
         });
         drivers[id].setStyle(iconStyle);
     });
@@ -319,7 +332,7 @@ function icon(online, busy) {
         anchor: [0.5, 38],
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
-        opacity: 0.75,
+        opacity: 0.85,
         src: 'img/taxi-' + busy + '-' + online + '.svg',
         size: [36, 38]
     })

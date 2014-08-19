@@ -3,8 +3,8 @@ function buildModal(id) {
     $("#modify-name").val("");
     $("#modify-alias").val("");
     $("#modify-phone").val("");
-    $("#modify-vehile-num").val("");
-    $("#modify-vehile-description").val("");
+    $("#modify-vehicle-num").val("");
+    $("#modify-vehicle-description").val("");
     $("#modal-delete").unbind('click');
     $("#modal-save").unbind('click');
     $("#modal-confirm-msg").hide();
@@ -23,8 +23,8 @@ function buildModal(id) {
             $("#modify-name").val(data.name);
             $("#modify-alias").val(data.alias);
             $("#modify-phone").val(data.phone_number);
-            $("#modify-vehile-num").val(data.vehile_num);
-            $("#modify-vehile-description").val(data.vehile_description);
+            $("#modify-vehicle-num").val(data.vehicle_num);
+            $("#modify-vehicle-description").val(data.vehicle_description);
             $("#modal-delete").click(function() {
                 deleteDriver(data.driver_id);
                 return false;
@@ -55,8 +55,8 @@ function modifyDriver(id) {
             name: $("#modify-name").val(),
             alias: $("#modify-alias").val(),
             phone_number: $("#modify-phone").val(),
-            vehile_num: $("#modify-vehile-num").val(),
-            vehile_description: $("#modify-vehile-description").val()
+            vehicle_num: $("#modify-vehicle-num").val(),
+            vehicle_description: $("#modify-vehicle-description").val()
         },
         dataType: 'json',
         complete: function (data) {

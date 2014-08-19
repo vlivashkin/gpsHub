@@ -103,15 +103,15 @@ if (!$user->isLoggedIn())
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label" for="modify-vehile-num">Номер машины:</label>
+                        <label class="col-sm-3 control-label" for="modify-vehicle-num">Номер машины:</label>
                         <div class="col-sm-9">
-                            <input id="modify-vehile-num" class="form-control">
+                            <input id="modify-vehicle-num" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label" for="modify-vehile-description">Описание машины:</label>
+                        <label class="col-sm-3 control-label" for="modify-vehicle-description">Описание машины:</label>
                         <div class="col-sm-9">
-                            <textarea id="modify-vehile-description" class="form-control"></textarea>
+                            <textarea id="modify-vehicle-description" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
