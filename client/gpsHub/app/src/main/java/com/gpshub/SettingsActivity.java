@@ -48,7 +48,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     @SuppressWarnings("deprecation")
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference connectionPref = findPreference(key);
-        // Set summary to be the user-description for the selected value
         connectionPref.setSummary(sharedPreferences.getString(key, ""));
         if (key.equals("ui_theme")) {
             ThemeUtils.changeTheme(this);

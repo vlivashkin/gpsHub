@@ -66,9 +66,10 @@ public class GPSService extends Service {
                 if (location != null) {
                     double latitude = location.getLatitude();
                     double longitude = location.getLongitude();
+                    double accuracy = location.getAccuracy();
 
                     try {
-                        DataProvider.postLocation(latitude, longitude);
+                        DataProvider.postLocation(latitude, longitude, accuracy);
                     } catch (IOException e) {
                         System.out.println("Data transfer error");
                     }

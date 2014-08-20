@@ -3,12 +3,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:sabd="http://schemas.android.com/apk/res-auto" >
     <item
-            android:id="@+id/prefsbtn"
+            android:id="@+id/menuitem_nigthmode"
+            android:title="@string/nightmode"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:checkable="true"
+            sabd:showAsAction="collapseActionView"/>
+    <item
+            android:id="@+id/menuitem_prefs"
             android:title="@string/preferences"
             android:icon="@android:drawable/ic_menu_preferences"
-            sabd:showAsAction="collapseActionView" />
+            sabd:showAsAction="collapseActionView"/>
     <item
-            android:id="@+id/logoutbtn"
+            android:id="@+id/menuitem_logout"
             android:title="@string/sign_out"
             android:icon="@android:drawable/ic_menu_close_clear_cancel"
             sabd:showAsAction="collapseActionView" />

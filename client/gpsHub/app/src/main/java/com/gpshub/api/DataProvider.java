@@ -16,15 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataProvider {
-    public static void postLocation(double lat, double lng) throws IOException {
+    public static void postLocation(double lat, double lng, double acc) throws IOException {
         String url = Preferences.getPreference("server_url") + "/actions/drivers.php";
         String driver_id = Preferences.getPreference("driver_id");
         String latString = Double.toString(lat);
         String lngString = Double.toString(lng);
+        String accString = Double.toString(acc);
         String busyString = Boolean.toString(Preferences.isBusy());
 
         Log.d("postLocation", "url: " + url + ", id: " + driver_id);
-        Log.d("postLocation", "lat: " + latString + ", lng: " + lngString + ", busy: " + busyString);
+        Log.d("postLocation", "lat: " + latString + ", lng: " + lngString + ", acc: " + accString + ", busy: " + busyString);
 
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(url);
@@ -34,6 +35,7 @@ public class DataProvider {
         nameValuePairs.add(new BasicNameValuePair("action", "post_location"));
         nameValuePairs.add(new BasicNameValuePair("lat", latString));
         nameValuePairs.add(new BasicNameValuePair("lng", lngString));
+        nameValuePairs.add(new BasicNameValuePair("acc", accString));
         nameValuePairs.add(new BasicNameValuePair("busy", busyString));
         httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 

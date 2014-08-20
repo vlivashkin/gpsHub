@@ -3,7 +3,6 @@
     <string-array name="ui_themes">
         <item>"Theme.AppCompat"</item>
         <item>"Theme.AppCompat.Light"</item>
-        <item>"Theme.AppCompat.Light.DarkActionBar"</item>
     </string-array>
     <string-array name="server_urls">
         <item>"http://client01.gpshub.ru"</item>

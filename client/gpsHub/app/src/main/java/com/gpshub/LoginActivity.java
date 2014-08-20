@@ -1,24 +1,25 @@
 package com.gpshub;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.AdapterView;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-import com.gpshub.api.AccountManager;
+import com.gpshub.api.Login;
 import com.gpshub.utils.ContextHack;
 import com.gpshub.utils.Preferences;
+import com.gpshub.utils.SpinnerActivity;
 import com.gpshub.utils.ThemeUtils;
 
-import java.io.IOException;
-
 public class LoginActivity  extends ActionBarActivity {
+    Activity activity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,20 +40,16 @@ public class LoginActivity  extends ActionBarActivity {
             spinner.setSelection(adapter.getPosition(url));
         }
 
+        activity = this;
         final Button login = (Button) findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressBar();
                 EditText driverId = (EditText) findViewById(R.id.driver_id);
-                try {
-                    if (AccountManager.login(sa.getUrl(), driverId.getText().toString())) {
-                        showMainActivity();
-                    } else {
-                        showWrongNumberMessage();
-                    }
-                } catch (IOException e) {
-                    showErrorMessage();
-                }
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(driverId.getWindowToken(), 0);
+                new Login(activity).execute(sa.getUrl(), driverId.getText().toString());
             }
         });
     }
@@ -70,22 +67,9 @@ public class LoginActivity  extends ActionBarActivity {
     private void showErrorMessage() {
         Toast.makeText(this, getString(R.string.connection_error_message), Toast.LENGTH_LONG).show();
     }
-}
 
-class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
-    private String url;
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        url = parent.getItemAtPosition(pos).toString();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        url = null;
-    }
-
-    public String getUrl() {
-        return url;
+    private void showProgressBar() {
+        findViewById(R.id.login_layout).setVisibility(View.GONE);
+        findViewById(R.id.login_progress).setVisibility(View.VISIBLE);
     }
 }

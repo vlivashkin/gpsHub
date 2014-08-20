@@ -58,17 +58,27 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+        String theme = Preferences.getPreference("ui_theme", ThemeUtils.THEME_LIGHT);
+        menu.findItem(R.id.menuitem_nigthmode).setChecked(theme.equals(ThemeUtils.THEME_DARK));
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.prefsbtn:
-                buildDialog("Настройки", "Введите мастер-пароль для изменения настроек:", R.id.prefsbtn);
+            case R.id.menuitem_nigthmode:
+                if (!item.isChecked()) {
+                    Preferences.setPreference("ui_theme", ThemeUtils.THEME_DARK);
+                } else {
+                    Preferences.setPreference("ui_theme", ThemeUtils.THEME_LIGHT);
+                }
+                ThemeUtils.changeTheme(this);
+                return super.onOptionsItemSelected(item);
+            case R.id.menuitem_prefs:
+                buildDialog("Настройки", "Введите мастер-пароль для изменения настроек:", R.id.menuitem_prefs);
                 return true;
-            case R.id.logoutbtn:
-                buildDialog("Выход из аккаунта", "Введите мастер-пароль для выхода:", R.id.logoutbtn);
+            case R.id.menuitem_logout:
+                buildDialog("Выход из аккаунта", "Введите мастер-пароль для выхода:", R.id.menuitem_logout);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -120,10 +130,10 @@ public class MainActivity extends ActionBarActivity {
                         String value = input.getText().toString();
                         if (value.equals("qwerty"))
                             switch (method) {
-                                case R.id.prefsbtn:
+                                case R.id.menuitem_prefs:
                                     showPreferences();
                                     break;
-                                case R.id.logoutbtn:
+                                case R.id.menuitem_logout:
                                     logout();
                                     break;
                             }

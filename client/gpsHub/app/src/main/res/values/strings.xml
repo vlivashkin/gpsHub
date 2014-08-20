@@ -7,6 +7,8 @@
     <string name="sign_out">Выйти</string>
     <string name="preferences">Настройки</string>
 
+    <string name="nightmode">Ночной режим</string>
+
     <string name="server">Сервер</string>
     <string name="driver_id">ID водителя</string>
     <string name="status">Статус</string>

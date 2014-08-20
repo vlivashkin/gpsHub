@@ -24,13 +24,14 @@ android {
             minSdkVersion 9
             applicationId 'com.gpshub'
             targetSdkVersion 20
-            versionCode 8
-            versionName '1.1.8'
+            versionCode 9
+            versionName '1.1.9'
         }
     }
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:20+'
-    compile 'com.android.support:appcompat-v7:20+'
+    compile 'com.android.support:support-v4:20.0.0'
+    compile 'com.android.support:appcompat-v7:20.0.0'
+    compile 'com.google.android.gms:play-services:5.2.08'
 }
