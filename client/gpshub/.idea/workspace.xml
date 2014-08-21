@@ -72,9 +72,11 @@
       <file leaf-file-name="GpsService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gpshub/service/GpsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="944" max-vertical-offset="1326">
-              <caret line="61" column="38" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="689" max-vertical-offset="1326">
+              <caret line="87" column="23" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="23" />
+              <folding>
+                <element signature="e#2187#2219#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -124,8 +126,8 @@
       <file leaf-file-name="Tracker.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gpshub/gps/Tracker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.3468013" vertical-offset="0" max-vertical-offset="1224">
-              <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.4006734" vertical-offset="850" max-vertical-offset="1224">
+              <caret line="62" column="50" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="50" />
               <folding>
                 <element signature="e#1426#1427#0" expanded="true" />
                 <element signature="e#1464#1465#0" expanded="true" />
@@ -1379,7 +1381,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gpshub/Gpshub.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gpshub/ContextHack.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gpshub/settings/SettingsKeeper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gpshub/settings/TempSettings.java" />
@@ -1430,6 +1431,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/gpshub/service/GPSService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gpshub/gps/GpsProviderListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gpshub/gps/Tracker.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gpshub/service/GpsService.java" />
       </list>
     </option>
   </component>
@@ -2508,16 +2510,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gpshub/service/GpsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="944" max-vertical-offset="1326">
-          <caret line="61" column="38" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="689" max-vertical-offset="1326">
+          <caret line="87" column="23" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="23" />
+          <folding>
+            <element signature="e#2187#2219#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gpshub/gps/Tracker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.3468013" vertical-offset="0" max-vertical-offset="1224">
-          <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.4006734" vertical-offset="850" max-vertical-offset="1224">
+          <caret line="62" column="50" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="50" />
           <folding>
             <element signature="e#1426#1427#0" expanded="true" />
             <element signature="e#1464#1465#0" expanded="true" />
