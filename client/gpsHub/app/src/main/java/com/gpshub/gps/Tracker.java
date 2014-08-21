@@ -1,17 +1,15 @@
 package com.gpshub.gps;
 
-import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-public class GPSMonitor {
+public class Tracker {
+    private static final String TAG = Tracker.class.getSimpleName();
 
-    private static final String TAG = GPSMonitor.class.getSimpleName();
     private static final long GPS_UPDATE_TIME = 1000;  // 1 sec;
     private static final float GPS_UPDATE_DISTANCE = 2;  // 2 meters
     private final LocationManager locationManager;
@@ -19,21 +17,12 @@ public class GPSMonitor {
     Context context;
 
     private Location currentLocation = null;
-    private final LocationListener _listener = new Listener();
+    private final LocationListener _listener = new GpsProviderListener();
 
 
-    public GPSMonitor(Context context) {
+    public Tracker(Context context) {
         this.context = context;
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-    }
-
-    public static boolean isGPSEnabled(Activity activity) {
-        LocationManager locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-    }
-
-    public Location getCurrentLocation() {
-        return currentLocation;
     }
 
     public void start() {
@@ -42,7 +31,7 @@ public class GPSMonitor {
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GPS_UPDATE_TIME, GPS_UPDATE_DISTANCE, _listener);
         collecting = true;
         currentLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
-        System.out.println("GPSMonitor started.");
+        Log.d(TAG, "GPSMonitor started.");
     }
 
     public void stop() {
@@ -51,11 +40,15 @@ public class GPSMonitor {
         Log.d(TAG, "GPSMonitor stopped.");
     }
 
-    private class Listener implements LocationListener {
+    public Location getCurrentLocation() {
+        return currentLocation;
+    }
+
+    private class GpsProviderListener implements LocationListener {
 
         @Override
         public void onLocationChanged(Location location) {
-            Log.d(TAG, "onLocationChanged(): lat="+location.getLatitude() + ", lng=" + location.getLongitude());
+            Log.d(TAG, "location changed: lat="+location.getLatitude() + ", lng=" + location.getLongitude());
             currentLocation = location;
         }
 
@@ -66,12 +59,14 @@ public class GPSMonitor {
 
         @Override
         public void onProviderEnabled(String provider) {
-            Toast.makeText(context, "GPS turned ON", Toast.LENGTH_LONG).show();
+            locationManager.removeUpdates(_listener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GPS_UPDATE_TIME, GPS_UPDATE_DISTANCE, _listener);
+            Log.i(TAG, "gps turned on; reload");
         }
 
         @Override
         public void onProviderDisabled(String provider) {
-            Toast.makeText(context, "GPS turned OFF", Toast.LENGTH_LONG).show();
+            Log.i(TAG, "gps turned off");
         }
     }
 }

@@ -1,7 +1,8 @@
 package com.gpshub;
 
 import android.app.AlertDialog;
-import android.content.*;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.method.PasswordTransformationMethod;
@@ -9,21 +10,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gpshub.utils.GPSServiceManager;
 import com.gpshub.api.AccountManager;
-import com.gpshub.utils.Preferences;
+import com.gpshub.service.GpsServiceManager;
 import com.gpshub.utils.ContextHack;
+import com.gpshub.utils.Preferences;
 import com.gpshub.utils.ThemeUtils;
 
 
 public class MainActivity extends ActionBarActivity {
-    AlertDialog ad;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         ContextHack.setAppContext(getApplicationContext());
@@ -37,11 +35,6 @@ public class MainActivity extends ActionBarActivity {
             return;
         }
 
-        if (!Preferences.isGpsEnabled()) {
-            GPSServiceManager.startService(this);
-            Preferences.setGpsEnabled(true);
-        }
-
         setContentView(R.layout.main);
         restoreLabels();
 
@@ -52,6 +45,10 @@ public class MainActivity extends ActionBarActivity {
                 toggleBusy();
             }
         });
+
+        if (!GpsServiceManager.isServiceRunning(this)) {
+            GpsServiceManager.startService(this);
+        }
     }
 
 
@@ -92,7 +89,7 @@ public class MainActivity extends ActionBarActivity {
         Button busyBtn = (Button) findViewById(R.id.busybtn);
 
         idStatus.setText(Preferences.getPreference("driver_id"));
-        gpsStatus.setText(getString(Preferences.isGpsEnabled() ? R.string.enabled : R.string.disabled));
+        gpsStatus.setText(getString(GpsServiceManager.isServiceRunning(this) ? R.string.enabled : R.string.disabled));
 
         if (Preferences.isBusy()) {
             busyStatus.setText(getString(R.string.busy));
@@ -121,26 +118,28 @@ public class MainActivity extends ActionBarActivity {
     private void buildDialog(String title, String message, final int method) {
         final EditText input = new EditText(MainActivity.this);
         input.setTransformationMethod(new PasswordTransformationMethod());
-        ad = new AlertDialog.Builder(MainActivity.this)
-                .setTitle(title)
-                .setMessage(message)
-                .setView(input)
-                .setPositiveButton("ОК", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        String value = input.getText().toString();
-                        if (value.equals("qwerty"))
-                            switch (method) {
-                                case R.id.menuitem_prefs:
-                                    showPreferences();
-                                    break;
-                                case R.id.menuitem_logout:
-                                    logout();
-                                    break;
-                            }
-                        else
-                            Toast.makeText(MainActivity.this, "Неверный мастер-пароль", Toast.LENGTH_LONG).show();
+        AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this);
+        ad.setTitle(title);
+        ad.setMessage(message);
+        ad.setView(input);
+        ad.setPositiveButton("ОК", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String value = input.getText().toString();
+                if (value.equals("qwerty")) {
+                    switch (method) {
+                        case R.id.menuitem_prefs:
+                            showPreferences();
+                            break;
+                        case R.id.menuitem_logout:
+                            logout();
+                            break;
                     }
-                }).setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+                } else {
+                    Toast.makeText(MainActivity.this, "Неверный мастер-пароль", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        ad.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //nothing
             }
@@ -153,7 +152,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void logout() {
-        GPSServiceManager.stopService(this);
+        GpsServiceManager.stopService(this);
         Preferences.wipeTempSettings();
         AccountManager.logout();
         Intent login = new Intent(MainActivity.this, LoginActivity.class);

@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataProvider {
+    private static final String TAG = DataProvider.class.getSimpleName();
+
     public static void postLocation(double lat, double lng, double acc) throws IOException {
         String url = Preferences.getPreference("server_url") + "/actions/drivers.php";
         String driver_id = Preferences.getPreference("driver_id");
@@ -24,8 +26,8 @@ public class DataProvider {
         String accString = Double.toString(acc);
         String busyString = Boolean.toString(Preferences.isBusy());
 
-        Log.d("postLocation", "url: " + url + ", id: " + driver_id);
-        Log.d("postLocation", "lat: " + latString + ", lng: " + lngString + ", acc: " + accString + ", busy: " + busyString);
+        Log.d(TAG, "url: " + url + ", id: " + driver_id);
+        Log.d(TAG, "lat: " + latString + ", lng: " + lngString + ", acc: " + accString + ", busy: " + busyString);
 
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(url);

@@ -1,7 +1,6 @@
 package com.gpshub.api;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -27,6 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Login extends AsyncTask<String, Void, Boolean> {
+    private static final String TAG = DataProvider.class.getSimpleName();
+
     Activity context;
 
     public Login(Activity con) {
@@ -48,11 +49,10 @@ public class Login extends AsyncTask<String, Void, Boolean> {
 
         try {
             HttpResponse response = httpclient.execute(httpget);
-
             HttpEntity entity = response.getEntity();
             String responseText = EntityUtils.toString(entity);
 
-            Log.d("login", responseText);
+            Log.i(TAG, "login result: " + responseText);
 
             if ("OK".equals(responseText)) {
                 Preferences.setPreference("server_url", url);
