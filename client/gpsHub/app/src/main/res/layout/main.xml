@@ -11,7 +11,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center_vertical"
-        android:layout_weight="0.7"
+        android:layout_weight="0.6"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp">
             <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/stateHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -39,20 +39,18 @@
                         android:id="@+id/driver_id_label"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="@string/driver_id"
                         android:layout_weight="0.5"
-                        android:singleLine="true"
-                        android:textSize="22sp"/>
+                        android:singleLine="true"/>
                     <TextView
                         android:id="@+id/driver_id"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="@string/unknown"
                         android:layout_weight="0.5"
-                        android:singleLine="true"
-                        android:textSize="22sp"/>
+                        android:singleLine="true"/>
                 </TableRow>
                 <TableRow
                         android:layout_width="fill_parent"
@@ -62,20 +60,18 @@
                             android:id="@+id/gps_status_label"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/gps_tracker"
                             android:layout_weight="0.5"
-                            android:singleLine="true"
-                            android:textSize="22sp"/>
+                            android:singleLine="true"/>
                     <TextView
                             android:id="@+id/gps_status"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/disabled"
                             android:layout_weight="0.5"
-                            android:singleLine="true"
-                            android:textSize="22sp"/>
+                            android:singleLine="true"/>
                 </TableRow>
                 <TableRow
                         android:layout_width="fill_parent"
@@ -85,20 +81,18 @@
                             android:id="@+id/busy_status_label"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/driver_busy"
                             android:layout_weight="0.5"
-                            android:singleLine="true"
-                            android:textSize="22sp"/>
+                            android:singleLine="true"/>
                     <TextView
                             android:id="@+id/busy_status"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/free"
                             android:layout_weight="0.5"
-                            android:singleLine="true"
-                            android:textSize="22sp"/>
+                            android:singleLine="true"/>
                 </TableRow>
             </TableLayout>
         </LinearLayout>
@@ -107,7 +101,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
             <TextView
-                    android:id="@+id/mainText"
+                    android:id="@+id/actionsHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -116,12 +110,12 @@
                     android:singleLine="true" android:textSize="30sp"
                     android:layout_marginBottom="7dp"/>
             <Button
+                    android:id="@+id/busyBtn"
                     android:layout_width="185dp"
                     android:layout_height="wrap_content"
                     android:text="@string/busy"
-                    android:id="@+id/busybtn"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="20sp"/>
+                    style="?android:attr/textAppearanceMedium"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

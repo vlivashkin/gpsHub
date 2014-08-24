@@ -1,4 +1,4 @@
-package com.gpshub.gps;
+package com.gpshub.service.gps;
 
 import android.content.Context;
 import android.location.Location;
@@ -7,8 +7,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
-public class Tracker {
-    private static final String TAG = Tracker.class.getSimpleName();
+public class LocationTracker {
+    private static final String TAG = LocationTracker.class.getSimpleName();
 
     private static final long GPS_UPDATE_TIME = 1000;  // 1 sec;
     private static final float GPS_UPDATE_DISTANCE = 2;  // 2 meters
@@ -20,7 +20,7 @@ public class Tracker {
     private final LocationListener _listener = new GpsProviderListener();
 
 
-    public Tracker(Context context) {
+    public LocationTracker(Context context) {
         this.context = context;
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
     }
@@ -59,9 +59,7 @@ public class Tracker {
 
         @Override
         public void onProviderEnabled(String provider) {
-            locationManager.removeUpdates(_listener);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GPS_UPDATE_TIME, GPS_UPDATE_DISTANCE, _listener);
-            Log.i(TAG, "gps turned on; reload");
+            Log.i(TAG, "gps turned on");
         }
 
         @Override

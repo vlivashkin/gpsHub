@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">gpsHub</string>
-    <string name="remote_service_started">remote_service_started</string>
 
     <string name="sign_in">Войти</string>
     <string name="sign_out">Выйти</string>

@@ -6,8 +6,8 @@
         android:title="Тема приложения"
         android:summary="Выбор темы приложения"
         android:dialogTitle="Выбор темы"
-        android:entries="@array/ui_themes"
-        android:entryValues="@array/ui_themes"
+        android:entries="@array/ui_themes_names"
+        android:entryValues="@array/ui_themes_values"
         android:defaultValue="Theme.AppCompat.Light"
         />
     <PreferenceCategory

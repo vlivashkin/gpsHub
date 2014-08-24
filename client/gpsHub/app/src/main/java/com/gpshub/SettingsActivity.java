@@ -10,8 +10,9 @@ import android.preference.PreferenceActivity;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
+import com.gpshub.service.ServiceManager;
 import com.gpshub.utils.ContextHack;
-import com.gpshub.utils.ThemeUtils;
+import com.gpshub.ui.ThemeUtils;
 
 @SuppressWarnings("deprecation")
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
@@ -32,22 +33,27 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
     @Override
     protected void onResume() {
-        super.onResume();
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        ServiceManager.getInstance().bindService(this);
+        super.onResume();
     }
 
     @Override
     protected void onPause() {
-        super.onPause();
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+        ServiceManager.getInstance().unbindService(this);
+        super.onPause();
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference connectionPref = findPreference(key);
         connectionPref.setSummary(sharedPreferences.getString(key, ""));
+
         if (key.equals("ui_theme")) {
             ThemeUtils.changeTheme(this);
+        } else if (key.equals("server_url") || key.equals("driver_id")) {
+            ServiceManager.getInstance().sendMessage(this, key, sharedPreferences.getString(key, ""));
         }
      }
 

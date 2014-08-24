@@ -6,28 +6,37 @@ import android.app.Service;
 import android.content.Intent;
 import android.location.Location;
 import android.os.IBinder;
+import android.os.Messenger;
 import android.util.Log;
 
 import com.gpshub.MainActivity;
 import com.gpshub.R;
 import com.gpshub.api.DataProvider;
-import com.gpshub.gps.Tracker;
+import com.gpshub.service.gps.LocationTracker;
 
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GpsService extends Service {
-    private static final String TAG = GpsService.class.getSimpleName();
+public class LocationService extends Service {
+    private static final String TAG = LocationService.class.getSimpleName();
+
+    private Messenger msg = new Messenger(new RequestHandler());
 
     private Timer timer;
-    private Tracker gpsTracker;
+    private LocationTracker locationTracker;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        ServiceTempPrefs stp = ServiceTempPrefs.getInstance();
+        stp.setServerURL(intent.getStringExtra("server_url"));
+        stp.setDriverID(intent.getStringExtra("driver_id"));
+        stp.setBusy(intent.getBooleanExtra("busy", false));
+
         showNotification();
         startTimer();
         Log.i(TAG, "Service started");
+
         return Service.START_NOT_STICKY;
     }
 
@@ -40,24 +49,25 @@ public class GpsService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return msg.getBinder();
     }
 
     public void startTimer() {
-        gpsTracker = new Tracker(this);
-        gpsTracker.start();
+        locationTracker = new LocationTracker(this);
+        locationTracker.start();
 
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                Location location = gpsTracker.getCurrentLocation();
+                Location location = locationTracker.getCurrentLocation();
                 if (location != null) {
                     double latitude = location.getLatitude();
                     double longitude = location.getLongitude();
                     double accuracy = location.getAccuracy();
 
                     try {
-                        DataProvider.postLocation(latitude, longitude, accuracy);
+                        ServiceTempPrefs stp = ServiceTempPrefs.getInstance();
+                        DataProvider.postLocation(stp.getServerURL(), stp.getDriverID(), latitude, longitude, accuracy, stp.isBusy());
                     } catch (IOException e) {
                         Log.e(TAG, "Data transfer error");
                     }
@@ -74,7 +84,7 @@ public class GpsService extends Service {
 
     public void stopTimer() {
         timer.cancel();
-        gpsTracker.stop();
+        locationTracker.stop();
         Log.d(TAG, "timer stopped.");
     }
 

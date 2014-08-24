@@ -1,4 +1,4 @@
-package com.gpshub.utils;
+package com.gpshub.ui;
 
 import android.app.Activity;
 import android.view.View;

@@ -13,8 +13,8 @@ import android.widget.Spinner;
 import com.gpshub.api.Login;
 import com.gpshub.utils.ContextHack;
 import com.gpshub.utils.Preferences;
-import com.gpshub.utils.SpinnerActivity;
-import com.gpshub.utils.ThemeUtils;
+import com.gpshub.ui.SpinnerActivity;
+import com.gpshub.ui.ThemeUtils;
 
 public class LoginActivity  extends ActionBarActivity {
     @Override
@@ -31,7 +31,7 @@ public class LoginActivity  extends ActionBarActivity {
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(sa);
 
-        String url = Preferences.getPreference("server_url");
+        String url = Preferences.getServerUrl();
         if (url != null) {
             spinner.setSelection(adapter.getPosition(url));
         }

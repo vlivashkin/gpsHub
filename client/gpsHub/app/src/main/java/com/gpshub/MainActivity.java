@@ -15,11 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gpshub.api.AccountManager;
-import com.gpshub.service.GpsServiceManager;
+import com.gpshub.service.ServiceManager;
 import com.gpshub.utils.ContextHack;
 import com.gpshub.utils.Preferences;
-import com.gpshub.utils.ThemeUtils;
-
+import com.gpshub.ui.Theme;
+import com.gpshub.ui.ThemeUtils;
 
 public class MainActivity extends ActionBarActivity {
     @Override
@@ -29,34 +29,43 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         if (!AccountManager.isLoggedIn()) {
-            Intent login = new Intent(this, LoginActivity.class);
-            startActivity(login);
-            finish();
+            switchToLoginActivity();
             return;
+        }
+
+        if (!ServiceManager.getInstance().isServiceRunning(this)) {
+            ServiceManager.getInstance().startService(this);
         }
 
         setContentView(R.layout.main);
         restoreLabels();
 
-        Button busyBtn = (Button) findViewById(R.id.busybtn);
+        Button busyBtn = (Button) findViewById(R.id.busyBtn);
         busyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 toggleBusy();
             }
         });
-
-        if (!GpsServiceManager.isServiceRunning(this)) {
-            GpsServiceManager.startService(this);
-        }
     }
 
+    @Override
+    protected void onResume() {
+        ServiceManager.getInstance().bindService(this);
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        ServiceManager.getInstance().unbindService(this);
+        super.onPause();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        String theme = Preferences.getPreference("ui_theme", ThemeUtils.THEME_LIGHT);
-        menu.findItem(R.id.menuitem_nigthmode).setChecked(theme.equals(ThemeUtils.THEME_DARK));
+        Theme theme = Preferences.getUiTheme();
+        menu.findItem(R.id.menuitem_nigthmode).setChecked(theme == Theme.THEME_DARK);
         return true;
     }
 
@@ -64,11 +73,7 @@ public class MainActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuitem_nigthmode:
-                if (!item.isChecked()) {
-                    Preferences.setPreference("ui_theme", ThemeUtils.THEME_DARK);
-                } else {
-                    Preferences.setPreference("ui_theme", ThemeUtils.THEME_LIGHT);
-                }
+                Preferences.setUiTheme(item.isChecked() ? Theme.THEME_LIGHT :Theme.THEME_DARK);
                 ThemeUtils.changeTheme(this);
                 return super.onOptionsItemSelected(item);
             case R.id.menuitem_prefs:
@@ -82,14 +87,22 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
+    private void toggleBusy() {
+        Boolean busy = !Preferences.isBusy();
+        Preferences.setBusy(busy);
+        ServiceManager.getInstance().sendMessage(this, "busy", busy.toString());
+        restoreLabels();
+    }
+
     private void restoreLabels() {
         TextView idStatus = (TextView) findViewById(R.id.driver_id);
         TextView gpsStatus = (TextView) findViewById(R.id.gps_status);
         TextView busyStatus = (TextView) findViewById(R.id.busy_status);
-        Button busyBtn = (Button) findViewById(R.id.busybtn);
+        Button busyBtn = (Button) findViewById(R.id.busyBtn);
 
-        idStatus.setText(Preferences.getPreference("driver_id"));
-        gpsStatus.setText(getString(GpsServiceManager.isServiceRunning(this) ? R.string.enabled : R.string.disabled));
+        String driverID = Preferences.getDriverID();
+        idStatus.setText(driverID);
+        gpsStatus.setText(getString(ServiceManager.getInstance().isServiceRunning(this) ? R.string.enabled : R.string.disabled));
 
         if (Preferences.isBusy()) {
             busyStatus.setText(getString(R.string.busy));
@@ -97,21 +110,6 @@ public class MainActivity extends ActionBarActivity {
         } else {
             busyStatus.setText(getString(R.string.free));
             busyBtn.setText(getString(R.string.busy));
-        }
-    }
-
-    private void toggleBusy() {
-        final TextView busyStatus = (TextView) findViewById(R.id.busy_status);
-        final Button busyBtn = (Button) findViewById(R.id.busybtn);
-
-        if (!Preferences.isBusy()) {
-            busyStatus.setText(getString(R.string.busy));
-            busyBtn.setText(getString(R.string.free));
-            Preferences.setBusy(true);
-        } else {
-            busyStatus.setText(getString(R.string.free));
-            busyBtn.setText(getString(R.string.busy));
-            Preferences.setBusy(false);
         }
     }
 
@@ -146,16 +144,21 @@ public class MainActivity extends ActionBarActivity {
         }).show();
     }
 
+    public void logout() {
+        ServiceManager.getInstance().stopService(this);
+        Preferences.wipeTempSettings();
+        AccountManager.logout();
+        switchToLoginActivity();
+    }
+
+    public void switchToLoginActivity() {
+        Intent login = new Intent(this, LoginActivity.class);
+        startActivity(login);
+        finish();
+    }
+
     public void showPreferences() {
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
         startActivity(intent);
-    }
-
-    public void logout() {
-        GpsServiceManager.stopService(this);
-        Preferences.wipeTempSettings();
-        AccountManager.logout();
-        Intent login = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(login);
     }
 }

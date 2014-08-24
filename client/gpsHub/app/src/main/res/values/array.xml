@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="ui_themes">
+    <string-array name="ui_themes_names">
         <item>"Theme.AppCompat"</item>
         <item>"Theme.AppCompat.Light"</item>
     </string-array>
+    <string-array name="ui_themes_values">
+        <item>"THEME_DARK"</item>
+        <item>"THEME_LIGHT"</item>
+    </string-array>
     <string-array name="server_urls">
         <item>"http://client01.gpshub.ru"</item>
-        <item>"http://javafiddle.org/gpsHub"</item>
+        <item>"http://test.gpshub.ru"</item>
     </string-array>
 </resources>

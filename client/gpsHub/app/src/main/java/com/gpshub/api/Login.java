@@ -25,8 +25,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Login extends AsyncTask<String, Void, Boolean> {
-    private static final String TAG = DataProvider.class.getSimpleName();
+public class Login extends AsyncTask<String, Void, Integer> {
+    private static final String TAG = Login.class.getSimpleName();
+    private static final int RESULT_SUCCESS = 1;
+    private static final int RESULT_WRONG_NUMBER = 2;
+    private static final int RESULT_ERROR = 3;
+
 
     Activity context;
 
@@ -35,7 +39,7 @@ public class Login extends AsyncTask<String, Void, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(String... strings) {
+    protected Integer doInBackground(String... strings) {
         String url = strings[0];
         String driver_id = strings[1];
 
@@ -55,24 +59,31 @@ public class Login extends AsyncTask<String, Void, Boolean> {
             Log.i(TAG, "login result: " + responseText);
 
             if ("OK".equals(responseText)) {
-                Preferences.setPreference("server_url", url);
-                Preferences.setPreference("driver_id", driver_id);
-                return true;
+                Preferences.setServerUrl(url);
+                Preferences.setDriverID(driver_id);
+                return RESULT_SUCCESS;
             }
         } catch (IOException e) {
-            showErrorMessage();
+            return RESULT_ERROR;
         }
 
-        return false;
+        return RESULT_WRONG_NUMBER;
     }
 
     @Override
-    protected void onPostExecute(Boolean success) {
-        if (success) {
-            showMainActivity();
-        } else {
-            hideProgressBar();
-            showWrongNumberMessage();
+    protected void onPostExecute(Integer result) {
+        switch (result) {
+            case RESULT_SUCCESS:
+                showMainActivity();
+                break;
+            case RESULT_WRONG_NUMBER:
+                hideProgressBar();
+                Toast.makeText(context, context.getString(R.string.login_fail_message), Toast.LENGTH_SHORT).show();
+                break;
+            case RESULT_ERROR:
+                hideProgressBar();
+                Toast.makeText(context, context.getString(R.string.connection_error_message), Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
@@ -80,14 +91,6 @@ public class Login extends AsyncTask<String, Void, Boolean> {
         Intent main = new Intent(context, MainActivity.class);
         context.startActivity(main);
         context.finish();
-    }
-
-    private void showWrongNumberMessage() {
-        Toast.makeText(context, context.getString(R.string.login_fail_message), Toast.LENGTH_SHORT).show();
-    }
-
-    private void showErrorMessage() {
-        Toast.makeText(context, context.getString(R.string.connection_error_message), Toast.LENGTH_LONG).show();
     }
 
     private void hideProgressBar() {
