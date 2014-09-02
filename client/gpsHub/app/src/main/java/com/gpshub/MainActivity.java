@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,12 +15,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.flurry.android.FlurryAgent;
 import com.gpshub.api.AccountManager;
 import com.gpshub.service.ServiceManager;
-import com.gpshub.utils.ContextHack;
-import com.gpshub.utils.Preferences;
 import com.gpshub.ui.Theme;
 import com.gpshub.ui.ThemeUtils;
+import com.gpshub.utils.AppConstants;
+import com.gpshub.utils.ContextHack;
+import com.gpshub.utils.Preferences;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends ActionBarActivity {
     @Override
@@ -45,8 +51,29 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 toggleBusy();
+                FlurryAgent.logEvent("ToggleBusy");
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FlurryAgent.onStartSession(this, AppConstants.FLURRY_API_KEY);
+        FlurryAgent.setLogEnabled(true);
+        FlurryAgent.setLogEvents(true);
+        FlurryAgent.setLogLevel(Log.VERBOSE);
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("url", Preferences.getServerUrl());
+        map.put("id", Preferences.getDriverID());
+        FlurryAgent.logEvent("Account", map);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        FlurryAgent.onEndSession(this);
     }
 
     @Override
@@ -73,14 +100,17 @@ public class MainActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuitem_nigthmode:
-                Preferences.setUiTheme(item.isChecked() ? Theme.THEME_LIGHT :Theme.THEME_DARK);
+                Preferences.setUiTheme(item.isChecked() ? Theme.THEME_LIGHT : Theme.THEME_DARK);
                 ThemeUtils.changeTheme(this);
+                FlurryAgent.logEvent("ToggleThemeClick");
                 return super.onOptionsItemSelected(item);
             case R.id.menuitem_prefs:
                 buildDialog("Настройки", "Введите мастер-пароль для изменения настроек:", R.id.menuitem_prefs);
+                FlurryAgent.logEvent("TrySettingsClick");
                 return true;
             case R.id.menuitem_logout:
                 buildDialog("Выход из аккаунта", "Введите мастер-пароль для выхода:", R.id.menuitem_logout);
+                FlurryAgent.logEvent("TryLogoutClick");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -127,9 +157,11 @@ public class MainActivity extends ActionBarActivity {
                     switch (method) {
                         case R.id.menuitem_prefs:
                             showPreferences();
+                            FlurryAgent.logEvent("ShowSettings");
                             break;
                         case R.id.menuitem_logout:
                             logout();
+                            FlurryAgent.logEvent("Logout");
                             break;
                     }
                 } else {

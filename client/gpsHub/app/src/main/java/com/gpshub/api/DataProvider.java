@@ -23,8 +23,8 @@ public class DataProvider {
         String accString = Double.toString(acc);
         String busyString = Boolean.toString(busy);
 
-        Log.d(TAG, "url: " + url + ", id: " + driverID);
-        Log.d(TAG, "lat: " + latString + ", lng: " + lngString + ", acc: " + accString + ", busy: " + busyString);
+        Log.v(TAG, "url: " + url + ", id: " + driverID);
+        Log.v(TAG, "lat: " + latString + ", lng: " + lngString + ", acc: " + accString + ", busy: " + busyString);
 
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(url);
