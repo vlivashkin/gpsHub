@@ -24,9 +24,9 @@ public class Preferences {
     }
 
     public static Boolean isBusy() {
-        String result = getPreference("is_busy");
+        Boolean result = Boolean.valueOf(getPreference("is_busy", "false"));
         if (result != null) {
-            return Boolean.valueOf(result);
+            return result;
         } else {
             return false;
         }
@@ -37,21 +37,43 @@ public class Preferences {
     }
 
     public static Theme getUiTheme() {
-        String result = getPreference("ui_theme");
-        if (result != null) {
-            Theme theme = Theme.valueOf(result);
-            if (theme != null) {
-                return theme;
-            } else {
-                return Theme.THEME_LIGHT;
-            }
+        Theme theme = Theme.getTheme(getPreference("ui_theme"));
+        if (theme != null) {
+            return theme;
         } else {
             return Theme.THEME_LIGHT;
         }
     }
 
     public static void setUiTheme(Theme theme) {
-        setPreference("ui_theme", theme.toString());
+        setPreference("ui_theme", theme.getName());
+    }
+
+    public static Long getSendPeriod() {
+        Long period = Long.valueOf(getPreference("send_period", "2000"));
+        if (period != null) {
+            return period;
+        } else {
+            return (long) 2000;
+        }
+    }
+
+    public static Long getUpdateTime() {
+        Long time = Long.valueOf(getPreference("update_time", "1000"));
+        if (time != null) {
+            return time;
+        } else {
+            return (long) 1000;
+        }
+    }
+
+    public static Float getUpdateDistance() {
+        Float distance = Float.valueOf(getPreference("update_distance", "2"));
+        if (distance != null) {
+            return distance;
+        } else {
+            return (float) 2;
+        }
     }
 
     public static void wipeAccountSettings() {
@@ -97,4 +119,6 @@ public class Preferences {
         }
         return false;
     }
+
+
 }

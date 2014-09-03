@@ -37,6 +37,21 @@
             android:layout_height="wrap_content"
             style="?android:attr/textAppearanceLarge"/>
         <TextView
+            android:id="@+id/password_text"
+            android:text="@string/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="4dp"
+            style="?android:attr/textAppearanceLarge"/>
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"/>
+        <TextView
             android:id="@+id/driver_id_text"
             android:text="@string/driver_id"
             android:layout_width="wrap_content"

@@ -1,11 +1,9 @@
 package com.gpshub.service;
 
-public class ServiceTempPrefs {
-    private static ServiceTempPrefs instance;
+import java.util.HashMap;
 
-    private String serverURL;
-    private String driverID;
-    private Boolean busy;
+public class ServiceTempPrefs extends HashMap<String, Object> {
+    private static ServiceTempPrefs instance;
 
     private ServiceTempPrefs() {
     }
@@ -18,26 +16,26 @@ public class ServiceTempPrefs {
     }
 
     public String getServerURL() {
-        return serverURL;
-    }
-
-    public void setServerURL(String serverURL) {
-        this.serverURL = serverURL;
+        return get("server_url").toString();
     }
 
     public String getDriverID() {
-        return driverID;
-    }
-
-    public void setDriverID(String driverID) {
-        this.driverID = driverID;
+        return get("driver_id").toString();
     }
 
     public Boolean isBusy() {
-        return busy;
+        return Boolean.valueOf(get("busy").toString());
     }
 
-    public void setBusy(Boolean busy) {
-        this.busy = busy;
+    public Long getSendPeriod() {
+        return Long.valueOf(get("send_period").toString());
+    }
+
+    public Long getUpdateTime() {
+        return Long.valueOf(get("update_time").toString());
+    }
+
+    public Float getUpdateDistance() {
+        return Float.valueOf(get("update_distance").toString());
     }
 }

@@ -21,4 +21,14 @@ public enum Theme {
     public int getResource() {
         return resource;
     }
+
+    public static Theme getTheme(String name) {
+        if (name != null) {
+            if (name.equals(THEME_LIGHT.getName()))
+                return THEME_LIGHT;
+            else if (name.equals(THEME_DARK.getName()))
+                return THEME_DARK;
+        }
+        return null;
+    }
 }

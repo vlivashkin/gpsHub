@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.text.method.PasswordTransformationMethod;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -54,6 +54,10 @@ public class MainActivity extends ActionBarActivity {
                 FlurryAgent.logEvent("ToggleBusy");
             }
         });
+
+        if (getIntent().getBooleanExtra("show_settings", false)) {
+            showPreferences();
+        }
     }
 
     @Override
@@ -145,7 +149,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void buildDialog(String title, String message, final int method) {
         final EditText input = new EditText(MainActivity.this);
-        input.setTransformationMethod(new PasswordTransformationMethod());
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this);
         ad.setTitle(title);
         ad.setMessage(message);
@@ -153,7 +157,7 @@ public class MainActivity extends ActionBarActivity {
         ad.setPositiveButton("ОК", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String value = input.getText().toString();
-                if (value.equals("qwerty")) {
+                if (value.equals(AppConstants.PASSWORD)) {
                     switch (method) {
                         case R.id.menuitem_prefs:
                             showPreferences();

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">gpsHub</string>
+
+    <string name="sign_in">Войти</string>
+    <string name="sign_out">Выйти</string>
+    <string name="preferences">Настройки</string>
+
+    <string name="nightmode">Ночной режим</string>
+
+    <string name="server">Сервер</string>
+    <string name="password">Пароль</string>
+    <string name="driver_id">ID водителя</string>
+    <string name="status">Статус</string>
+    <string name="gps_tracker">GPS-трекинг</string>
+    <string name="driver_busy">Водитель занят</string>
+
+    <string name="action">Действия</string>
+    <string name="gpsSettings">Настройки GPS</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="enabled">Включен</string>
+    <string name="disabled">Отключен</string>
+    <string name="unknown">Неизвестен</string>
+
+    <string name="free">Свободен</string>
+    <string name="busy">Занят</string>
+
+    <string name="enable_gps">Включить GPS</string>
+    <string name="disable_gps">Отключить GPS</string>
+
+    <string name="gps_disabled_message">GPS-трекинг не разрешен. Разрешите доступ к GPS в настройках, чтобы продолжить</string>
+    <string name="login_fail_message">Неверный номер водителя</string>
+    <string name="connection_error_message">Запрос не отправлен.\nПроверьте свое подключение к интернету</string>
+    <string name="wrong_password_message">Неверный пароль</string>
+</resources>

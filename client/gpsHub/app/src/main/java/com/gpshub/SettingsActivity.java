@@ -2,7 +2,7 @@ package com.gpshub;
 
 import android.app.ActionBar;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.*;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -11,8 +11,10 @@ import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
 import com.gpshub.service.ServiceManager;
-import com.gpshub.utils.ContextHack;
 import com.gpshub.ui.ThemeUtils;
+import com.gpshub.utils.ContextHack;
+
+import java.util.Map;
 
 @SuppressWarnings("deprecation")
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
@@ -28,6 +30,15 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
             ActionBar actionBar = getActionBar();
             if (actionBar != null)
                 actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        Map<String, ?> prefs = getPreferenceScreen().getSharedPreferences().getAll();
+        for (Map.Entry<String, ?> entry : prefs.entrySet()) {
+            Preference connectionPref = findPreference(entry.getKey());
+            Object value = entry.getValue();
+            if (connectionPref != null && value != null) {
+                connectionPref.setSummary(value.toString());
+            }
         }
     }
 
@@ -51,8 +62,10 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
         connectionPref.setSummary(sharedPreferences.getString(key, ""));
 
         if (key.equals("ui_theme")) {
-            ThemeUtils.changeTheme(this);
-        } else if (key.equals("server_url") || key.equals("driver_id")) {
+            ThemeUtils.changeTheme(this, true);
+        } else if (key.equals("update_time") || key.equals("update_distance") || key.equals("send_period")) {
+            ServiceManager.getInstance().restartService(this);
+        } else {
             ServiceManager.getInstance().sendMessage(this, key, sharedPreferences.getString(key, ""));
         }
      }

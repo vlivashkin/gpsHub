@@ -29,9 +29,11 @@ public class LocationService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         ServiceTempPrefs stp = ServiceTempPrefs.getInstance();
-        stp.setServerURL(intent.getStringExtra("server_url"));
-        stp.setDriverID(intent.getStringExtra("driver_id"));
-        stp.setBusy(intent.getBooleanExtra("busy", false));
+
+        String[] keys = {"server_url", "driver_id", "busy", "send_period", "update_time", "update_distance"};
+        for (String key : keys) {
+            stp.put(key, intent.getStringExtra(key));
+        }
 
         showNotification();
         startTimer();
@@ -77,8 +79,10 @@ public class LocationService extends Service {
             }
         };
 
+        Long sendPeriod = ServiceTempPrefs.getInstance().getSendPeriod();
+
         timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 2 * 1000);
+        timer.scheduleAtFixedRate(timerTask, 0, sendPeriod);
         Log.d(TAG, "timer started.");
     }
 

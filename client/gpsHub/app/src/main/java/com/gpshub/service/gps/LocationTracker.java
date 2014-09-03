@@ -7,28 +7,29 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.gpshub.service.ServiceTempPrefs;
+
 public class LocationTracker {
     private static final String TAG = LocationTracker.class.getSimpleName();
 
-    private static final long GPS_UPDATE_TIME = 1000;  // 1 sec;
-    private static final float GPS_UPDATE_DISTANCE = 2;  // 2 meters
     private final LocationManager locationManager;
     private boolean collecting = false;
-    Context context;
 
     private Location currentLocation = null;
     private final LocationListener _listener = new GpsProviderListener();
 
 
     public LocationTracker(Context context) {
-        this.context = context;
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
     }
 
     public void start() {
         if (collecting)
             return;
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GPS_UPDATE_TIME, GPS_UPDATE_DISTANCE, _listener);
+
+        long updateTime = ServiceTempPrefs.getInstance().getUpdateTime();
+        float updateDistance = ServiceTempPrefs.getInstance().getUpdateDistance();
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, updateTime, updateDistance, _listener);
         collecting = true;
         currentLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
         Log.d(TAG, "GPSMonitor started.");

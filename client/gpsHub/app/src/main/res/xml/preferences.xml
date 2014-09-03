@@ -4,28 +4,51 @@
     <ListPreference
         android:key="ui_theme"
         android:title="Тема приложения"
-        android:summary="Выбор темы приложения"
         android:dialogTitle="Выбор темы"
-        android:entries="@array/ui_themes_names"
-        android:entryValues="@array/ui_themes_values"
-        android:defaultValue="Theme.AppCompat.Light"
-        />
+        android:entries="@array/ui_themes"
+        android:entryValues="@array/ui_themes"
+        android:defaultValue="@string/ui_theme_light"
+    />
     <PreferenceCategory
         android:title="Настройки аккаунта">
         <ListPreference
             android:key="server_url"
             android:title="Сервер"
-            android:summary="Выбор URL сервера компании"
             android:dialogTitle="Выбор сервера"
             android:entries="@array/server_urls"
             android:entryValues="@array/server_urls"
-         />
+            android:defaultValue="@string/url_client01"
+        />
         <EditTextPreference
             android:key="driver_id"
             android:title="ID водителя"
-            android:summary="ID, под которым трекер отобразится в системе"
             android:dialogTitle="ID водителя"
             android:numeric="integer"
+        />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Настройки трекера">
+        <EditTextPreference
+            android:key="send_period"
+            android:title="Период отправки"
+            android:dialogTitle="Период отправки"
+            android:numeric="integer"
+            android:defaultValue="2000"
+        />
+        <EditTextPreference
+            android:key="update_time"
+            android:title="GPS min update time"
+            android:dialogTitle="GPS update time"
+            android:numeric="integer"
+            android:defaultValue="1000"
+
+        />
+        <EditTextPreference
+            android:key="update_distance"
+            android:title="GPS min update distance"
+            android:dialogTitle="GPS update distance"
+            android:numeric="decimal"
+            android:defaultValue="2.0"
         />
     </PreferenceCategory>
 </PreferenceScreen>

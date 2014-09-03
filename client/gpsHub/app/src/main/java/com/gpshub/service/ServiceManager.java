@@ -12,6 +12,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.gpshub.utils.Preferences;
 
@@ -33,12 +34,40 @@ public class ServiceManager {
     }
 
     public void startService(Context context) {
+        String serverUrl = Preferences.getServerUrl();
+        String driverId = Preferences.getDriverID();
+
+        if (serverUrl != null && driverId != null) {
+            Intent intent = new Intent(context, LocationService.class);
+            intent.putExtra("server_url", serverUrl);
+            intent.putExtra("driver_id", driverId);
+            intent.putExtra("busy", Preferences.isBusy().toString());
+            intent.putExtra("send_period", Preferences.getSendPeriod().toString());
+            intent.putExtra("update_time", Preferences.getUpdateTime().toString());
+            intent.putExtra("update_distance", Preferences.getUpdateDistance().toString());
+
+            context.getApplicationContext().startService(intent);
+        } else {
+            Log.e(TAG, "Service not started! Something is null");
+            Log.e(TAG, "ServerURL = " + serverUrl);
+            Log.e(TAG, "DriverID = " + driverId);
+            Toast.makeText(context, "Cannot start service!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void stopService(Context context) {
+        unbindService(context);
         Intent intent = new Intent(context, LocationService.class);
-        intent.putExtra("server_url", Preferences.getServerUrl());
-        intent.putExtra("driver_id", Preferences.getDriverID());
-        intent.putExtra("busy", Preferences.isBusy());
-        context.getApplicationContext().startService(intent);
-}
+        context.getApplicationContext().stopService(intent);
+    }
+
+    public void restartService(Context context) {
+        if (isServiceRunning(context)) {
+            stopService(context);
+            startService(context);
+            bindService(context);
+        }
+    }
 
     public void bindService(Context context) {
         Intent intent = new Intent(context, LocationService.class);
@@ -69,12 +98,6 @@ public class ServiceManager {
         } else {
             Log.w(TAG, "Unbind service launched but connection is null");
         }
-    }
-
-    public void stopService(Context context) {
-        unbindService(context);
-        Intent intent = new Intent(context, LocationService.class);
-        context.getApplicationContext().stopService(intent);
     }
 
     public boolean isServiceRunning(Context context) {

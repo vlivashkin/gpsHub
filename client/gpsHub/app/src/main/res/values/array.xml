@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="ui_themes_names">
-        <item>"Theme.AppCompat"</item>
-        <item>"Theme.AppCompat.Light"</item>
+    <string name="ui_theme_dark">"Theme.AppCompat"</string>
+    <string name="ui_theme_light">"Theme.AppCompat.Light"</string>
+
+    <string-array name="ui_themes">
+        <item>@string/ui_theme_dark</item>
+        <item>@string/ui_theme_light</item>
     </string-array>
-    <string-array name="ui_themes_values">
-        <item>"THEME_DARK"</item>
-        <item>"THEME_LIGHT"</item>
-    </string-array>
+
+    <string name="url_client01">"http://client01.gpshub.ru"</string>
+    <string name="url_test">"http://test.gpshub.ru"</string>
+
     <string-array name="server_urls">
-        <item>"http://client01.gpshub.ru"</item>
-        <item>"http://test.gpshub.ru"</item>
+        <item>@string/url_client01</item>
+        <item>@string/url_test</item>
     </string-array>
 </resources>
