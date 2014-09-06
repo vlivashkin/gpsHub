@@ -60,7 +60,7 @@ if (isset($_SESSION['email'])) {
                 <div id="signin-error" class="bs-callout"><p></p></div>
                 <form id="signin-form">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="signin-email" placeholder="Эл. почта"
+                        <input type="text" class="form-control" id="signin-email" placeholder="Эл. почта"
                                value="<?php echo $email ?>">
                     </div>
                     <div class="form-group">
