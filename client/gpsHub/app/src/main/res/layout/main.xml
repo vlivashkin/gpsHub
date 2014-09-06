@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -8,114 +8,154 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:weightSum="1">
+
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center_vertical"
-        android:layout_weight="0.6"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
         <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:padding="5dp">
+
             <TextView
-                    android:id="@+id/stateHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="@string/status"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="30sp"
-                    android:paddingBottom="7dp"/>
+                android:id="@+id/stateHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="7dp"
+                android:text="@string/status"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="27sp" />
+
             <TableLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="1">
-                    <TextView
-                        android:id="@+id/driver_id_label"
+                    android:layout_marginBottom="5dp">
+
+                    <LinearLayout
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/driver_id"
+                        android:layout_height="fill_parent"
                         android:layout_weight="0.5"
-                        android:singleLine="true"/>
-                    <TextView
-                        android:id="@+id/driver_id"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/unknown"
-                        android:layout_weight="0.5"
-                        android:singleLine="true"/>
-                </TableRow>
-                <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="1">
-                    <TextView
+                        android:orientation="vertical">
+
+                        <TextView
                             android:id="@+id/gps_status_label"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="@string/gps_tracker"
-                            android:layout_weight="0.5"
-                            android:singleLine="true"/>
-                    <TextView
+                            android:gravity="center_horizontal"
+                            android:singleLine="true"
+                            android:text="@string/gps"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textStyle="bold" />
+
+                        <TextView
                             android:id="@+id/gps_status"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="@string/disabled"
-                            android:layout_weight="0.5"
-                            android:singleLine="true"/>
-                </TableRow>
-                <TableRow
+                            android:gravity="center_horizontal"
+                            android:singleLine="false"
+                            android:text="@string/unknown"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:weightSum="1">
-                    <TextView
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
                             android:id="@+id/busy_status_label"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="@string/driver_busy"
-                            android:layout_weight="0.5"
-                            android:singleLine="true"/>
-                    <TextView
+                            android:gravity="center_horizontal"
+                            android:singleLine="true"
+                            android:text="@string/connectivity"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textStyle="bold" />
+
+                        <TextView
                             android:id="@+id/busy_status"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="@string/free"
-                            android:layout_weight="0.5"
-                            android:singleLine="true"/>
+                            android:gravity="center_horizontal"
+                            android:singleLine="false"
+                            android:text="@string/unknown"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                    </LinearLayout>
+
                 </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="5dp">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:singleLine="true"
+                            android:text="@string/driver_status"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:singleLine="false"
+                            android:text="@string/unknown"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                    </LinearLayout>
+
+                </TableRow>
+
             </TableLayout>
         </LinearLayout>
+
         <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
             <TextView
-                    android:id="@+id/actionsHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="@string/action"
-                    android:layout_gravity="center_horizontal"
-                    android:singleLine="true" android:textSize="30sp"
-                    android:layout_marginBottom="7dp"/>
+                android:id="@+id/actionsHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="7dp"
+                android:singleLine="true"
+                android:text="@string/actions"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="27sp" />
+
             <Button
-                    android:id="@+id/busyBtn"
-                    android:layout_width="185dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/busy"
-                    android:layout_gravity="center_horizontal"
-                    style="?android:attr/textAppearanceMedium"/>
+                android:id="@+id/busyBtn"
+                style="?android:attr/textAppearanceMedium"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/busy" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

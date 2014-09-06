@@ -2,37 +2,35 @@
 <resources>
     <string name="app_name">gpsHub</string>
 
-    <string name="sign_in">Sign in</string>
-    <string name="sign_out">Sign out</string>
-    <string name="preferences">Settings</string>
-
-    <string name="nightmode">night mode</string>
-
-    <string name="server">Server</string>
-    <string name="password">Password</string>
-    <string name="driver_id">Driver ID</string>
-    <string name="status">Status</string>
-    <string name="gps_tracker">GPS-tracking</string>
-    <string name="driver_busy">Driver is busy</string>
-
-    <string name="action">Actions</string>
-    <string name="gpsSettings">GPS settings</string>
-
+    <string name="sign_in">Войти</string>
+    <string name="sign_out">Выйти</string>
+    <string name="preferences">Настройки</string>
+    <string name="free">Свободен</string>
+    <string name="busy">Занят</string>
     <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
+    <string name="cancel">Отмена</string>
+    <string name="enabled">Разрешено</string>
+    <string name="disabled">Запрещено</string>
+    <string name="connected">Подключено</string>
+    <string name="disconnected">Нет соединения</string>
+    <string name="in_search">Идет поиск…</string>
+    <string name="unknown">N/A</string>
 
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
-    <string name="unknown">Unknown</string>
+    <string name="server">Сервер</string>
+    <string name="password">Пароль</string>
+    <string name="driver_id">ID водителя</string>
 
-    <string name="free">Free</string>
-    <string name="busy">Busy</string>
+    <string name="night_mode">Ночной режим</string>
+    <string name="status">Статус</string>
+    <string name="gps">Состояние GPS</string>
+    <string name="connectivity">Соединение</string>
+    <string name="driver_status">Статус водителя</string>
 
-    <string name="enable_gps">Enable GPS</string>
-    <string name="disable_gps">Disable GPS</string>
+    <string name="actions">Действия</string>
+    <string name="gpsSettings">Настройки GPS</string>
 
-    <string name="gps_disabled_message">GPS-tracking is not enabled. Allow access to the GPS to continue</string>
-    <string name="login_fail_message">Wrong number of the driver</string>
-    <string name="connection_error_message">Request is not sent.\nCheck your internet connection</string>
-    <string name="wrong_password_message">Wrong password</string>
+    <string name="gps_disabled_message">GPS-трекинг не разрешен. Разрешите доступ к GPS в настройках, чтобы продолжить</string>
+    <string name="login_fail_message">Неверный номер водителя</string>
+    <string name="connection_error_message">Запрос не отправлен.\nПроверьте свое подключение к интернету</string>
+    <string name="wrong_password_message">Неверный пароль</string>
 </resources>

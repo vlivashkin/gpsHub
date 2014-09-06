@@ -23,6 +23,7 @@ import com.gpshub.ui.ThemeUtils;
 import com.gpshub.utils.AppConstants;
 import com.gpshub.utils.ContextHack;
 import com.gpshub.utils.Preferences;
+import com.gpshub.utils.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -129,13 +130,14 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void restoreLabels() {
-        TextView idStatus = (TextView) findViewById(R.id.driver_id);
         TextView gpsStatus = (TextView) findViewById(R.id.gps_status);
         TextView busyStatus = (TextView) findViewById(R.id.busy_status);
         Button busyBtn = (Button) findViewById(R.id.busyBtn);
 
-        String driverID = Preferences.getDriverID();
-        idStatus.setText(driverID);
+        String driverId = Preferences.getDriverID();
+        String serverName = Utils.getServerNameByUrl(this, Preferences.getServerUrl());
+        getSupportActionBar().setTitle(driverId + "@" + serverName + " - gpsHub");
+
         gpsStatus.setText(getString(ServiceManager.getInstance().isServiceRunning(this) ? R.string.enabled : R.string.disabled));
 
         if (Preferences.isBusy()) {

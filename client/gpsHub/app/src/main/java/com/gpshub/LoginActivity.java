@@ -1,10 +1,13 @@
 package com.gpshub;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -24,6 +27,8 @@ import com.gpshub.utils.ContextHack;
 import com.gpshub.utils.Preferences;
 
 public class LoginActivity extends ActionBarActivity {
+    SpinnerActivity sa;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         ContextHack.setAppContext(getApplicationContext());
@@ -31,7 +36,7 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        final SpinnerActivity sa = new SpinnerActivity();
+        sa = new SpinnerActivity();
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.server_urls, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -47,25 +52,13 @@ public class LoginActivity extends ActionBarActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText password = (EditText) findViewById(R.id.password);
                 EditText driverId = (EditText) findViewById(R.id.driver_id);
 
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(password.getWindowToken(), 0);
                 imm.hideSoftInputFromWindow(driverId.getWindowToken(), 0);
 
                 FlurryAgent.logEvent("TryLoginClick");
-
-                if (password.getText().toString().equals(AppConstants.PASSWORD)) {
-                    showProgressBar();
-                    asyncLogin(sa.getUrl(), driverId.getText().toString());
-                    FlurryAgent.logEvent("LoginClick");
-                } else {
-                    Toast.makeText(LoginActivity.this, getString(R.string.wrong_password_message), Toast.LENGTH_SHORT).show();
-                    if (password.requestFocus()) {
-                        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-                    }
-                }
+                buildDialog("Вход в аккаунт", "Введите пароль для входа в аккаунт");
             }
         });
     }
@@ -134,5 +127,32 @@ public class LoginActivity extends ActionBarActivity {
     private void hideProgressBar() {
         findViewById(R.id.login_progress).setVisibility(View.GONE);
         findViewById(R.id.login_layout).setVisibility(View.VISIBLE);
+    }
+
+    private void buildDialog(String title, String message) {
+        final EditText input = new EditText(LoginActivity.this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        AlertDialog.Builder ad = new AlertDialog.Builder(LoginActivity.this);
+        ad.setTitle(title);
+        ad.setMessage(message);
+        ad.setView(input);
+        ad.setPositiveButton("ОК", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                EditText driverId = (EditText) findViewById(R.id.driver_id);
+                String value = input.getText().toString();
+                if (value.equals(AppConstants.PASSWORD)) {
+                    showProgressBar();
+                    asyncLogin(sa.getUrl(), driverId.getText().toString());
+                    FlurryAgent.logEvent("LoginClick");
+                } else {
+                    Toast.makeText(LoginActivity.this, getString(R.string.wrong_password_message), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        ad.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //nothing
+            }
+        }).show();
     }
 }

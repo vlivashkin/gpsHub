@@ -3,16 +3,23 @@
     <string name="ui_theme_dark">"Theme.AppCompat"</string>
     <string name="ui_theme_light">"Theme.AppCompat.Light"</string>
 
+    <string name="url_client01">"http://client01.gpshub.ru"</string>
+    <string name="url_test">"http://test.gpshub.ru"</string>
+
     <string-array name="ui_themes">
         <item>@string/ui_theme_dark</item>
         <item>@string/ui_theme_light</item>
     </string-array>
 
-    <string name="url_client01">"http://client01.gpshub.ru"</string>
-    <string name="url_test">"http://test.gpshub.ru"</string>
-
     <string-array name="server_urls">
         <item>@string/url_client01</item>
         <item>@string/url_test</item>
     </string-array>
+
+    <string-array name="server_urls_names">
+        <item>Client01</item>
+        <item>Test</item>
+    </string-array>
+
+
 </resources>
