@@ -2,59 +2,66 @@
 
 class User
 {
-    private $login = false;
-    private $email;
-    private $name;
-    private $companyId;
-    private $companyName;
+    private $user;
+    private $company;
+    private $isLoggedIn = false;
 
     public function __construct()
     {
-        session_start();
-        if (isset($_SESSION['email'])) {
-            require_once('SQLConfig.php');
-            $sqlconfig = new SQLConfig();
-            $mysqli = $sqlconfig->getMysqli();
-            $query = "SELECT * FROM `user` WHERE `email` = '" . $_SESSION['email'] . "'";
-            $result = $mysqli->query($query);
-            if ($result->num_rows > 0) {
-                $user = $result->fetch_array(MYSQLI_ASSOC);
-
-                $this->login = true;
-                $this->email = $user['email'];
-                $this->name = $user['name'];
-                $this->companyId = $user['company_id'];
-
-                $query = "SELECT `name` FROM `company` WHERE `company_id` = '" . $this->companyId . "'";
-                $result = $mysqli->query($query);
-                $company = $result->fetch_array(MYSQLI_ASSOC);
-                $this->companyName = $company['name'];
+        require_once('db/utils/DBHelper.php');
+        if (session_id() == "")
+            session_start();
+        if (isset($_SESSION['login']) && $_SESSION['login']) {
+            $this->user = DBHelper::getFirst("SELECT * FROM `users` WHERE `login` = '" . $_SESSION['login'] . "'");
+            if ($this->user != NULL) {
+                $this->company = DBHelper::getFirst("SELECT `name` FROM `companies` WHERE `company_id` = '" . $this->user['company_id'] . "'");
+                $this->isLoggedIn = true;
             }
         }
     }
 
-    public function isLoggedIn()
+    public function signIn($login, $hash)
     {
-        return $this->login;
+        $hash256 = hash('sha256', $hash . $login);
+        $result = DBHelper::getFirst("SELECT * FROM `users` WHERE `login` = '" . $login . "' AND `password` = '" . $hash256 . "'");
+        if ($result != NULL) {
+            if (session_id() == "")
+                session_start();
+            $_SESSION['login'] = $login;
+            DBHelper::run("UPDATE `users` WHERE `login` = '" . $login . "' SET `last_activity` = " . time());
+            return "SUCCESS";
+        }
+
+        return "FAILURE";
     }
 
-    public function getEmail()
+    public function getLogin()
     {
-        return $this->email;
+        return $this->user['login'];
     }
 
     public function getName()
     {
-        return $this->name;
+        return $this->user['name'];
     }
 
-    public function getCompanyId()
+    public function getGroupID()
     {
-        return $this->companyId;
+        return $this->user['group_id'];
     }
 
     public function getCompanyName()
     {
-        return $this->companyName;
+        return $this->company['name'];
+    }
+
+    public function isLoggedIn()
+    {
+        return $this->isLoggedIn;
+    }
+
+    public function isLoggedAsAdmin()
+    {
+        return $this->isLoggedIn && $this->user['isadmin'] == 'true';
     }
 }

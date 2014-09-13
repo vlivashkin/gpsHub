@@ -1,11 +1,10 @@
 <?php
 
-session_start();
-if (isset($_SESSION['email'])) {
-    $email = $_SESSION['email'];
-} else {
-    $email = "";
-}
+require_once('classes/User.php');
+
+$user = new User();
+$login = $user->isLoggedIn() ? $user->getLogin() : "";
+
 ?>
 
 <!DOCTYPE html>
@@ -16,17 +15,17 @@ if (isset($_SESSION['email'])) {
 
     <title>gpsHub: Sign In</title>
 
-    <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/sha256.js"></script>
-    <script src="js/user.min.js" type="text/javascript"></script>
+    <script src="resources/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="resources/js/sha256.js"></script>
+    <script src="resources/js/user.js" type="text/javascript"></script>
 
-    <link rel="StyleSheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="StyleSheet" type="text/css" href="css/main.min.css">
+    <link rel="StyleSheet" type="text/css" href="resources/css/bootstrap.min.css">
+    <link rel="StyleSheet" type="text/css" href="resources/css/main.css">
 
     <style>
         body {
-            background: url(img/bg.jpg) no-repeat center center fixed;
+            background: url(resources/images/bg.jpg) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -60,8 +59,8 @@ if (isset($_SESSION['email'])) {
                 <div id="signin-error" class="bs-callout"><p></p></div>
                 <form id="signin-form">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="signin-email" placeholder="Эл. почта"
-                               value="<?php echo $email ?>">
+                        <input type="text" class="form-control" id="signin-login" placeholder="Эл. почта"
+                               value="<?php echo $login ?>">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" id="signin-password" placeholder="Пароль">

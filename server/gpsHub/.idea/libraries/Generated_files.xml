@@ -721,9 +721,9 @@
       <root url="file://$PROJECT_DIR$/js/sha256.min.min.js" />
       <root url="file://$PROJECT_DIR$/js/ol.min.js" />
       <root url="file://$PROJECT_DIR$/js/list.min.js" />
-      <root url="file://$PROJECT_DIR$/js/bootstrap.min.js" />
-      <root url="file://$PROJECT_DIR$/js/jquery-1.11.1.min.js" />
-      <root url="file://$PROJECT_DIR$/js/jquery.layout-latest.min.js" />
+      <root url="file://$PROJECT_DIR$/resources/js/bootstrap.min.js" />
+      <root url="file://$PROJECT_DIR$/resources/js/jquery-1.11.1.min.js" />
+      <root url="file://$PROJECT_DIR$/resources/js/jquery.layout-latest.min.js" />
       <root url="file://$PROJECT_DIR$/js/user.min.js" />
       <root url="file://$PROJECT_DIR$/js/modal.min.js" />
       <root url="file://$PROJECT_DIR$/js/map.min.js" />

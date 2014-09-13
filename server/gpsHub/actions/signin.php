@@ -1,23 +1,12 @@
 <?php
 
+require_once('../classes/User.php');
+require_once('../classes/Helper.php');
+
 if ($_POST) {
-    $email = $_POST['email'];
-    $hash = $_POST['hash'];
-    $hash256 = hash('sha256', $hash . $email);
+    Helper::checkPostParameter('login');
+    Helper::checkPostParameter('hash');
 
-    require_once('../classes/SQLConfig.php');
-    $sqlconfig = new SQLConfig();
-    $mysqli = $sqlconfig->getMysqli();
-    $query = "SELECT * FROM `user` WHERE `email` = '" . $email . "' AND `password` = '" . $hash256 . "'";
-    $result = $mysqli->query($query);
-
-    if ($result->num_rows) {
-        session_start();
-        $_SESSION['email'] = $email;
-
-        echo "SUCCESS";
-        return;
-    }
-
-    echo "FAILURE";
+    $login = new User();
+    echo $login->signIn($_POST['login'], $_POST['hash']);
 }
