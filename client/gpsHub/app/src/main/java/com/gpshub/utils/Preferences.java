@@ -36,6 +36,19 @@ public class Preferences {
         setPreference("is_busy", Boolean.toString(is_busy));
     }
 
+    public static Boolean isGpsEnabled() {
+        Boolean result = Boolean.valueOf(getPreference("is_gps_enabled", "false"));
+        if (result != null) {
+            return result;
+        } else {
+            return false;
+        }
+    }
+
+    public static void setGpsEnabled(Boolean is_gps_enabled) {
+        setPreference("is_gps_enabled", Boolean.toString(is_gps_enabled));
+    }
+
     public static Theme getUiTheme() {
         Theme theme = Theme.getTheme(getPreference("ui_theme"));
         if (theme != null) {

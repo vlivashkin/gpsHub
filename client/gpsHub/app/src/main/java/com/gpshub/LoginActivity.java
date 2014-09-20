@@ -52,7 +52,7 @@ public class LoginActivity extends ActionBarActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText driverId = (EditText) findViewById(R.id.driver_id);
+                EditText driverId = (EditText) findViewById(R.id.driverId);
 
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(driverId.getWindowToken(), 0);
@@ -97,7 +97,7 @@ public class LoginActivity extends ActionBarActivity {
                     case AccountManager.RESULT_WRONG_NUMBER:
                         hideProgressBar();
                         Toast.makeText(LoginActivity.this, LoginActivity.this.getString(R.string.login_fail_message), Toast.LENGTH_SHORT).show();
-                        EditText driverId = (EditText) findViewById(R.id.driver_id);
+                        EditText driverId = (EditText) findViewById(R.id.driverId);
                         if (driverId.requestFocus()) {
                             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                         }
@@ -120,13 +120,13 @@ public class LoginActivity extends ActionBarActivity {
     }
 
     private void showProgressBar() {
-        findViewById(R.id.login_layout).setVisibility(View.GONE);
-        findViewById(R.id.login_progress).setVisibility(View.VISIBLE);
+        findViewById(R.id.loginLayout).setVisibility(View.GONE);
+        findViewById(R.id.loginProgress).setVisibility(View.VISIBLE);
     }
 
     private void hideProgressBar() {
-        findViewById(R.id.login_progress).setVisibility(View.GONE);
-        findViewById(R.id.login_layout).setVisibility(View.VISIBLE);
+        findViewById(R.id.loginProgress).setVisibility(View.GONE);
+        findViewById(R.id.loginLayout).setVisibility(View.VISIBLE);
     }
 
     private void buildDialog(String title, String message) {
@@ -138,7 +138,7 @@ public class LoginActivity extends ActionBarActivity {
         ad.setView(input);
         ad.setPositiveButton("ОК", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                EditText driverId = (EditText) findViewById(R.id.driver_id);
+                EditText driverId = (EditText) findViewById(R.id.driverId);
                 String value = input.getText().toString();
                 if (value.equals(AppConstants.PASSWORD)) {
                     showProgressBar();

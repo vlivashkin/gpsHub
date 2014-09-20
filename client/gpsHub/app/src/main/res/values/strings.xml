@@ -5,25 +5,24 @@
     <string name="sign_in">Войти</string>
     <string name="sign_out">Выйти</string>
     <string name="preferences">Настройки</string>
+    <string name="night_mode">Ночной режим</string>
+
     <string name="free">Свободен</string>
     <string name="busy">Занят</string>
+
     <string name="ok">OK</string>
     <string name="cancel">Отмена</string>
-    <string name="enabled">Разрешено</string>
-    <string name="disabled">Запрещено</string>
-    <string name="connected">Подключено</string>
-    <string name="disconnected">Нет соединения</string>
-    <string name="in_search">Идет поиск…</string>
+
+    <string name="enabled">Разрешен</string>
+    <string name="disabled">Запрещен</string>
     <string name="unknown">N/A</string>
 
     <string name="server">Сервер</string>
     <string name="password">Пароль</string>
     <string name="driver_id">ID водителя</string>
 
-    <string name="night_mode">Ночной режим</string>
     <string name="status">Статус</string>
-    <string name="gps">Состояние GPS</string>
-    <string name="connectivity">Соединение</string>
+    <string name="gps">GPS трекинг</string>
     <string name="driver_status">Статус водителя</string>
 
     <string name="actions">Действия</string>

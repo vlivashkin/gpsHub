@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:weightSum="1">
     <ProgressBar
-        android:id="@+id/login_progress"
+        android:id="@+id/loginProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -17,14 +17,15 @@
         android:visibility="gone"
         style="?android:attr/progressBarStyleLarge"/>
     <LinearLayout
-            android:id="@+id/login_layout"
+            android:id="@+id/loginLayout"
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:layout_weight="1"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+        android:focusableInTouchMode="true">
         <TextView
-            android:id="@+id/server_url_text"
+            android:id="@+id/serverUrlText"
             android:text="@string/server"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +38,7 @@
             android:layout_height="wrap_content"
             style="?android:attr/textAppearanceLarge"/>
         <TextView
-            android:id="@+id/driver_id_text"
+            android:id="@+id/driverIdText"
             android:text="@string/driver_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +46,7 @@
             android:paddingBottom="4dp"
             style="?android:attr/textAppearanceLarge"/>
         <EditText
-            android:id="@+id/driver_id"
+            android:id="@+id/driverId"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="number"

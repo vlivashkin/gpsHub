@@ -1,9 +1,13 @@
 package com.gpshub;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.GpsStatus;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
 import android.util.Log;
@@ -45,7 +49,9 @@ public class MainActivity extends ActionBarActivity {
         }
 
         setContentView(R.layout.main);
+        ThemeUtils.onActivityShowSetTheme(this);
         restoreLabels();
+        listenGpsStatus();
 
         Button busyBtn = (Button) findViewById(R.id.busyBtn);
         busyBtn.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +59,16 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View view) {
                 toggleBusy();
                 FlurryAgent.logEvent("ToggleBusy");
+            }
+        });
+
+        Button showGpsSettingsBtn = (Button) findViewById(R.id.gpsSettingsBtn);
+        showGpsSettingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+                FlurryAgent.logEvent("ShowGPSSettings");
             }
         });
 
@@ -130,15 +146,15 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void restoreLabels() {
-        TextView gpsStatus = (TextView) findViewById(R.id.gps_status);
-        TextView busyStatus = (TextView) findViewById(R.id.busy_status);
+        TextView gpsStatus = (TextView) findViewById(R.id.gpsStatus);
+        TextView busyStatus = (TextView) findViewById(R.id.busyStatus);
         Button busyBtn = (Button) findViewById(R.id.busyBtn);
 
         String driverId = Preferences.getDriverID();
         String serverName = Utils.getServerNameByUrl(this, Preferences.getServerUrl());
         getSupportActionBar().setTitle(driverId + "@" + serverName + " - gpsHub");
 
-        gpsStatus.setText(getString(ServiceManager.getInstance().isServiceRunning(this) ? R.string.enabled : R.string.disabled));
+        gpsStatus.setText(getString(Preferences.isGpsEnabled() ? R.string.enabled : R.string.disabled));
 
         if (Preferences.isBusy()) {
             busyStatus.setText(getString(R.string.busy));
@@ -198,5 +214,25 @@ public class MainActivity extends ActionBarActivity {
     public void showPreferences() {
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
         startActivity(intent);
+    }
+
+    public void listenGpsStatus() {
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        lm.addGpsStatusListener(new android.location.GpsStatus.Listener() {
+            public void onGpsStatusChanged(int event) {
+                TextView gpsStatus = (TextView) findViewById(R.id.gpsStatus);
+                switch (event) {
+                    case GpsStatus.GPS_EVENT_STARTED:
+                        gpsStatus.setText(getString(R.string.enabled));
+                        Preferences.setGpsEnabled(true);
+                        break;
+                    case GpsStatus.GPS_EVENT_STOPPED:
+                        gpsStatus.setText(getString(R.string.disabled));
+                        Preferences.setGpsEnabled(false);
+                        break;
+                }
+            }
+        });
+
     }
 }
