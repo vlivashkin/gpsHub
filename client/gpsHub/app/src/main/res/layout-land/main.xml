@@ -27,6 +27,27 @@
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:paddingLeft="4dp">
+
+                    <TextView
+                        android:id="@+id/stateHeader"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:gravity="center_horizontal"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/abc_cab_background_top_holo_dark"
+                        android:text="@string/status"
+                        android:singleLine="true"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="27sp"
+                        android:layout_weight="0.5"
+                        android:paddingBottom="6dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:paddingRight="4dp">
 
                     <TextView
@@ -44,26 +65,6 @@
                         android:paddingBottom="6dp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:paddingLeft="4dp">
-
-                    <TextView
-                        android:id="@+id/stateHeader"
-                        android:layout_width="fill_parent"
-                        android:layout_height="0dp"
-                        android:gravity="center_horizontal"
-                        android:layout_marginBottom="7dp"
-                        android:background="@drawable/abc_cab_background_top_holo_dark"
-                        android:text="@string/status"
-                        android:singleLine="true"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="27sp"
-                        android:layout_weight="0.5"
-                        android:paddingBottom="6dp" />
-                </LinearLayout>
             </TableRow>
 
             <TableRow

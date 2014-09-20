@@ -15,13 +15,13 @@
         android:paddingBottom="8dp">
 
         <TextView
-            android:id="@+id/actionsHeader"
+            android:id="@+id/stateHeader"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_marginBottom="7dp"
             android:background="@drawable/abc_cab_background_top_holo_dark"
-            android:text="@string/actions"
+            android:text="@string/status"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="27sp"
@@ -87,13 +87,13 @@
         android:paddingTop="8dp">
 
         <TextView
-            android:id="@+id/stateHeader"
+            android:id="@+id/actionsHeader"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_marginBottom="7dp"
             android:background="@drawable/abc_cab_background_top_holo_dark"
-            android:text="@string/status"
+            android:text="@string/actions"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="27sp"
