@@ -96,19 +96,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="list.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="151" column="0" selection-start="5033" selection-end="5033" vertical-scroll-proportion="-7.28" vertical-offset="2385" max-vertical-offset="2924">
+            <state line="112" column="47" selection-start="3388" selection-end="3388" vertical-scroll-proportion="0.716141" vertical-offset="1518" max-vertical-offset="2924">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="32" selection-start="999" selection-end="999" vertical-scroll-proportion="0.4696707" vertical-offset="324" max-vertical-offset="901">
+            <state line="35" column="32" selection-start="999" selection-end="999" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="901">
               <folding />
             </state>
           </provider>
@@ -899,16 +899,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/list.js">
+    <entry file="file://$PROJECT_DIR$/resources/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="0" selection-start="5033" selection-end="5033" vertical-scroll-proportion="-7.28" vertical-offset="2385" max-vertical-offset="2924">
+        <state line="35" column="32" selection-start="999" selection-end="999" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="901">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/main.js">
+    <entry file="file://$PROJECT_DIR$/resources/js/list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="32" selection-start="999" selection-end="999" vertical-scroll-proportion="0.4696707" vertical-offset="324" max-vertical-offset="901">
+        <state line="112" column="47" selection-start="3388" selection-end="3388" vertical-scroll-proportion="0.716141" vertical-offset="1518" max-vertical-offset="2924">
           <folding />
         </state>
       </provider>

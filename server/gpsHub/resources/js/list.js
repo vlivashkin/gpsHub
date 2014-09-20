@@ -110,7 +110,7 @@ List.prototype.addDriverToList = function(driver) {
         properties.push({name: 'Описание машины', value: driver.vehicle_description});
     }
     if (!isEmpty(driver.busy)) {
-        properties.push({name: 'Водитель занят', value: driver.busy == "true" || driver.busy == "busy" ? "Занят" : "Свободен", classname: "busy"});
+        properties.push({name: 'Статус водителя', value: driver.busy == "true" || driver.busy == "busy" ? "Занят" : "Свободен", classname: "busy"});
     }
     properties.push({name: "Последняя активность", value: "Нет информации", classname: "last-activity"});
 
