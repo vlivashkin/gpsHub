@@ -27,7 +27,7 @@
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:paddingLeft="4dp">
+                    android:paddingRight="4dp">
 
                     <TextView
                         android:id="@+id/stateHeader"
@@ -48,7 +48,7 @@
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:paddingRight="4dp">
+                    android:paddingLeft="4dp">
 
                     <TextView
                         android:id="@+id/actionsHeader"
