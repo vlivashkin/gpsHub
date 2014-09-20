@@ -49,7 +49,7 @@ if ($_GET) {
     $lat = $_POST['lat'];
     $lng = $_POST['lng'];
     $busy = $_POST['busy'];
-    $accuracy = $_POST['accuracy'];
+    $accuracy = $_POST['acc'];
 
     $drivers->setLocation($id, $lat, $lng, $busy, $accuracy);
 

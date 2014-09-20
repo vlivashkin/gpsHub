@@ -149,7 +149,7 @@ List.prototype.updateStatuses = function(now) {
         var $last_activity = $item.find(".last-activity");
 
         var diff = now - _this.drivers[id].last_activity;
-        console.log($status);
+
         if (diff < 60) {
             $status.removeClass("wait").addClass("online");
         } else if (diff < 5 * 60) {

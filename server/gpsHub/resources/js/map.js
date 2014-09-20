@@ -86,6 +86,7 @@ MapManager.prototype.updateDriversLocation = function() {
                     list.drivers[driver.driver_id].lat = driver.lat;
                     list.drivers[driver.driver_id].lon = driver.lon;
                     list.drivers[driver.driver_id].busy = driver.busy;
+                    list.drivers[driver.driver_id].accuracy = driver.accuracy;
                     list.drivers[driver.driver_id].last_activity = driver.last_activity;
                 });
 
@@ -130,9 +131,13 @@ MapManager.prototype.updateStatuses = function(now) {
 
     Object.keys(list.drivers).forEach(function (id) {
         var diff = now - list.drivers[id].last_activity;
+        var busy = list.drivers[id].busy;
+        var accuracy = list.drivers[id].accuracy;
+        if (typeof(accuracy) === "string")
+            accuracy = parseFloat(accuracy);
 
         var iconStyle = new ol.style.Style({
-            image: _this.icon(diff, list.drivers[id].busy),
+            image: _this.icon(diff, busy, accuracy),
             text: new ol.style.Text({
                 font: '12px Calibri,sans-serif',
                 text: list.drivers[id].vehicle_num,
@@ -157,9 +162,9 @@ MapManager.prototype.icon = function(diffTime, busyStatus, accuracyStatus) {
     var busy = busyStatus == "true" || busyStatus == "busy" ? "yellow" : "white";
 
     var accuracy = 'red';
-    if (accuracyStatus < 5) {
+    if (accuracyStatus < 10) {
         accuracy = 'green';
-    } else if (accuracyStatus < 15) {
+    } else if (accuracyStatus < 30) {
         accuracy = 'yellow';
     }
 

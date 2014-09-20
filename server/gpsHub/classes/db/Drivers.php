@@ -56,12 +56,12 @@ class Drivers {
         $group_id = $user->getGroupID();
         if ($group_id > 0) {
             return DBHelper::getAssoc("
-            SELECT d.`driver_id`, d.`lat`, d.`lng`, d.`busy`, d.`last_activity`
+            SELECT d.`driver_id`, d.`lat`, d.`lng`, d.`busy`, d.`accuracy`, d.`last_activity`
             FROM `drivers` d, `drivers_groups` g
             WHERE d.driver_id = g.driver_id AND g.`group_id` = " . $group_id);
         } else {
             return DBHelper::getAssoc("
-            SELECT `driver_id`, `lat`, `lng`, `busy`, `vehicle_num`, `last_activity`
+            SELECT `driver_id`, `lat`, `lng`, `busy`, `accuracy`, `last_activity`
             FROM `drivers`");
         }
 
