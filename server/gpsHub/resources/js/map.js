@@ -112,10 +112,8 @@ MapManager.prototype.addPoint = function(id, lat, lon) {
 };
 
 MapManager.prototype.movePoint = function(id, lat, lon) {
-    if (typeof(lat) === "string")
-        lat = parseFloat(lat);
-    if (typeof(lon) === "string")
-        lon = parseFloat(lon);
+    lat = parseFloat(lat);
+    lon = parseFloat(lon);
 
     var point = new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'));
     var driver = list.drivers[id];
@@ -132,9 +130,7 @@ MapManager.prototype.updateStatuses = function(now) {
     Object.keys(list.drivers).forEach(function (id) {
         var diff = now - list.drivers[id].last_activity;
         var busy = list.drivers[id].busy;
-        var accuracy = list.drivers[id].accuracy;
-        if (typeof(accuracy) === "string")
-            accuracy = parseFloat(accuracy);
+        var accuracy = parseFloat(list.drivers[id].accuracy);
 
         var iconStyle = new ol.style.Style({
             image: _this.icon(diff, busy, accuracy),
@@ -162,17 +158,19 @@ MapManager.prototype.icon = function(diffTime, busyStatus, accuracyStatus) {
     var busy = busyStatus == "true" || busyStatus == "busy" ? "yellow" : "white";
 
     var accuracy = 'red';
-    if (accuracyStatus < 10) {
+    if (accuracyStatus < 15) {
         accuracy = 'green';
-    } else if (accuracyStatus < 30) {
+    } else if (accuracyStatus < 50) {
         accuracy = 'yellow';
+    } else if (isNaN(accuracyStatus)) {
+        accuracy = 'grey';
     }
 
     return new ol.style.Icon({
-        anchor: [0.5, 40],
+        anchor: [0.5, 35],
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
-        opacity: 0.85,
+        opacity: 0.95,
         src: 'resources/images/taxi.php?status=' + status + "&busy=" + busy + "&accuracy=" + accuracy
     })
 };

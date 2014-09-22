@@ -34,19 +34,13 @@ class Drivers {
         $group_id = $user->getGroupID();
         if ($group_id > 0) {
             return DBHelper::getAssoc("
-            SELECT d.*,
-              if(now() - d.last_activity < 60, 1, 0) as online,
-              if(now() - d.last_activity < 5*60, 1, 0) as wait
-            FROM `drivers` d, `drivers_groups` g
-            WHERE d.driver_id = g.driver_id AND g.`group_id` = " . $group_id . "
-            ORDER BY online DESC, wait DESC;");
+            SELECT d.*
+            FROM drivers d, drivers_groups g
+            WHERE d.driver_id = g.driver_id AND g.group_id = " . $group_id . ";");
         } else {
             return DBHelper::getAssoc("
-            SELECT *,
-                if(now() - d.last_activity < 60, 1, 0) online,
-                if(now() - d.last_activity < 5*60, 1, 0) wait
-            FROM `drivers` d
-            ORDER BY online DESC, wait DESC");
+            SELECT d.*
+            FROM drivers d");
         }
     }
 
