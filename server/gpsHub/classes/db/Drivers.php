@@ -3,7 +3,6 @@
 class Drivers {
     public function __construct()
     {
-
         require_once('utils/DBHelper.php');
     }
 
@@ -14,7 +13,8 @@ class Drivers {
 
     public function modifyDriver($id, $data)
     {
-        return DBHelper::run("UPDATE `drivers` SET
+        return DBHelper::run("
+            UPDATE `drivers` SET
             `name` = '" . $data['name'] . "',
             `alias` = '" . $data['alias'] . "',
             `phone_number` = '" . $data['phone_number'] . "',
@@ -50,13 +50,13 @@ class Drivers {
         $group_id = $user->getGroupID();
         if ($group_id > 0) {
             return DBHelper::getAssoc("
-            SELECT d.`driver_id`, d.`lat`, d.`lng`, d.`busy`, d.`accuracy`, d.`last_activity`
-            FROM `drivers` d, `drivers_groups` g
-            WHERE d.driver_id = g.driver_id AND g.`group_id` = " . $group_id);
+                SELECT d.`driver_id`, d.`lat`, d.`lng`, d.`busy`, d.`accuracy`, d.`last_activity`
+                FROM `drivers` d, `drivers_groups` g
+                WHERE d.driver_id = g.driver_id AND g.`group_id` = " . $group_id);
         } else {
             return DBHelper::getAssoc("
-            SELECT `driver_id`, `lat`, `lng`, `busy`, `accuracy`, `last_activity`
-            FROM `drivers`");
+                SELECT `driver_id`, `lat`, `lng`, `busy`, `accuracy`, `last_activity`
+                FROM `drivers`");
         }
 
     }

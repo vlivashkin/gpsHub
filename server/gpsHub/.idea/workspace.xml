@@ -73,11 +73,11 @@
       <file leaf-file-name="Drivers.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classes/db/Drivers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="22" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.5553539" vertical-offset="391" max-vertical-offset="1428">
+            <state line="4" column="5" selection-start="62" selection-end="62" vertical-scroll-proportion="0.10526316" vertical-offset="10" max-vertical-offset="1428">
               <folding>
-                <marker date="1411421248774" expanded="true" signature="189:220" placeholder="INSERT INTO ..." />
-                <marker date="1411421248774" expanded="true" signature="1213:1250" placeholder="SELECT d.* F..drivers..." />
-                <marker date="1411421248774" expanded="true" signature="1747:1843" placeholder="SELECT `driv..." />
+                <marker date="1411421775935" expanded="true" signature="188:219" placeholder="INSERT INTO ..." />
+                <marker date="1411421775935" expanded="true" signature="1225:1262" placeholder="SELECT d.* F..drivers..." />
+                <marker date="1411421775935" expanded="true" signature="1775:1875" placeholder="SELECT `driv..." />
               </folding>
             </state>
           </provider>
@@ -549,7 +549,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -955,11 +955,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/db/Drivers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="22" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.5553539" vertical-offset="391" max-vertical-offset="1428">
+        <state line="4" column="5" selection-start="62" selection-end="62" vertical-scroll-proportion="0.10526316" vertical-offset="10" max-vertical-offset="1428">
           <folding>
-            <marker date="1411421248774" expanded="true" signature="189:220" placeholder="INSERT INTO ..." />
-            <marker date="1411421248774" expanded="true" signature="1213:1250" placeholder="SELECT d.* F..drivers..." />
-            <marker date="1411421248774" expanded="true" signature="1747:1843" placeholder="SELECT `driv..." />
+            <marker date="1411421775935" expanded="true" signature="188:219" placeholder="INSERT INTO ..." />
+            <marker date="1411421775935" expanded="true" signature="1225:1262" placeholder="SELECT d.* F..drivers..." />
+            <marker date="1411421775935" expanded="true" signature="1775:1875" placeholder="SELECT `driv..." />
           </folding>
         </state>
       </provider>

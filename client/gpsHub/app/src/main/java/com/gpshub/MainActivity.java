@@ -50,8 +50,9 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.main);
         ThemeUtils.onActivityShowSetTheme(this);
-        restoreLabels();
+
         listenGpsStatus();
+        restoreLabels();
 
         Button busyBtn = (Button) findViewById(R.id.busyBtn);
         busyBtn.setOnClickListener(new View.OnClickListener() {
@@ -146,6 +147,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void restoreLabels() {
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        boolean isGpsEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
         TextView gpsStatus = (TextView) findViewById(R.id.gpsStatus);
         TextView busyStatus = (TextView) findViewById(R.id.busyStatus);
         Button busyBtn = (Button) findViewById(R.id.busyBtn);
@@ -154,7 +158,7 @@ public class MainActivity extends ActionBarActivity {
         String serverName = Utils.getServerNameByUrl(this, Preferences.getServerUrl());
         getSupportActionBar().setTitle(driverId + "@" + serverName + " - gpsHub");
 
-        gpsStatus.setText(getString(Preferences.isGpsEnabled() ? R.string.enabled : R.string.disabled));
+        gpsStatus.setText(getString(isGpsEnabled ? R.string.enabled : R.string.disabled));
 
         if (Preferences.isBusy()) {
             busyStatus.setText(getString(R.string.busy));
@@ -218,6 +222,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void listenGpsStatus() {
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
         lm.addGpsStatusListener(new android.location.GpsStatus.Listener() {
             public void onGpsStatusChanged(int event) {
                 TextView gpsStatus = (TextView) findViewById(R.id.gpsStatus);
