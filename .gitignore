@@ -1,1 +1,9 @@
-server/gpsHub/classes/db/utils/SQLConfig.php
+/server/.idea
+/server/*.iml
+/server/classes/db/utils/SQLConfig.php
+
+/client/.idea
+/client/*.iml
+/client/.navigation
+/client/app/*.iml
+/client/app/*.apk
